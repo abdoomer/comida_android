@@ -2,6 +2,7 @@ package com.example.comida.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,12 +27,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.comida.R
 import com.example.comida.models.OnboardingScreenItem
 import com.example.comida.models.onboardingScreenButtons
 import com.example.comida.models.onboardingScreenItems
 import com.example.comida.ui.theme.ComidaTheme
-import com.example.comida.ui.theme.OnboardingBackgroundColor2
 import com.example.comida.ui.theme.poppinsFamily
 
 
@@ -46,20 +45,7 @@ fun OnboardingScreen(
 
 
         OnboardingItem(
-            item = OnboardingScreenItem(
-                id = 2,
-                descriptionText = "Donut worry, be happy and eat more donuts!",
-                backgroundImage = R.drawable.onboarding_screen_background_2,
-                displayImage = R.drawable.onboarding_screen_image_2,
-                descriptionTextColor = Color.White,
-                imageTopRight = false,
-                imageWidth = 1023.35.dp,
-                imageHeight = 585.22.dp,
-                backgroundColor = OnboardingBackgroundColor2,
-                displayImageAlignment = Alignment.Center as Alignment.Horizontal,
-                displayImageYOffset = (-150).dp,
-                descriptionTextYOffset = (-170).dp,
-            )
+            item = onboardingScreenItems[0]
         )
 
 
@@ -80,9 +66,14 @@ fun OnboardingScreen(
                         fontSize = 16.sp,
                         color = Color.White,
                         modifier = Modifier
+                            .border(
+                                width = 1.dp,
+                                color = if (button.id == 1) Color.White else Color.Transparent,
+                                shape = RoundedCornerShape(25.dp)
+                            )
                             .clip(RoundedCornerShape(25.dp))
                             .background(button.backgroundColor)
-                            .padding(horizontal = 15.dp, vertical = 8.dp)
+                            .padding(horizontal = 38.dp, vertical = 16.dp)
 
                     )
                 }
@@ -115,29 +106,55 @@ private fun OnboardingItem(
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Image(
-                painter = painterResource(item.displayImage),
-                contentDescription = "Onboarding Screen Display Image",
-                contentScale = ContentScale.FillBounds,
-                modifier = Modifier
-                    .width(item.imageWidth)
-                    .height(item.imageHeight)
-                    .align(item.displayImageAlignment)
-                    .offset(y = item.displayImageYOffset)
-            )
+            if (item.id == 2) {
+                Text(
+                    text = item.descriptionText,
+                    color = item.descriptionTextColor,
+                    fontSize = 36.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = poppinsFamily,
+                    minLines = 3,
+                    lineHeight = 40.sp,
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .offset(y = item.descriptionTextYOffset)
+                )
 
-            Text(
-                text = item.descriptionText,
-                color = item.descriptionTextColor,
-                fontSize = 36.sp,
-                fontWeight = FontWeight.Bold,
-                fontFamily = poppinsFamily,
-//                style = TextStyle(
-//                    lineHeight = 40.sp // Adjust this value to increase or decrease spacing
-//                ),
-                modifier = Modifier
-                    .offset(y = item.descriptionTextYOffset)
-            )
+                Image(
+                    painter = painterResource(item.displayImage),
+                    contentDescription = "Onboarding Screen Display Image",
+                    contentScale = ContentScale.FillBounds,
+                    modifier = Modifier
+                        .width(item.imageWidth)
+                        .height(item.imageHeight)
+                        .align(Alignment.CenterHorizontally)
+                        .offset(y = item.displayImageYOffset)
+                )
+            } else {
+                Image(
+                    painter = painterResource(item.displayImage),
+                    contentDescription = "Onboarding Screen Display Image",
+                    contentScale = ContentScale.FillBounds,
+                    modifier = Modifier
+                        .width(item.imageWidth)
+                        .height(item.imageHeight)
+                        .align(Alignment.End)
+                        .offset(y = item.displayImageYOffset)
+                )
+
+                Text(
+                    text = item.descriptionText,
+                    color = item.descriptionTextColor,
+                    fontSize = 36.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = poppinsFamily,
+                    minLines = 3,
+                    lineHeight = 40.sp,
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .offset(y = item.descriptionTextYOffset)
+                )
+            }
         }
     }
 }

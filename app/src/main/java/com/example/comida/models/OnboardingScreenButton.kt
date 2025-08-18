@@ -19,7 +19,7 @@ val onboardingScreenButtons = listOf<OnboardingScreenButton>(
         backgroundColor = OnboardingLightButtonColor
     ),
     OnboardingScreenButton(
-        id = 1,
+        id = 2,
         text = "Log in",
         backgroundColor = PrimaryTextColor
     ),

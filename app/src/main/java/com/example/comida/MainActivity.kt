@@ -16,7 +16,7 @@ import com.example.comida.screens.OnboardingScreen
 import com.example.comida.ui.theme.ComidaTheme
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
+//@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
