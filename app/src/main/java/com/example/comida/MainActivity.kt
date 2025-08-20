@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.comida.screens.OnboardingScreen
+import com.example.comida.screens.SignInScreen
 import com.example.comida.ui.theme.ComidaTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,7 +26,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ComidaTheme {
-                OnboardingScreen()
+                SignInScreen()
             }
         }
     }
