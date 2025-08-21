@@ -18,7 +18,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -36,6 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.comida.R
+import com.example.comida.components.CustomTextField
 import com.example.comida.components.MainTextButton
 import com.example.comida.components.SocialLoginButtons
 import com.example.comida.ui.theme.ComidaTheme
@@ -53,6 +53,7 @@ fun SignUpScreen(
     var email by remember { mutableStateOf("") }
     var fullName by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var showPassword by remember { mutableStateOf(false) }
 
     Box(
         modifier = modifier
@@ -116,27 +117,40 @@ fun SignUpScreen(
                 .fillMaxWidth()
                 .fillMaxHeight(0.8f)
                 .background(Color.White)
-
                 .align(Alignment.BottomEnd)
         ){
             Column(
                 modifier = Modifier
-                    .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .fillMaxSize()
+                    .padding(top = 24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                TextField(
-                    value = email,
-                    onValueChange = { email = it }
+                CustomTextField(
+                    labelText = "Full Name",
+                    text = fullName,
+                    hintText = "your full name",
+                    onTogglePasswordStatusClicked = {},
+                    onTextValueChanged = { fullName = it }
                 )
 
-                TextField(
-                    value = fullName,
-                    onValueChange = { fullName = it }
+                CustomTextField(
+                    labelText = "Email",
+                    text = email,
+                    hintText = "example@gmail.com",
+                    onTogglePasswordStatusClicked = {},
+                    onTextValueChanged = { email = it }
                 )
 
-                TextField(
-                    value = password,
-                    onValueChange = { password = it }
+                CustomTextField(
+                    labelText = "Password",
+                    text = password,
+                    passwordObscured = showPassword,
+                    hintText = "**********",
+                    onTogglePasswordStatusClicked = {
+                        showPassword = !showPassword
+                    },
+                    onTextValueChanged = { password = it }
                 )
 
                 MainTextButton(
@@ -156,31 +170,36 @@ fun SignUpScreen(
                     onFacebookButtonClicked = {},
                     onGoogleButtonClicked = {}
                 )
+            }
+        }
 
-                Row(
-                    modifier = Modifier,
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
-                ){
+        Box(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+        ){
+            Row(
+                modifier = Modifier,
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ){
+                Text(
+                    text = "Don’t have an account?",
+                    color = SmallLabelTextColor,
+                    fontFamily = bebasFamily,
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 13.sp
+                )
+
+                TextButton(
+                    onClick = {}
+                ) {
                     Text(
-                        text = "Already have an account?",
-                        color = SmallLabelTextColor,
-                        fontFamily = bebasFamily,
-                        fontWeight = FontWeight.Normal,
-                        fontSize = 13.sp
+                        text = "Sign Up",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp,
+                        color = PrimaryButtonColor,
+                        fontFamily = bebasFamily
                     )
-
-                    TextButton(
-                        onClick = {}
-                    ) {
-                        Text(
-                            text = "Login",
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 13.sp,
-                            color = PrimaryButtonColor,
-                            fontFamily = bebasFamily
-                        )
-                    }
                 }
             }
         }

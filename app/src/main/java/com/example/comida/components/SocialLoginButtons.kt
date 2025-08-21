@@ -3,8 +3,9 @@ package com.example.comida.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -17,9 +18,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.comida.R
+import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.poppinsFamily
 
 
@@ -31,18 +34,22 @@ fun SocialLoginButtons(
 ){
     Row(
         modifier = modifier
-            .fillMaxWidth()
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Button(
             onClick = onFacebookButtonClicked,
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.White
             ),
-            shape = RoundedCornerShape(25.dp)
+            shape = RoundedCornerShape(25.dp),
+            elevation = ButtonDefaults.buttonElevation(4.dp)
         ) {
             Row(
-                modifier = Modifier,
-                horizontalArrangement = Arrangement.spacedBy(2.dp),
+                modifier = Modifier
+                    .fillMaxWidth(0.35f),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
@@ -50,8 +57,7 @@ fun SocialLoginButtons(
                     contentDescription = "Facebook Button",
                     contentScale = ContentScale.Fit,
                     modifier = Modifier
-                        .width(84.dp)
-                        .height(11.dp)
+                        .size(40.dp)
                 )
 
                 Text(
@@ -64,25 +70,31 @@ fun SocialLoginButtons(
             }
         }
 
+        Spacer(
+            modifier = Modifier
+                .width(16.dp)
+        )
+
         Button(
             onClick = onGoogleButtonClicked,
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.White
             ),
-            shape = RoundedCornerShape(25.dp)
+            shape = RoundedCornerShape(25.dp),
+            elevation = ButtonDefaults.buttonElevation(4.dp)
         ) {
             Row(
-                modifier = Modifier,
-                horizontalArrangement = Arrangement.spacedBy(2.dp),
-                verticalAlignment = Alignment.CenterVertically
+                modifier = Modifier
+                    .fillMaxWidth(0.65f),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Image(
                     painter = painterResource(R.drawable.google_icon),
                     contentDescription = "Google Button",
-                    contentScale = ContentScale.Fit,
+                    contentScale = ContentScale.FillWidth,
                     modifier = Modifier
-                        .width(84.dp)
-                        .height(11.dp)
+                        .size(40.dp)
                 )
 
                 Text(
@@ -94,5 +106,17 @@ fun SocialLoginButtons(
                 )
             }
         }
+    }
+}
+
+
+@Composable
+@Preview(showBackground = true, showSystemUi = true)
+private fun SocialLoginButtonsPreview(){
+    ComidaTheme {
+        SocialLoginButtons(
+            onGoogleButtonClicked = {},
+            onFacebookButtonClicked = {}
+        )
     }
 }

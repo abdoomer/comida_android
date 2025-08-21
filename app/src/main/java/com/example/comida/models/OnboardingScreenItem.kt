@@ -2,7 +2,6 @@ package com.example.comida.models
 
 
 import androidx.annotation.DrawableRes
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp

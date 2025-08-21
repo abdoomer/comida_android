@@ -16,7 +16,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -34,6 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.comida.R
+import com.example.comida.components.CustomTextField
 import com.example.comida.components.MainTextButton
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.poppinsFamily
@@ -113,12 +113,17 @@ fun ForgetPasswordScreen(
         ){
             Column(
                 modifier = Modifier
-                    .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .fillMaxSize()
+                    .padding(top = 24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                TextField(
-                    value = email,
-                    onValueChange = { email = it }
+                CustomTextField(
+                    labelText = "Email",
+                    text = email,
+                    hintText = "example@gmail.com",
+                    onTogglePasswordStatusClicked = {},
+                    onTextValueChanged = { email = it }
                 )
 
                 MainTextButton(

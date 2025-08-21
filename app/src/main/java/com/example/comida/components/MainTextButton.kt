@@ -26,7 +26,7 @@ fun MainTextButton(
         colors = ButtonDefaults.buttonColors(
             containerColor = PrimaryButtonColor
         ),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth(0.6f)
     ) {
         Text(
