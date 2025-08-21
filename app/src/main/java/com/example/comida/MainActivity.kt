@@ -7,11 +7,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.comida.screens.OTPVerificationScreen
 import com.example.comida.screens.SignInScreen
 import com.example.comida.ui.theme.ComidaTheme
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.comida.viewmodels.OTPViewmodel
 
-//@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +21,11 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ComidaTheme {
+
+                val otpViewmodel: OTPViewmodel = viewModel()
+
+//                OTPVerificationScreen(viewModel = otpViewmodel)
+
                 SignInScreen()
             }
         }

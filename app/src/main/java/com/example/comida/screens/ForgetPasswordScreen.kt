@@ -52,7 +52,7 @@ fun ForgetPasswordScreen(
     ){
         Image(
             painter = painterResource(R.drawable.forget_password_screen_background_image),
-            contentDescription = "Login Screen Background Image",
+            contentDescription = "Forget Password Screen Background Image",
             contentScale = ContentScale.FillBounds,
             modifier = Modifier
                 .align(Alignment.TopEnd)

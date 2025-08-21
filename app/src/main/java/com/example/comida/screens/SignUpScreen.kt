@@ -61,7 +61,7 @@ fun SignUpScreen(
     ){
         Image(
             painter = painterResource(R.drawable.signup_screen_background_image),
-            contentDescription = "Login Screen Background Image",
+            contentDescription = "Sign Up Screen Background Image",
             contentScale = ContentScale.FillBounds,
             modifier = Modifier
                 .align(Alignment.TopEnd)

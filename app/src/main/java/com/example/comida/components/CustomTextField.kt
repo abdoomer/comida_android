@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.comida.R
 import com.example.comida.ui.theme.LabelTextColor
+import com.example.comida.ui.theme.PrimaryButtonColor
 import com.example.comida.ui.theme.PrimaryTextColor
 import com.example.comida.ui.theme.SecondarySmallLabelTextColor
 import com.example.comida.ui.theme.TextFieldBackgroundColor
@@ -99,7 +100,7 @@ fun CustomTextField(
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedContainerColor = TextFieldBackgroundColor,
                     unfocusedContainerColor = TextFieldBackgroundColor,
-                    focusedBorderColor = Color.Transparent,
+                    focusedBorderColor = PrimaryButtonColor,
                     unfocusedBorderColor = Color.Transparent,
                     errorBorderColor = Color.Transparent,
                     disabledBorderColor = Color.Transparent,
