@@ -23,6 +23,8 @@ val LabelTextColor = Color(0xFFA0A5BA)
 
 val SmallLabelTextColor = Color(0xFF646982)
 
+val SmallLabelColor = Color(0xFF737477)
+
 val SecondarySmallLabelTextColor = Color(0xFFD3D1D8)
 
 val SearchLabelTextColor = Color(0xFFA9ABB4)
@@ -40,3 +42,15 @@ val OnboardingBackgroundColor2 = Color(0xFF7BD3A5)
 val OnboardingBackgroundColor3 = Color(0xFFFFC529)
 
 val TextFieldBackgroundColor = Color(0xFFF9F9FA)
+
+val IconButtonColor = Color(0xFF111719)
+
+val HomeFoodCategoryTitleColor = Color(0xFF333333)
+
+val HomeFoodCategoryCurrentSelectedColor = Color(0xFF6ED39D)
+
+val OfferSmallLabelColor = Color(0xFFFFB8AE)
+
+val OfferBuyNowButtonColor = Color(0xFFE54630)
+
+val SmallIconLabelColor = Color(0xFF7E8392)
