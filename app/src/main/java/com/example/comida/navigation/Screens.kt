@@ -20,4 +20,7 @@ sealed class Screens(
     data object PrivacyPolicyScreen: Screens(route = "privacy_policy_screen")
     data object SettingsScreen: Screens(route = "settings_screen")
     data object TermsOfServiceScreen: Screens(route = "terms_of_service_screen")
+    data object OrderStatusScreen: Screens(route = "order_status_screen")
+    data object OrdersHistory: Screens(route = "orders_history")
+    data object MyAccount: Screens(route = "my_account")
 }

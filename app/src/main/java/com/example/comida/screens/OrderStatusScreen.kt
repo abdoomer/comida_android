@@ -12,7 +12,7 @@ import com.example.comida.ui.theme.ComidaTheme
 
 
 @Composable
-fun PrivacyPolicyScreen(
+fun OrderStatusScreen(
     modifier: Modifier = Modifier
 ){
     Column(
@@ -21,7 +21,7 @@ fun PrivacyPolicyScreen(
             .padding(top = 24.dp)
     ) {
         CustomTopAppTitleBar(
-            title = "Privacy Policy",
+            title = "Order Status",
             haveBackButton = true,
             onBackButtonPressed = {}
         )
@@ -31,9 +31,9 @@ fun PrivacyPolicyScreen(
 
 
 @Composable
-@Preview(showBackground = true, showSystemUi = true)
-private fun PrivacyPolicyScreenPreview(){
+@Preview
+private fun OrderStatusScreenPreview(){
     ComidaTheme {
-        PrivacyPolicyScreen()
+        OrderStatusScreen()
     }
 }

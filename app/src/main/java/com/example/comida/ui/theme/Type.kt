@@ -33,6 +33,11 @@ val poppinsFamily = FontFamily(
 val bebasFamily = FontFamily(
     Font(R.font.bebas_neue_regular, FontWeight.Normal)
 )
+
+val sofiaFamily = FontFamily(
+    Font(R.font.sofia_sans_extra_condensed_italic_variable_font_wght, FontWeight.Black),
+    Font(R.font.sofia_sans_extra_condensed_variable_font_wght, FontWeight.Normal),
+)
 val Typography = Typography(
     bodyLarge = TextStyle(
         fontFamily = FontFamily.Default,
