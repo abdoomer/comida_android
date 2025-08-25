@@ -31,7 +31,7 @@ fun OrderStatusScreen(
 
 
 @Composable
-@Preview
+@Preview(showBackground = true, showSystemUi = true)
 private fun OrderStatusScreenPreview(){
     ComidaTheme {
         OrderStatusScreen()
