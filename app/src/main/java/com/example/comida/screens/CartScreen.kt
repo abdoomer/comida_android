@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -61,12 +62,13 @@ import com.example.comida.ui.theme.poppinsFamily
 
 @Composable
 fun CartScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    paddingValues: PaddingValues
 ){
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(top = 24.dp)
+            .padding(paddingValues)
             .background(Color.White)
     ) {
         CustomTopAppTitleBar(
@@ -481,6 +483,6 @@ private fun DeliveryAddressCard(
 @Preview(showBackground = true, showSystemUi = true)
 private fun CartScreenPreview(){
     ComidaTheme {
-        CartScreen()
+//        CartScreen()
     }
 }

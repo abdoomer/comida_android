@@ -6,23 +6,21 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.comida.screens.CartScreen
+import com.example.comida.screens.ComidaAppScreen
 import com.example.comida.screens.FoodDetailsScreen
 import com.example.comida.screens.ForgetPasswordScreen
-import com.example.comida.screens.HomeScreen
 import com.example.comida.screens.MyAccount
-import com.example.comida.screens.NotificationsScreen
 import com.example.comida.screens.OTPVerificationScreen
 import com.example.comida.screens.OnboardingScreen
 import com.example.comida.screens.OrderStatusScreen
 import com.example.comida.screens.OrdersHistory
 import com.example.comida.screens.PaymentScreen
 import com.example.comida.screens.PrivacyPolicyScreen
-import com.example.comida.screens.ProfileScreen
 import com.example.comida.screens.SettingsScreen
 import com.example.comida.screens.SignInScreen
 import com.example.comida.screens.SignUpScreen
 import com.example.comida.screens.TermsOfServiceScreen
+import com.example.comida.viewmodels.ComidaViewmodel
 import com.example.comida.viewmodels.ForgetPasswordViewModel
 import com.example.comida.viewmodels.OTPViewmodel
 import com.example.comida.viewmodels.SignInViewModel
@@ -32,17 +30,19 @@ import com.example.comida.viewmodels.SignUpViewModel
 @Composable
 fun ComidaNavigation(
     modifier: Modifier = Modifier,
+    startDestination: String
 ){
     val otpViewmodel: OTPViewmodel = viewModel()
     val signInViewmodel: SignInViewModel = viewModel()
     val signUpViewmodel: SignUpViewModel = viewModel()
     val forgetPasswordViewmodel: ForgetPasswordViewModel = viewModel()
+    val comidaViewmodel: ComidaViewmodel = viewModel()
     val navController = rememberNavController()
 
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = Screens.OnboardingScreen.route
+        startDestination = startDestination
     ) {
 
         composable(
@@ -51,6 +51,10 @@ fun ComidaNavigation(
             OnboardingScreen(
                 onNavigationButtonClicked = {
                     navController.navigate(it)
+                },
+                onUpdateAppFirstTimeRun = {
+                    navController.navigate(Screens.SignInScreen.route)
+                    signInViewmodel.updateAppFirstTimeRun()
                 }
             )
         }
@@ -60,6 +64,9 @@ fun ComidaNavigation(
         ){
             SignInScreen(
                 viewmodel = signInViewmodel,
+                onSignInClicked = {
+                    navController.navigate(Screens.ComidaAppScreen.route)
+                },
                 onGoToSignUpClicked = {
                     navController.navigate(Screens.SignUpScreen.route)
                 },
@@ -100,30 +107,6 @@ fun ComidaNavigation(
                     navController.popBackStack()
                 }
             )
-        }
-
-        composable(
-            route = Screens.HomeScreen.route
-        ){
-            HomeScreen()
-        }
-
-        composable(
-            route = Screens.CartScreen.route
-        ){
-            CartScreen()
-        }
-
-        composable(
-            route = Screens.ProfileScreen.route
-        ){
-            ProfileScreen()
-        }
-
-        composable(
-            route = Screens.NotificationsScreen.route
-        ){
-            NotificationsScreen()
         }
 
         composable(
@@ -172,6 +155,15 @@ fun ComidaNavigation(
             route = Screens.MyAccount.route
         ){
             MyAccount()
+        }
+
+        composable(
+            route = Screens.ComidaAppScreen.route
+        ){
+            ComidaAppScreen(
+                navController = navController,
+                viewmodel = comidaViewmodel
+            )
         }
     }
 }

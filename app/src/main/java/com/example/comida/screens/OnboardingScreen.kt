@@ -43,7 +43,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun OnboardingScreen(
     modifier: Modifier = Modifier,
-    onNavigationButtonClicked: (String) -> Unit
+    onNavigationButtonClicked: (String) -> Unit,
+    onUpdateAppFirstTimeRun: () -> Unit
 ){
 
     val pagerState: PagerState = rememberPagerState(initialPage = 0) {
@@ -78,7 +79,7 @@ fun OnboardingScreen(
                     }
                 },
                 onGetStartedClicked = {
-                    onNavigationButtonClicked(Screens.SignInScreen.route)
+                    onUpdateAppFirstTimeRun
                 }
             )
         }
@@ -275,7 +276,9 @@ private fun OnboardingNavigation(
             }
         } else {
             TextButton(
-                onClick = onGetStartedClicked
+                onClick = {
+                    onGetStartedClicked
+                }
             ) {
                 Text(
                     text = "Get Started",
@@ -296,7 +299,8 @@ private fun OnboardingNavigation(
 private fun OnboardingScreenPreview(){
     ComidaTheme {
         OnboardingScreen(
-            onNavigationButtonClicked = {}
+            onNavigationButtonClicked = {},
+            onUpdateAppFirstTimeRun = {}
         )
     }
 }

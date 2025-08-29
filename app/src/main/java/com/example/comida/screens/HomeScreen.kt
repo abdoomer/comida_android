@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -73,7 +74,8 @@ import com.example.comida.ui.theme.poppinsFamily
 
 @Composable
 fun HomeScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    paddingValues: PaddingValues
 ){
 
     val searchText by remember { mutableStateOf("") }
@@ -82,7 +84,7 @@ fun HomeScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(top = 24.dp)
+            .padding(paddingValues)
             .background(Color.White)
     ) {
         TopTitleBar()
@@ -696,6 +698,6 @@ private fun AvailableRestaurants(
 @Preview(showBackground = true, showSystemUi = true)
 private fun HomeScreenPreview(){
     ComidaTheme {
-        HomeScreen()
+//        HomeScreen()
     }
 }

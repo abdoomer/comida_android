@@ -47,6 +47,7 @@ fun SignInScreen(
     viewmodel: SignInViewModel,
     onGoToSignUpClicked: () -> Unit,
     onForgetPasswordClicked: () -> Unit,
+    onSignInClicked: () -> Unit,
 ){
 
     val email = viewmodel.email.collectAsStateWithLifecycle()
@@ -148,7 +149,7 @@ fun SignInScreen(
                 MainTextButton(
                     title = "Login",
                     onClicked = {
-                        viewmodel.onUserLogin()
+                        onSignInClicked()
                     }
                 )
 

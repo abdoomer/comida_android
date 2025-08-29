@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -37,12 +38,13 @@ import com.example.comida.ui.theme.sofiaFamily
 
 @Composable
 fun NotificationsScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    paddingValues: PaddingValues
 ){
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(top = 24.dp)
+            .padding(paddingValues)
             .background(Color.White)
     ) {
         CustomTopAppTitleBar(
@@ -142,6 +144,6 @@ private fun AppNotificationCard(
 @Preview(showBackground = true, showSystemUi = true)
 private fun NotificationsScreenPreview(){
     ComidaTheme {
-        NotificationsScreen()
+//        NotificationsScreen()
     }
 }

@@ -14,7 +14,6 @@ sealed class Screens(
     data object ProfileScreen: Screens(route = "profile_screen")
     data object SignInScreen: Screens(route = "sign_in_screen")
     data object SignUpScreen: Screens(route = "sign_up_screen")
-    data object SplashScreen: Screens(route = "splash_screen")
     data object FoodDetailsScreen: Screens(route = "food_details_screen")
     data object PaymentScreen: Screens(route = "payment_screen")
     data object PrivacyPolicyScreen: Screens(route = "privacy_policy_screen")
@@ -23,4 +22,6 @@ sealed class Screens(
     data object OrderStatusScreen: Screens(route = "order_status_screen")
     data object OrdersHistory: Screens(route = "orders_history")
     data object MyAccount: Screens(route = "my_account")
+
+    data object ComidaAppScreen: Screens(route = "comida_app_screen")
 }
