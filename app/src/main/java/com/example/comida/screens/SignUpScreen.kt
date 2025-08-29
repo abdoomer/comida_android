@@ -27,6 +27,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -130,6 +131,7 @@ fun SignUpScreen(
                     labelText = "Full Name",
                     text = fullName.value,
                     hintText = "your full name",
+                    keyboardType = KeyboardType.Text,
                     onTogglePasswordStatusClicked = {},
                     onTextValueChanged = {
                         viewmodel.updateFullName(it)
@@ -141,6 +143,7 @@ fun SignUpScreen(
                     text = email.value,
                     hintText = "example@gmail.com",
                     onTogglePasswordStatusClicked = {},
+                    keyboardType = KeyboardType.Email,
                     onTextValueChanged = {
                         viewmodel.updateEmail(it)
                     }
@@ -151,6 +154,7 @@ fun SignUpScreen(
                     text = password.value,
                     passwordObscured = showPassword.value,
                     hintText = "**********",
+                    keyboardType = KeyboardType.Password,
                     onTogglePasswordStatusClicked = {
                         viewmodel.updateShowPassword(!showPassword.value)
                     },

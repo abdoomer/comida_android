@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -16,6 +17,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.comida.R
@@ -33,6 +37,7 @@ fun CustomTextField(
     text: String,
     hintText: String,
     labelText: String,
+    keyboardType: KeyboardType,
     passwordObscured: Boolean = false,
     onTextValueChanged: (String) -> Unit,
     onTogglePasswordStatusClicked: () -> Unit,
@@ -104,6 +109,10 @@ fun CustomTextField(
                     unfocusedBorderColor = Color.Transparent,
                     errorBorderColor = Color.Transparent,
                     disabledBorderColor = Color.Transparent,
+                ),
+                visualTransformation = if (passwordObscured) PasswordVisualTransformation() else VisualTransformation.None,
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = keyboardType
                 )
             )
         }

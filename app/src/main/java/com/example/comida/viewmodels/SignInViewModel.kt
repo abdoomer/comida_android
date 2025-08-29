@@ -17,7 +17,7 @@ class SignInViewModel(
     private val _password: MutableStateFlow<String> = MutableStateFlow("")
     val password: StateFlow<String> = _password
 
-    private val _showPassword: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    private val _showPassword: MutableStateFlow<Boolean> = MutableStateFlow(true)
     val showPassword: StateFlow<Boolean> = _showPassword
 
     fun updateEmail(newEmail: String){
