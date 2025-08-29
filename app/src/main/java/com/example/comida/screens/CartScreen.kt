@@ -55,7 +55,6 @@ import com.example.comida.ui.theme.PromotionTextFieldBorderColor
 import com.example.comida.ui.theme.QuantityIconButtonColor
 import com.example.comida.ui.theme.SecondarySmallLabelTextColor
 import com.example.comida.ui.theme.SmallLabelTextColor
-import com.example.comida.ui.theme.TextFieldBackgroundColor
 import com.example.comida.ui.theme.bebasFamily
 import com.example.comida.ui.theme.poppinsFamily
 

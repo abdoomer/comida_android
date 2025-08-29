@@ -17,10 +17,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -32,19 +28,23 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.R
 import com.example.comida.components.CustomTextField
 import com.example.comida.components.MainTextButton
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.poppinsFamily
+import com.example.comida.viewmodels.ForgetPasswordViewModel
 
 
 @Composable
 fun ForgetPasswordScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: ForgetPasswordViewModel,
+    onBackButtonClicked: () -> Unit
 ){
 
-    var email by remember { mutableStateOf("") }
+    val email = viewModel.email.collectAsStateWithLifecycle()
 
     Box(
         modifier = modifier
@@ -67,7 +67,7 @@ fun ForgetPasswordScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Button(
-                onClick = {},
+                onClick = onBackButtonClicked,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.White
                 ),
@@ -120,15 +120,19 @@ fun ForgetPasswordScreen(
             ) {
                 CustomTextField(
                     labelText = "Email",
-                    text = email,
+                    text = email.value,
                     hintText = "example@gmail.com",
                     onTogglePasswordStatusClicked = {},
-                    onTextValueChanged = { email = it }
+                    onTextValueChanged = {
+                        viewModel.updateEmail(it)
+                    }
                 )
 
                 MainTextButton(
                     title = "Send Code",
-                    onClicked = {}
+                    onClicked = {
+                        viewModel.getOTPCode()
+                    }
                 )
             }
         }
@@ -141,6 +145,6 @@ fun ForgetPasswordScreen(
 @Preview(showBackground = true, showSystemUi = true)
 private fun ForgetPasswordScreenPreview(){
     ComidaTheme {
-        ForgetPasswordScreen()
+//        ForgetPasswordScreen()
     }
 }

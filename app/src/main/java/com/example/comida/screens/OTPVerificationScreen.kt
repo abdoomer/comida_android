@@ -1,5 +1,6 @@
 package com.example.comida.screens
 
+import android.annotation.SuppressLint
 import android.view.KeyEvent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -56,6 +57,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.R
+import com.example.comida.components.MainTextButton
 import com.example.comida.models.OTPAction
 import com.example.comida.models.OTPState
 import com.example.comida.ui.theme.ComidaTheme
@@ -64,16 +66,16 @@ import com.example.comida.ui.theme.PrimaryTextColor
 import com.example.comida.ui.theme.TextFieldBackgroundColor
 import com.example.comida.ui.theme.bebasFamily
 import com.example.comida.ui.theme.poppinsFamily
-import com.example.comida.viewmodels.AuthenticationViewmodel
+import com.example.comida.viewmodels.OTPViewmodel
 
 
 @Composable
 fun OTPVerificationScreen(
     modifier: Modifier = Modifier,
-    viewModel: AuthenticationViewmodel
+    viewModel: OTPViewmodel,
+    onBackButtonClicked: () -> Unit
 ){
 
-    val email by remember { mutableStateOf("") }
     val otpState by viewModel.otpState.collectAsStateWithLifecycle()
     val focusRequesters = remember {
         (1..4).map { FocusRequester() }
@@ -121,7 +123,7 @@ fun OTPVerificationScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Button(
-                onClick = {},
+                onClick = onBackButtonClicked,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.White
                 ),
@@ -187,7 +189,9 @@ fun OTPVerificationScreen(
                 )
 
                 TextButton(
-                    onClick = {}
+                    onClick = {
+                        viewModel.resendOTPCode()
+                    }
                 ) {
                     Text(
                         text = "Resend Again",
@@ -197,6 +201,14 @@ fun OTPVerificationScreen(
                         color = PrimaryButtonColor
                     )
                 }
+
+
+                MainTextButton(
+                    title = "Verify Code",
+                    onClicked = {
+                        viewModel.verifyOTPCode()
+                    }
+                )
             }
         }
     }
@@ -346,9 +358,13 @@ private fun OTPTextField(
 
 
 
+@SuppressLint("ViewModelConstructorInComposable")
 @Composable
 @Preview(showBackground = true, showSystemUi = true)
 private fun OTPVerificationScreenPreview(){
     ComidaTheme {
+//        OTPVerificationScreen(
+//            viewModel = OTPViewmodel()
+//        )
     }
 }

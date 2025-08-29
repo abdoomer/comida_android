@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 
 const val VALID_OTP_CODE = "1414"
-class AuthenticationViewmodel(
+class OTPViewmodel(
 
 ): ViewModel() {
 
@@ -123,4 +123,8 @@ class AuthenticationViewmodel(
 
         return currentFocusedIndex
     }
+
+    fun verifyOTPCode(){}
+
+    fun resendOTPCode(){}
 }

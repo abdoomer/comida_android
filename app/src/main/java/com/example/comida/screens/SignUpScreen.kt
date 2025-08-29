@@ -19,10 +19,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -34,6 +30,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.R
 import com.example.comida.components.CustomTextField
 import com.example.comida.components.MainTextButton
@@ -44,16 +41,19 @@ import com.example.comida.ui.theme.SecondarySmallLabelTextColor
 import com.example.comida.ui.theme.SmallLabelTextColor
 import com.example.comida.ui.theme.bebasFamily
 import com.example.comida.ui.theme.poppinsFamily
+import com.example.comida.viewmodels.SignUpViewModel
 
 
 @Composable
 fun SignUpScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewmodel: SignUpViewModel,
+    onBackButtonClicked: () -> Unit
 ){
-    var email by remember { mutableStateOf("") }
-    var fullName by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var showPassword by remember { mutableStateOf(false) }
+    val email = viewmodel.email.collectAsStateWithLifecycle()
+    val fullName = viewmodel.fullName.collectAsStateWithLifecycle()
+    val password = viewmodel.password.collectAsStateWithLifecycle()
+    val showPassword = viewmodel.showPassword.collectAsStateWithLifecycle()
 
     Box(
         modifier = modifier
@@ -76,7 +76,7 @@ fun SignUpScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Button(
-                onClick = {},
+                onClick = onBackButtonClicked,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.White
                 ),
@@ -128,34 +128,42 @@ fun SignUpScreen(
             ) {
                 CustomTextField(
                     labelText = "Full Name",
-                    text = fullName,
+                    text = fullName.value,
                     hintText = "your full name",
                     onTogglePasswordStatusClicked = {},
-                    onTextValueChanged = { fullName = it }
+                    onTextValueChanged = {
+                        viewmodel.updateFullName(it)
+                    }
                 )
 
                 CustomTextField(
                     labelText = "Email",
-                    text = email,
+                    text = email.value,
                     hintText = "example@gmail.com",
                     onTogglePasswordStatusClicked = {},
-                    onTextValueChanged = { email = it }
+                    onTextValueChanged = {
+                        viewmodel.updateEmail(it)
+                    }
                 )
 
                 CustomTextField(
                     labelText = "Password",
-                    text = password,
-                    passwordObscured = showPassword,
+                    text = password.value,
+                    passwordObscured = showPassword.value,
                     hintText = "**********",
                     onTogglePasswordStatusClicked = {
-                        showPassword = !showPassword
+                        viewmodel.updateShowPassword(!showPassword.value)
                     },
-                    onTextValueChanged = { password = it }
+                    onTextValueChanged = {
+                        viewmodel.updatePassword(it)
+                    }
                 )
 
                 MainTextButton(
                     title = "Sign Up",
-                    onClicked = {}
+                    onClicked = {
+                        viewmodel.onUserRegister()
+                    }
                 )
 
                 Text(
@@ -167,8 +175,12 @@ fun SignUpScreen(
                 )
 
                 SocialLoginButtons(
-                    onFacebookButtonClicked = {},
-                    onGoogleButtonClicked = {}
+                    onFacebookButtonClicked = {
+                        viewmodel.onFacebookRegister()
+                    },
+                    onGoogleButtonClicked = {
+                        viewmodel.onGoogleRegister()
+                    }
                 )
             }
         }
@@ -183,7 +195,7 @@ fun SignUpScreen(
                 horizontalArrangement = Arrangement.Center
             ){
                 Text(
-                    text = "Don’t have an account?",
+                    text = "Already have an account?",
                     color = SmallLabelTextColor,
                     fontFamily = bebasFamily,
                     fontWeight = FontWeight.Normal,
@@ -191,10 +203,10 @@ fun SignUpScreen(
                 )
 
                 TextButton(
-                    onClick = {}
+                    onClick = onBackButtonClicked
                 ) {
                     Text(
-                        text = "Sign Up",
+                        text = "Login",
                         fontWeight = FontWeight.Bold,
                         fontSize = 13.sp,
                         color = PrimaryButtonColor,
@@ -214,6 +226,6 @@ fun SignUpScreen(
 @Preview(showBackground = true, showSystemUi = true)
 private fun SignUpScreenPreview(){
     ComidaTheme {
-        SignUpScreen()
+//        SignUpScreen()
     }
 }

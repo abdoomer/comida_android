@@ -11,18 +11,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -34,6 +26,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.R
 import com.example.comida.components.CustomTextField
 import com.example.comida.components.MainTextButton
@@ -44,16 +37,20 @@ import com.example.comida.ui.theme.SecondarySmallLabelTextColor
 import com.example.comida.ui.theme.SmallLabelTextColor
 import com.example.comida.ui.theme.bebasFamily
 import com.example.comida.ui.theme.poppinsFamily
+import com.example.comida.viewmodels.SignInViewModel
 
 
 @Composable
 fun SignInScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewmodel: SignInViewModel,
+    onGoToSignUpClicked: () -> Unit,
+    onForgetPasswordClicked: () -> Unit,
 ){
 
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var showPassword by remember { mutableStateOf(false) }
+    val email = viewmodel.email.collectAsStateWithLifecycle()
+    val password = viewmodel.password.collectAsStateWithLifecycle()
+    val showPassword = viewmodel.showPassword.collectAsStateWithLifecycle()
 
     Box(
         modifier = modifier
@@ -75,23 +72,6 @@ fun SignInScreen(
                 .padding(start = 16.dp, top = 32.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Button(
-                onClick = {},
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.White
-                ),
-                shape = RoundedCornerShape(8.dp),
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.back_button_icon),
-                    contentDescription = "Back Button",
-                    tint = Color.Black,
-                    modifier = Modifier
-                        .width(5.dp)
-                        .height(9.68.dp)
-                )
-            }
-
             Text(
                 text = "Login",
                 color = Color.White,
@@ -129,25 +109,29 @@ fun SignInScreen(
 
                 CustomTextField(
                     labelText = "Email",
-                    text = email,
+                    text = email.value,
                     hintText = "example@gmail.com",
                     onTogglePasswordStatusClicked = {},
-                    onTextValueChanged = { email = it }
+                    onTextValueChanged = {
+                       viewmodel.updateEmail(it)
+                    }
                 )
 
                 CustomTextField(
                     labelText = "Password",
-                    text = password,
+                    text = password.value,
                     hintText = "**********",
-                    passwordObscured = showPassword,
+                    passwordObscured = showPassword.value,
                     onTogglePasswordStatusClicked = {
-                        showPassword = !showPassword
+                        viewmodel.updateShowPassword(!showPassword.value)
                     },
-                    onTextValueChanged = { password = it }
+                    onTextValueChanged = {
+                        viewmodel.updatePassword(it)
+                    }
                 )
 
                 TextButton(
-                    onClick = {}
+                    onClick = onForgetPasswordClicked
                 ) {
                     Text(
                         text = "Forgot Password",
@@ -160,7 +144,9 @@ fun SignInScreen(
 
                 MainTextButton(
                     title = "Login",
-                    onClicked = {}
+                    onClicked = {
+                        viewmodel.onUserLogin()
+                    }
                 )
 
                 Text(
@@ -172,8 +158,12 @@ fun SignInScreen(
                 )
 
                 SocialLoginButtons(
-                    onFacebookButtonClicked = {},
-                    onGoogleButtonClicked = {}
+                    onFacebookButtonClicked = {
+                        viewmodel.onFacebookLogin()
+                    },
+                    onGoogleButtonClicked = {
+                        viewmodel.onGoogleLogin()
+                    }
                 )
             }
         }
@@ -196,7 +186,7 @@ fun SignInScreen(
                 )
 
                 TextButton(
-                    onClick = {}
+                    onClick = onGoToSignUpClicked
                 ) {
                     Text(
                         text = "Sign Up",
@@ -219,6 +209,10 @@ fun SignInScreen(
 @Preview(showBackground = true, showSystemUi = true)
 private fun SignInScreenPreview(){
     ComidaTheme {
-        SignInScreen()
+//        ComidaThemeSignInScreen(
+//            viewmodel = ViewModel(),
+//            onForgetPasswordClicked = {},
+//            onGoToSignUpClicked = {}
+//        )
     }
 }
