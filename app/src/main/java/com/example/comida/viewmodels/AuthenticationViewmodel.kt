@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 
 const val VALID_OTP_CODE = "1414"
-class OTPViewmodel(
+class AuthenticationViewmodel(
 
 ): ViewModel() {
 

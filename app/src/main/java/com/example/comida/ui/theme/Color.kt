@@ -54,3 +54,11 @@ val OfferSmallLabelColor = Color(0xFFFFB8AE)
 val OfferBuyNowButtonColor = Color(0xFFE54630)
 
 val SmallIconLabelColor = Color(0xFF7E8392)
+
+val QuantityIconButtonColor = Color(0xFF181C2E)
+
+val CellDividerColor = Color(0xFFF1F2F3)
+
+val PromotionTextFieldBorderColor = Color(0xFFEEEEEE)
+
+val CheckoutOverlayBoxColor = Color(0xFF18191D)

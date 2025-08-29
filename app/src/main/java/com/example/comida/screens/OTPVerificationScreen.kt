@@ -64,13 +64,13 @@ import com.example.comida.ui.theme.PrimaryTextColor
 import com.example.comida.ui.theme.TextFieldBackgroundColor
 import com.example.comida.ui.theme.bebasFamily
 import com.example.comida.ui.theme.poppinsFamily
-import com.example.comida.viewmodels.OTPViewmodel
+import com.example.comida.viewmodels.AuthenticationViewmodel
 
 
 @Composable
 fun OTPVerificationScreen(
     modifier: Modifier = Modifier,
-    viewModel: OTPViewmodel
+    viewModel: AuthenticationViewmodel
 ){
 
     val email by remember { mutableStateOf("") }
