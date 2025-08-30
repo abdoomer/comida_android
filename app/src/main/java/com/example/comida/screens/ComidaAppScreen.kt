@@ -39,22 +39,26 @@ fun ComidaAppScreen(
         when(currentPage.value){
             0 -> {
                 HomeScreen(
-                    paddingValues = innerPadding
+                    paddingValues = innerPadding,
+                    navController = navController
                 )
             }
             1 -> {
                 CartScreen(
-                    paddingValues = innerPadding
+                    paddingValues = innerPadding,
+                    navController = navController
                 )
             }
             2 -> {
                 ProfileScreen(
-                    paddingValues = innerPadding
+                    paddingValues = innerPadding,
+                    navController = navController
                 )
             }
             3 -> {
                 NotificationsScreen(
-                    paddingValues = innerPadding
+                    paddingValues = innerPadding,
+                    navController = navController
                 )
             }
         }

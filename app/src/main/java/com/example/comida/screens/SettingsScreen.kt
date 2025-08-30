@@ -13,7 +13,8 @@ import com.example.comida.ui.theme.ComidaTheme
 
 @Composable
 fun SettingsScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBackButtonClicked: () -> Unit
 ){
     Column(
         modifier = modifier
@@ -23,7 +24,7 @@ fun SettingsScreen(
         CustomTopAppTitleBar(
             title = "Settings",
             haveBackButton = true,
-            onBackButtonPressed = {}
+            onBackButtonPressed = onBackButtonClicked
         )
     }
 }
@@ -34,6 +35,8 @@ fun SettingsScreen(
 @Preview(showBackground = true, showSystemUi = true)
 private fun SettingsScreenPreview(){
     ComidaTheme {
-        SettingsScreen()
+        SettingsScreen(
+            onBackButtonClicked = {}
+        )
     }
 }

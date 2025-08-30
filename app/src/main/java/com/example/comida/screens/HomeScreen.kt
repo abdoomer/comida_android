@@ -47,14 +47,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.comida.R
 import com.example.comida.models.FoodCategory
+import com.example.comida.models.Restaurant
 import com.example.comida.models.SpecialOffer
 import com.example.comida.models.foodCategories
 import com.example.comida.models.restaurants
 import com.example.comida.models.specialOffers
+import com.example.comida.navigation.Screens
 import com.example.comida.ui.theme.ComidaTheme
-import com.example.comida.ui.theme.HomeFoodCategoryCurrentSelectedColor
 import com.example.comida.ui.theme.HomeFoodCategoryTitleColor
 import com.example.comida.ui.theme.IconButtonColor
 import com.example.comida.ui.theme.IconsColor
@@ -75,11 +77,11 @@ import com.example.comida.ui.theme.poppinsFamily
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    paddingValues: PaddingValues
+    paddingValues: PaddingValues,
+    navController: NavHostController
 ){
 
     val searchText by remember { mutableStateOf("") }
-    val currentSelectedFoodCategory by remember { mutableStateOf<FoodCategory>(foodCategories[0]) }
 
     Column(
         modifier = modifier
@@ -113,19 +115,28 @@ fun HomeScreen(
         )
 
         FoodCategoriesSelectionMenu(
-            currentCategory = currentSelectedFoodCategory,
-            onNewCategorySelected = {}
+            onNewCategorySelected = {
+                navController.navigate(Screens.FoodCategoryScreen.route)
+            }
         )
 
         AvailableSpecialOffers(
-            onSpecialOfferTapped = {},
-            onViewAllOfferTapped = {},
+            onSpecialOfferTapped = {
+                navController.navigate(Screens.OfferScreen.route)
+            },
+            onViewAllOfferTapped = {
+                navController.navigate(Screens.SpecialOffersScreen.route)
+            },
             onBuyNowClicked = {}
         )
 
         AvailableRestaurants(
-            onRestaurantTapped = {},
-            onViewAllRestaurantsTapped = {},
+            onRestaurantTapped = {
+                navController.navigate(Screens.RestaurantScreen.route)
+            },
+            onViewAllRestaurantsTapped = {
+                navController.navigate(Screens.RestaurantsScreen.route)
+            },
             onToggleIsFavoriteTapped = {}
         )
     }
@@ -279,7 +290,6 @@ private fun CustomSearchTextField(
 @Composable
 private fun FoodCategoriesSelectionMenu(
     modifier: Modifier = Modifier,
-    currentCategory: FoodCategory,
     onNewCategorySelected: (FoodCategory) -> Unit
 ) {
     LazyRow(
@@ -292,8 +302,6 @@ private fun FoodCategoriesSelectionMenu(
             Column(
                 modifier = Modifier
                     .padding(horizontal = 8.dp, vertical = 2.dp)
-                    .clip(RoundedCornerShape(16.dp))
-                    .background(if (category == currentCategory) HomeFoodCategoryCurrentSelectedColor else Color.Transparent)
                     .clickable{
                         onNewCategorySelected(category)
                     },
@@ -369,7 +377,10 @@ private fun AvailableSpecialOffers(
             items(specialOffers){ offer ->
                 Card(
                     modifier = Modifier
-                        .fillMaxWidth(0.85f),
+                        .fillMaxWidth(0.85f)
+                        .clickable{
+                            onSpecialOfferTapped(offer)
+                        },
                     colors = CardDefaults.cardColors(
                         containerColor = offer.backgroundColor
                     )
@@ -488,7 +499,7 @@ private fun AvailableSpecialOffers(
 private fun AvailableRestaurants(
     modifier: Modifier = Modifier,
     onViewAllRestaurantsTapped: () -> Unit,
-    onRestaurantTapped: (SpecialOffer) -> Unit,
+    onRestaurantTapped: (Restaurant) -> Unit,
     onToggleIsFavoriteTapped: (Boolean) -> Unit,
 ){
     Column(
@@ -533,6 +544,9 @@ private fun AvailableRestaurants(
             items(restaurants) { restaurant ->
                 Card(
                     modifier = Modifier
+                        .clickable{
+                            onRestaurantTapped(restaurant)
+                        }
                         .wrapContentSize(),
                     colors = CardDefaults.cardColors(
                         containerColor = Color.White

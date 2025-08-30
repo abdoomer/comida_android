@@ -7,18 +7,24 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.comida.screens.ComidaAppScreen
+import com.example.comida.screens.FoodCategoryScreen
 import com.example.comida.screens.FoodDetailsScreen
 import com.example.comida.screens.ForgetPasswordScreen
 import com.example.comida.screens.MyAccount
+import com.example.comida.screens.NotificationDetailsScreen
 import com.example.comida.screens.OTPVerificationScreen
+import com.example.comida.screens.OfferScreen
 import com.example.comida.screens.OnboardingScreen
 import com.example.comida.screens.OrderStatusScreen
 import com.example.comida.screens.OrdersHistory
 import com.example.comida.screens.PaymentScreen
 import com.example.comida.screens.PrivacyPolicyScreen
+import com.example.comida.screens.RestaurantScreen
+import com.example.comida.screens.RestaurantsScreen
 import com.example.comida.screens.SettingsScreen
 import com.example.comida.screens.SignInScreen
 import com.example.comida.screens.SignUpScreen
+import com.example.comida.screens.SpecialOffersScreen
 import com.example.comida.screens.TermsOfServiceScreen
 import com.example.comida.viewmodels.ComidaViewmodel
 import com.example.comida.viewmodels.ForgetPasswordViewModel
@@ -124,19 +130,31 @@ fun ComidaNavigation(
         composable(
             route = Screens.PrivacyPolicyScreen.route
         ){
-            PrivacyPolicyScreen()
+            PrivacyPolicyScreen(
+                onBackButtonClicked = {
+                    navController.popBackStack()
+                }
+            )
         }
 
         composable(
             route = Screens.TermsOfServiceScreen.route
         ){
-            TermsOfServiceScreen()
+            TermsOfServiceScreen(
+                onBackButtonClicked = {
+                    navController.popBackStack()
+                }
+            )
         }
 
         composable(
             route = Screens.SettingsScreen.route
         ){
-            SettingsScreen()
+            SettingsScreen(
+                onBackButtonClicked = {
+                    navController.popBackStack()
+                }
+            )
         }
 
         composable(
@@ -148,13 +166,21 @@ fun ComidaNavigation(
         composable(
             route = Screens.OrdersHistory.route
         ){
-            OrdersHistory()
+            OrdersHistory(
+                onBackButtonClicked = {
+                    navController.popBackStack()
+                }
+            )
         }
 
         composable(
             route = Screens.MyAccount.route
         ){
-            MyAccount()
+            MyAccount(
+                onBackButtonClicked = {
+                    navController.popBackStack()
+                }
+            )
         }
 
         composable(
@@ -163,6 +189,66 @@ fun ComidaNavigation(
             ComidaAppScreen(
                 navController = navController,
                 viewmodel = comidaViewmodel
+            )
+        }
+
+        composable(
+            route = Screens.NotificationDetailsScreen.route
+        ){
+            NotificationDetailsScreen(
+                onBackButtonClicked = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable(
+            route = Screens.RestaurantsScreen.route
+        ){
+            RestaurantsScreen(
+                onBackButtonClicked = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable(
+            route = Screens.SpecialOffersScreen.route
+        ){
+            SpecialOffersScreen(
+                onBackButtonClicked = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable(
+            route = Screens.FoodCategoryScreen.route
+        ){
+            FoodCategoryScreen(
+                onBackButtonClicked = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable(
+            route = Screens.RestaurantScreen.route
+        ){
+            RestaurantScreen(
+                onBackButtonClicked = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable(
+            route = Screens.OfferScreen.route
+        ){
+            OfferScreen(
+                onBackButtonClicked = {
+                    navController.popBackStack()
+                }
             )
         }
     }

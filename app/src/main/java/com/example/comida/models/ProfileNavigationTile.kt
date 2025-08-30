@@ -15,7 +15,7 @@ data class ProfileNavigationTile(
 val profileNavigationTiles = listOf<ProfileNavigationTile>(
     ProfileNavigationTile(
         title = "My Account",
-        destinationRoute = Screens.OrdersHistory.route,
+        destinationRoute = Screens.MyAccount.route,
         icon = R.drawable.ic_user_account
     ),
     ProfileNavigationTile(
@@ -40,7 +40,7 @@ val profileNavigationTiles = listOf<ProfileNavigationTile>(
     ),
     ProfileNavigationTile(
         title = "Share The App",
-        destinationRoute = Screens.PrivacyPolicyScreen.route,
+        destinationRoute = "",
         icon = R.drawable.ic_share
     ),
 )

@@ -13,7 +13,8 @@ import com.example.comida.ui.theme.ComidaTheme
 
 @Composable
 fun TermsOfServiceScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBackButtonClicked: () -> Unit
 ){
     Column(
         modifier = modifier
@@ -23,7 +24,7 @@ fun TermsOfServiceScreen(
         CustomTopAppTitleBar(
             title = "Terms Of Service",
             haveBackButton = true,
-            onBackButtonPressed = {}
+            onBackButtonPressed = onBackButtonClicked
         )
     }
 }
@@ -33,6 +34,8 @@ fun TermsOfServiceScreen(
 @Preview(showBackground = true, showSystemUi = true)
 private fun TermsOfServiceScreenPreview(){
     ComidaTheme {
-        TermsOfServiceScreen()
+        TermsOfServiceScreen(
+            onBackButtonClicked = {}
+        )
     }
 }

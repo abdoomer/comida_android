@@ -33,7 +33,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.comida.models.onboardingScreenButtons
 import com.example.comida.models.onboardingScreenItems
-import com.example.comida.navigation.Screens
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.poppinsFamily
 import com.example.comida.ui.theme.sofiaFamily

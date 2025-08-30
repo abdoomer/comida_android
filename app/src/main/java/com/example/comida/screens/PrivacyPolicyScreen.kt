@@ -13,7 +13,8 @@ import com.example.comida.ui.theme.ComidaTheme
 
 @Composable
 fun PrivacyPolicyScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBackButtonClicked: () -> Unit
 ){
     Column(
         modifier = modifier
@@ -23,7 +24,7 @@ fun PrivacyPolicyScreen(
         CustomTopAppTitleBar(
             title = "Privacy Policy",
             haveBackButton = true,
-            onBackButtonPressed = {}
+            onBackButtonPressed = onBackButtonClicked
         )
     }
 }
@@ -34,6 +35,8 @@ fun PrivacyPolicyScreen(
 @Preview(showBackground = true, showSystemUi = true)
 private fun PrivacyPolicyScreenPreview(){
     ComidaTheme {
-        PrivacyPolicyScreen()
+        PrivacyPolicyScreen(
+            onBackButtonClicked = {}
+        )
     }
 }

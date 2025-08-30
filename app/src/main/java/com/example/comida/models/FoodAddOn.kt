@@ -9,3 +9,6 @@ data class FoodAddOn(
     val price: Double,
     @DrawableRes val image: Int
 )
+
+
+val foodAddOns = listOf<FoodAddOn>()

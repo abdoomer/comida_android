@@ -13,7 +13,8 @@ import com.example.comida.ui.theme.ComidaTheme
 
 @Composable
 fun OrdersHistory(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBackButtonClicked: () -> Unit
 ){
     Column(
         modifier = modifier
@@ -23,7 +24,7 @@ fun OrdersHistory(
         CustomTopAppTitleBar(
             title = "Orders History",
             haveBackButton = true,
-            onBackButtonPressed = {}
+            onBackButtonPressed = onBackButtonClicked
         )
     }
 }
@@ -33,6 +34,8 @@ fun OrdersHistory(
 @Preview(showBackground = true, showSystemUi = true)
 private fun OrdersHistoryPreview(){
     ComidaTheme {
-        OrdersHistory()
+        OrdersHistory(
+            onBackButtonClicked = {}
+        )
     }
 }

@@ -12,7 +12,7 @@ import com.example.comida.ui.theme.ComidaTheme
 
 
 @Composable
-fun MyAccount(
+fun NotificationDetailsScreen(
     modifier: Modifier = Modifier,
     onBackButtonClicked: () -> Unit
 ){
@@ -22,7 +22,7 @@ fun MyAccount(
             .padding(top = 24.dp)
     ) {
         CustomTopAppTitleBar(
-            title = "My Account",
+            title = "Notification",
             haveBackButton = true,
             onBackButtonPressed = onBackButtonClicked
         )
@@ -33,9 +33,9 @@ fun MyAccount(
 
 @Composable
 @Preview(showBackground = true, showSystemUi = true)
-private fun MyAccountPreview(){
+private fun NotificationDetailsScreenPreview(){
     ComidaTheme {
-        MyAccount(
+        NotificationDetailsScreen(
             onBackButtonClicked = {}
         )
     }

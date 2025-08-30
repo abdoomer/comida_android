@@ -25,9 +25,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.models.AppNotification
 import com.example.comida.models.appNotifications
+import com.example.comida.navigation.Screens
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.PrimaryButtonColor
 import com.example.comida.ui.theme.PrimaryTextColor
@@ -39,7 +41,8 @@ import com.example.comida.ui.theme.sofiaFamily
 @Composable
 fun NotificationsScreen(
     modifier: Modifier = Modifier,
-    paddingValues: PaddingValues
+    paddingValues: PaddingValues,
+    navController: NavHostController,
 ){
     Column(
         modifier = modifier
@@ -50,7 +53,9 @@ fun NotificationsScreen(
         CustomTopAppTitleBar(
             title = "Notifications",
             haveBackButton = false,
-            onBackButtonPressed = {}
+            onBackButtonPressed = {
+                navController.popBackStack()
+            }
         )
 
         LazyColumn(
@@ -63,7 +68,7 @@ fun NotificationsScreen(
                 AppNotificationCard(
                     notification = notification,
                     onClicked = {
-
+                        navController.navigate(Screens.NotificationDetailsScreen.route)
                     }
                 )
             }
@@ -82,7 +87,7 @@ private fun AppNotificationCard(
         modifier = modifier
             .padding(horizontal = 16.dp)
             .clickable{
-                onClicked
+                onClicked(notification)
             },
         colors = CardDefaults.cardColors(
             containerColor = Color.White

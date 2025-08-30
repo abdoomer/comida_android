@@ -33,6 +33,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.comida.R
 import com.example.comida.models.AppUser
 import com.example.comida.models.dummyUser
@@ -50,7 +51,8 @@ import com.example.comida.ui.theme.sofiaFamily
 @Composable
 fun ProfileScreen(
     modifier: Modifier = Modifier,
-    paddingValues: PaddingValues
+    paddingValues: PaddingValues,
+    navController: NavHostController
 ){
     Column(
         modifier = modifier
@@ -65,7 +67,11 @@ fun ProfileScreen(
             onBarcodeButtonClicked = {}
         )
 
-        NavigationTiles()
+        NavigationTiles(
+            onTileClicked = {
+                navController.navigate(it)
+            }
+        )
 
         DeleteAccountButton(
             onClicked = {}
@@ -160,7 +166,8 @@ private fun UserInformation(
 
 @Composable
 private fun NavigationTiles(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onTileClicked: (String) -> Unit
 ){
     LazyColumn(
         modifier = modifier
@@ -173,7 +180,7 @@ private fun NavigationTiles(
             Card(
                 modifier = Modifier
                     .clickable{
-
+                        onTileClicked(tile.destinationRoute)
                     },
                 colors = CardDefaults.cardColors(
                     containerColor = Color.White
