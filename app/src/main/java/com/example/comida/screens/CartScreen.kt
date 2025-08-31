@@ -43,6 +43,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.comida.R
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.models.CartItem
@@ -485,6 +486,9 @@ private fun DeliveryAddressCard(
 @Preview(showBackground = true, showSystemUi = true)
 private fun CartScreenPreview(){
     ComidaTheme {
-//        CartScreen()
+        CartScreen(
+            paddingValues = PaddingValues(0.dp),
+            navController = rememberNavController()
+        )
     }
 }

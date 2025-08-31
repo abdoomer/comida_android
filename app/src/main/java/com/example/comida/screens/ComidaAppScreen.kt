@@ -4,11 +4,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.comida.components.CustomBottomNavigationBar
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.viewmodels.ComidaViewmodel
@@ -38,9 +42,17 @@ fun ComidaAppScreen(
     ) { innerPadding ->
         when(currentPage.value){
             0 -> {
+
+                LaunchedEffect(key1 = true) {
+                    viewmodel.updatePaddingValues(innerPadding)
+                }
+
                 HomeScreen(
                     paddingValues = innerPadding,
-                    navController = navController
+                    navController = navController,
+                    onCategorySelected = {
+                        viewmodel.updateSelectedCategory(it)
+                    }
                 )
             }
             1 -> {
@@ -71,8 +83,9 @@ fun ComidaAppScreen(
 @Preview(showBackground = true, showSystemUi = true)
 fun ComidaAppScreenPreview(){
     ComidaTheme {
-//        ComidaAppScreen(
-//            navController = rememberNavController()
-//        )
+        ComidaAppScreen(
+            viewmodel = viewModel(),
+            navController = rememberNavController()
+        )
     }
 }

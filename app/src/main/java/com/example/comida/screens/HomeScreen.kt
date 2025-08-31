@@ -78,7 +78,8 @@ import com.example.comida.ui.theme.poppinsFamily
 fun HomeScreen(
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues,
-    navController: NavHostController
+    navController: NavHostController,
+    onCategorySelected: (FoodCategory) -> Unit
 ){
 
     val searchText by remember { mutableStateOf("") }
@@ -117,6 +118,7 @@ fun HomeScreen(
         FoodCategoriesSelectionMenu(
             onNewCategorySelected = {
                 navController.navigate(Screens.FoodCategoryScreen.route)
+                onCategorySelected(it)
             }
         )
 

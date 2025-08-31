@@ -2,6 +2,7 @@ package com.example.comida.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
@@ -16,12 +17,13 @@ import com.example.comida.ui.theme.ComidaTheme
 @Composable
 fun OrdersHistory(
     modifier: Modifier = Modifier,
+    paddingValues: PaddingValues,
     onBackButtonClicked: () -> Unit
 ){
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(top = 24.dp)
+            .padding(paddingValues)
             .background(Color.White)
     ) {
         CustomTopAppTitleBar(
@@ -38,6 +40,7 @@ fun OrdersHistory(
 private fun OrdersHistoryPreview(){
     ComidaTheme {
         OrdersHistory(
+            paddingValues = PaddingValues(0.dp),
             onBackButtonClicked = {}
         )
     }

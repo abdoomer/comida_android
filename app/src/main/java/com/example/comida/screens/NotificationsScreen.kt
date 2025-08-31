@@ -26,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.models.AppNotification
 import com.example.comida.models.appNotifications
@@ -149,6 +150,9 @@ private fun AppNotificationCard(
 @Preview(showBackground = true, showSystemUi = true)
 private fun NotificationsScreenPreview(){
     ComidaTheme {
-//        NotificationsScreen()
+        NotificationsScreen(
+            paddingValues = PaddingValues(0.dp),
+            navController = rememberNavController()
+        )
     }
 }

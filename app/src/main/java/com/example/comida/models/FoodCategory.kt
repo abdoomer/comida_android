@@ -7,9 +7,10 @@ import com.example.comida.dummy.donutsCategory
 import com.example.comida.dummy.hotDogCategory
 import com.example.comida.dummy.pastaCategory
 import com.example.comida.dummy.pizzaCategory
+import java.util.UUID
 
 data class FoodCategory(
-    val categoryID: String,
+    val categoryID: String = UUID.randomUUID().toString(),
     val title: String,
     val foodItems: List<FoodItem>,
     @DrawableRes val image: Int
@@ -18,31 +19,26 @@ data class FoodCategory(
 
 val foodCategories = listOf<FoodCategory>(
     FoodCategory(
-        categoryID = "1",
         title = "Burger",
         image = R.drawable.burger_menu_image,
         foodItems = burgersCategory
     ),
     FoodCategory(
-        categoryID = "2",
         title = "Donuts",
         image = R.drawable.donats_menu_image,
         foodItems = donutsCategory
     ),
     FoodCategory(
-        categoryID = "3",
         title = "Pizza",
         image = R.drawable.pizza_slice_menu_image,
         foodItems = pizzaCategory
     ),
     FoodCategory(
-        categoryID = "4",
-        title = "Hot Dog",
+        title = "HotDog",
         image = R.drawable.hotdog_menu_image,
         foodItems = hotDogCategory
     ),
     FoodCategory(
-        categoryID = "5",
         title = "Pasta",
         image = R.drawable.pasta_menu_image,
         foodItems = pastaCategory

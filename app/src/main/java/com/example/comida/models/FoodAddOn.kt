@@ -5,7 +5,8 @@ data class FoodAddOn(
     val title: String,
     var isAdded: Boolean = false,
     val price: Double,
-    val image: String
+    val image: String,
+    var quantity: Int = 1
 )
 
 

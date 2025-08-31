@@ -2,6 +2,7 @@ package com.example.comida.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -50,6 +51,9 @@ fun ComidaNavigation(
         navController = navController,
         startDestination = startDestination
     ) {
+
+        val paddingValues = comidaViewmodel.paddingValues
+        val currentFoodItem = comidaViewmodel.currentSelectedFood
 
         composable(
             route = Screens.OnboardingScreen.route
@@ -118,19 +122,28 @@ fun ComidaNavigation(
         composable(
             route = Screens.FoodDetailsScreen.route
         ){
-            FoodDetailsScreen()
+            FoodDetailsScreen(
+                paddingValues = paddingValues.collectAsStateWithLifecycle().value,
+                item = currentFoodItem.collectAsStateWithLifecycle().value,
+                onBackButtonClicked = {
+                    navController.popBackStack()
+                }
+            )
         }
 
         composable(
             route = Screens.PaymentScreen.route
         ){
-            PaymentScreen()
+            PaymentScreen(
+                paddingValues = paddingValues.collectAsStateWithLifecycle().value
+            )
         }
 
         composable(
             route = Screens.PrivacyPolicyScreen.route
         ){
             PrivacyPolicyScreen(
+                paddingValues = paddingValues.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
@@ -141,6 +154,7 @@ fun ComidaNavigation(
             route = Screens.TermsOfServiceScreen.route
         ){
             TermsOfServiceScreen(
+                paddingValues = paddingValues.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
@@ -151,6 +165,7 @@ fun ComidaNavigation(
             route = Screens.SettingsScreen.route
         ){
             SettingsScreen(
+                paddingValues = paddingValues.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
@@ -160,13 +175,16 @@ fun ComidaNavigation(
         composable(
             route = Screens.OrderStatusScreen.route
         ){
-            OrderStatusScreen()
+            OrderStatusScreen(
+                paddingValues = paddingValues.collectAsStateWithLifecycle().value
+            )
         }
 
         composable(
             route = Screens.OrdersHistory.route
         ){
             OrdersHistory(
+                paddingValues = paddingValues.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
@@ -177,6 +195,7 @@ fun ComidaNavigation(
             route = Screens.MyAccount.route
         ){
             MyAccount(
+                paddingValues = paddingValues.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
@@ -196,6 +215,7 @@ fun ComidaNavigation(
             route = Screens.NotificationDetailsScreen.route
         ){
             NotificationDetailsScreen(
+                paddingValues = paddingValues.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
@@ -206,6 +226,7 @@ fun ComidaNavigation(
             route = Screens.RestaurantsScreen.route
         ){
             RestaurantsScreen(
+                paddingValues = paddingValues.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
@@ -216,6 +237,7 @@ fun ComidaNavigation(
             route = Screens.SpecialOffersScreen.route
         ){
             SpecialOffersScreen(
+                paddingValues = paddingValues.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
@@ -225,10 +247,17 @@ fun ComidaNavigation(
         composable(
             route = Screens.FoodCategoryScreen.route
         ){
+            val foodCategory = comidaViewmodel.selectedCategory.collectAsStateWithLifecycle()
+
             FoodCategoryScreen(
-                category = "Category",
+                paddingValues = paddingValues.collectAsStateWithLifecycle().value,
+                category = foodCategory.value,
                 onBackButtonClicked = {
                     navController.popBackStack()
+                },
+                onFoodItemClicked = {
+                    comidaViewmodel.updateCurrentSelectedFood(it)
+                    navController.navigate(Screens.FoodDetailsScreen.route)
                 }
             )
         }
@@ -237,6 +266,7 @@ fun ComidaNavigation(
             route = Screens.RestaurantScreen.route
         ){
             RestaurantScreen(
+                paddingValues = paddingValues.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
@@ -247,6 +277,7 @@ fun ComidaNavigation(
             route = Screens.OfferScreen.route
         ){
             OfferScreen(
+                paddingValues = paddingValues.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
