@@ -50,6 +50,7 @@ fun ForgetPasswordScreen(
     Box(
         modifier = modifier
             .fillMaxSize()
+            .background(Color.White)
     ){
         Image(
             painter = painterResource(R.drawable.forget_password_screen_background_image),

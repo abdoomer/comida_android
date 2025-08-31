@@ -1,7 +1,6 @@
 package com.example.comida.screens
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -34,6 +33,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.example.comida.R
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.models.FoodItem
@@ -47,15 +47,17 @@ import com.example.comida.ui.theme.poppinsFamily
 @Composable
 fun FoodCategoryScreen(
     modifier: Modifier = Modifier,
+    category: String,
     onBackButtonClicked: () -> Unit
 ){
     Column(
         modifier = modifier
             .fillMaxSize()
             .padding(top = 24.dp)
+            .background(Color.White)
     ) {
         CustomTopAppTitleBar(
-            title = "Category",
+            title = category,
             haveBackButton = true,
             onBackButtonPressed = onBackButtonClicked
         )
@@ -207,8 +209,9 @@ private fun FoodCategoryItem(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Image(
-                    painter = painterResource(item.image),
+
+                AsyncImage(
+                    model = item.image,
                     contentDescription = item.title,
                     modifier = Modifier
                         .size(140.dp)
@@ -249,9 +252,9 @@ private fun FoodCategoryItem(
                                 .width(8.dp)
                         )
 
-                        Text(
-                            text = "${item.discountAmount}"
-                        )
+//                        Text(
+//                            text = "${item.discountAmount}"
+//                        )
                     }
                 }
             }
@@ -285,6 +288,7 @@ private fun FoodCategoryItem(
 private fun FoodCategoryScreenPreview(){
     ComidaTheme {
         FoodCategoryScreen(
+            category = "Category",
             onBackButtonClicked = {}
         )
     }

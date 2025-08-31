@@ -79,4 +79,7 @@ dependencies {
 
     // Splash Screen
     implementation(libs.androidx.core.splashscreen)
+
+    // Coil
+    implementation(libs.coil.compose)
 }

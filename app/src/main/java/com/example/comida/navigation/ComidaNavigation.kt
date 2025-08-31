@@ -226,6 +226,7 @@ fun ComidaNavigation(
             route = Screens.FoodCategoryScreen.route
         ){
             FoodCategoryScreen(
+                category = "Category",
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
