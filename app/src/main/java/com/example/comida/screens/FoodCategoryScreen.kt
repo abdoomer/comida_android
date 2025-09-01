@@ -7,7 +7,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,6 +23,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -44,7 +44,6 @@ import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.models.FoodCategory
 import com.example.comida.models.FoodItem
 import com.example.comida.models.foodCategories
-import com.example.comida.models.foodItems
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.PrimaryButtonColor
 import com.example.comida.ui.theme.PrimaryTextColor
@@ -57,38 +56,42 @@ import com.example.comida.ui.theme.sofiaFamily
 fun FoodCategoryScreen(
     modifier: Modifier = Modifier,
     category: FoodCategory,
-    paddingValues: PaddingValues,
     onBackButtonClicked: () -> Unit,
     onFoodItemClicked: (FoodItem) -> Unit,
 ){
-    Column(
+    Scaffold(
         modifier = modifier
             .fillMaxSize()
-            .padding(paddingValues)
-            .background(Color.White)
-    ) {
-        CustomTopAppTitleBar(
-            title = category.title,
-            haveBackButton = true,
-            onBackButtonPressed = onBackButtonClicked
-        )
-
-        CategoryFilter(
-            sortBy = "Relevance",
-            onSortClicked = {},
-            onFilterClicked = {}
-        )
-
-        LazyColumn(
-            modifier = Modifier,
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.White)
+                .padding(innerPadding)
         ) {
-            items(category.foodItems){ item ->
-                FoodCategoryItem(
-                    item = item,
-                    onItemClicked = onFoodItemClicked,
-                    onAddToCartClicked = {}
-                )
+            CustomTopAppTitleBar(
+                title = category.title,
+                haveBackButton = true,
+                onBackButtonPressed = onBackButtonClicked
+            )
+
+            CategoryFilter(
+                sortBy = "Relevance",
+                onSortClicked = {},
+                onFilterClicked = {}
+            )
+
+            LazyColumn(
+                modifier = Modifier,
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                items(category.foodItems){ item ->
+                    FoodCategoryItem(
+                        item = item,
+                        onItemClicked = onFoodItemClicked,
+                        onAddToCartClicked = {}
+                    )
+                }
             }
         }
     }
@@ -344,7 +347,6 @@ private fun FoodCategoryScreenPreview(){
     ComidaTheme {
         FoodCategoryScreen(
             category = foodCategories[0],
-            paddingValues = PaddingValues(0.dp),
             onBackButtonClicked = {},
             onFoodItemClicked = {}
         )

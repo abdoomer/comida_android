@@ -33,9 +33,6 @@ class ComidaViewmodel @Inject constructor(
     private val _selectedCategory: MutableStateFlow<FoodCategory> = MutableStateFlow<FoodCategory>(foodCategories[0])
     val selectedCategory: StateFlow<FoodCategory> = _selectedCategory
 
-    private val _paddingValues: MutableStateFlow<PaddingValues> = MutableStateFlow<PaddingValues>(PaddingValues(0.dp))
-    val paddingValues: StateFlow<PaddingValues> = _paddingValues
-
     private val _currentSelectedFood: MutableStateFlow<FoodItem> = MutableStateFlow(burgersCategory[0])
     val currentSelectedFood: StateFlow<FoodItem> = _currentSelectedFood
 
@@ -67,12 +64,6 @@ class ComidaViewmodel @Inject constructor(
     fun updateSelectedCategory(newCategory: FoodCategory){
         viewModelScope.launch {
             _selectedCategory.emit(newCategory)
-        }
-    }
-
-    fun updatePaddingValues(newPaddingValues: PaddingValues){
-        viewModelScope.launch {
-            _paddingValues.emit(newPaddingValues)
         }
     }
 

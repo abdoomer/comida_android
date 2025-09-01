@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -24,6 +23,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -58,31 +58,39 @@ import com.example.comida.ui.theme.sofiaFamily
 @Composable
 fun FoodDetailsScreen(
     modifier: Modifier = Modifier,
-    paddingValues: PaddingValues,
     item: FoodItem,
     onBackButtonClicked: () -> Unit
 ){
-    Box(
+    Scaffold(
         modifier = modifier
             .fillMaxSize()
-            .padding(paddingValues)
-    ){
-        FoodDetails(
+    ) { innerPadding ->
+        Box(
             modifier = Modifier
-                .align(Alignment.TopCenter),
-            item = item,
-            onBackButtonClicked = onBackButtonClicked,
-            onToggleFavouritesClicked = {}
-        )
+                .fillMaxSize()
+                .background(Color.White)
+
+                .padding(innerPadding)
+        ){
+            FoodDetails(
+                modifier = Modifier
+                    .align(Alignment.TopCenter),
+                item = item,
+                onBackButtonClicked = onBackButtonClicked,
+                onToggleFavouritesClicked = {}
+            )
 
 
-        FoodAddOnItems(
-            modifier = Modifier
-                .align(Alignment.BottomCenter),
-            addOns = item.addOns,
-            onAddOnClicked = {},
-            onAddItemToCartClicked = {}
-        )
+            FoodAddOnItems(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter),
+                addOns = item.addOns,
+                onAddOnClicked = {},
+                onAddItemToCartClicked = {},
+                onIncreaseAddOnQuantityClicked = {},
+                onDecreaseAddOnQuantityClicked = {}
+            )
+        }
     }
 }
 
@@ -119,7 +127,8 @@ private fun FoodDetails(
                     .Builder(context)
                     .data(item.image)
                     .crossfade(true)
-                    .transformations(CircleCropTransformation()),
+                    .transformations(CircleCropTransformation())
+                    .build(),
                 contentDescription = item.title,
                 modifier = Modifier
                     .size(250.dp)
@@ -279,13 +288,15 @@ private fun FoodAddOnItems(
     modifier: Modifier = Modifier,
     addOns: List<FoodAddOn>,
     onAddOnClicked: (FoodAddOn) -> Unit,
-    onAddItemToCartClicked: () -> Unit
+    onAddItemToCartClicked: () -> Unit,
+    onIncreaseAddOnQuantityClicked: () -> Unit,
+    onDecreaseAddOnQuantityClicked: () -> Unit,
 ){
     Card(
         modifier = modifier
             .fillMaxWidth()
             .fillMaxHeight(0.5f),
-        shape = RoundedCornerShape(24.dp),
+        shape = RoundedCornerShape(topEnd = 24.dp, topStart = 24.dp),
         elevation = CardDefaults.cardElevation(4.dp),
         colors = CardDefaults.cardColors(
             containerColor = SecondaryTextColor
@@ -312,6 +323,65 @@ private fun FoodAddOnItems(
                             onAddOnClicked(addon)
                         }
                     )
+                }
+
+                item {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            Button(
+                                onClick = onDecreaseAddOnQuantityClicked
+                            ) {
+                                Icon(
+                                    painter = painterResource(R.drawable.minus_icon),
+                                    contentDescription = "Minus Icon",
+                                    modifier = Modifier
+                                        .size(16.dp)
+                                )
+                            }
+
+                            Text(
+                                text = "${addOns[0].quantity}",
+                                color = Color.White
+                            )
+
+                            Button(
+                                onClick = onIncreaseAddOnQuantityClicked
+                            ) {
+                                Icon(
+                                    painter = painterResource(R.drawable.plus_icon),
+                                    contentDescription = "Minus Icon",
+                                    modifier = Modifier
+                                        .size(16.dp)
+                                )
+                            }
+                        }
+                        Button(
+                            onClick = onAddItemToCartClicked,
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = PrimaryButtonColor
+                            ),
+                            modifier = modifier
+                                .fillMaxWidth(0.7f)
+                        ) {
+                            Text(
+                                text = "Add to basket",
+                                fontFamily = poppinsFamily,
+                                fontWeight = FontWeight.SemiBold,
+                                fontSize = 16.sp,
+                                color = Color.White,
+                                modifier = Modifier
+                                    .padding(vertical = 8.dp)
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -376,7 +446,6 @@ private fun FoodDetailsScreenPreview(){
     ComidaTheme {
         FoodDetailsScreen(
             item = burgersCategory[0],
-            paddingValues = PaddingValues(0.dp),
             onBackButtonClicked = {}
         )
     }

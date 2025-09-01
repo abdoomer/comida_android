@@ -2,14 +2,13 @@ package com.example.comida.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.ui.theme.ComidaTheme
 
@@ -17,19 +16,23 @@ import com.example.comida.ui.theme.ComidaTheme
 @Composable
 fun OrderStatusScreen(
     modifier: Modifier = Modifier,
-    paddingValues: PaddingValues,
 ){
-    Column(
+    Scaffold(
         modifier = modifier
             .fillMaxSize()
-            .padding(paddingValues)
-            .background(Color.White)
-    ) {
-        CustomTopAppTitleBar(
-            title = "Order Status",
-            haveBackButton = true,
-            onBackButtonPressed = {}
-        )
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.White)
+                .padding(innerPadding)
+        ) {
+            CustomTopAppTitleBar(
+                title = "Order Status",
+                haveBackButton = true,
+                onBackButtonPressed = {}
+            )
+        }
     }
 }
 
@@ -40,7 +43,6 @@ fun OrderStatusScreen(
 private fun OrderStatusScreenPreview(){
     ComidaTheme {
         OrderStatusScreen(
-            paddingValues = PaddingValues(0.dp),
         )
     }
 }

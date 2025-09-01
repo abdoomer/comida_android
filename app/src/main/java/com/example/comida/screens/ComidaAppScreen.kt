@@ -42,11 +42,6 @@ fun ComidaAppScreen(
     ) { innerPadding ->
         when(currentPage.value){
             0 -> {
-
-                LaunchedEffect(key1 = true) {
-                    viewmodel.updatePaddingValues(innerPadding)
-                }
-
                 HomeScreen(
                     paddingValues = innerPadding,
                     navController = navController,
