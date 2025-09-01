@@ -72,12 +72,17 @@ fun ComidaAppScreen(
                 )
             }
             2 -> {
+                OrdersHistory(
+                    paddingValues = innerPadding
+                )
+            }
+            3 -> {
                 ProfileScreen(
                     paddingValues = innerPadding,
                     navController = navController
                 )
             }
-            3 -> {
+            4 -> {
                 NotificationsScreen(
                     paddingValues = innerPadding,
                     onNotificationClicked = {

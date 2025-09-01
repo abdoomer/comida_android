@@ -17,6 +17,9 @@ val bottomNavMenuItems = listOf<BottomNavMenuItem>(
         icon = R.drawable.cart_icon,
     ),
     BottomNavMenuItem(
+        icon = R.drawable.ic_orders_history,
+    ),
+    BottomNavMenuItem(
         icon = R.drawable.profile_icon,
     ),
     BottomNavMenuItem(

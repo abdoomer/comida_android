@@ -26,11 +26,16 @@ val bottomNavigationBarItems = listOf<CustomBottomNavigationBarItem>(
     ),
     CustomBottomNavigationBarItem(
         index = 2,
+        contentDescription = "Orders History Icon",
+        icon = R.drawable.ic_orders_history
+    ),
+    CustomBottomNavigationBarItem(
+        index = 3,
         contentDescription = "Profile Icon",
         icon = R.drawable.profile_icon
     ),
     CustomBottomNavigationBarItem(
-        index = 3,
+        index = 4,
         contentDescription = "Notifications Icon",
         icon = R.drawable.notification_icon,
         badgeCount = 4

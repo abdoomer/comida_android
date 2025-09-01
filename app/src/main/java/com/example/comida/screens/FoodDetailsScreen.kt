@@ -69,7 +69,6 @@ fun FoodDetailsScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color.White)
-
                 .padding(innerPadding)
         ){
             FoodDetails(

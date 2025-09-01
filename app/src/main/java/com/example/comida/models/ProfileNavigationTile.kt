@@ -19,11 +19,6 @@ val profileNavigationTiles = listOf<ProfileNavigationTile>(
         icon = R.drawable.ic_user_account
     ),
     ProfileNavigationTile(
-        title = "Orders History",
-        destinationRoute = Screens.OrdersHistory.route,
-        icon = R.drawable.ic_history
-    ),
-    ProfileNavigationTile(
         title = "Settings",
         destinationRoute = Screens.SettingsScreen.route,
         icon = R.drawable.ic_settings

@@ -51,6 +51,10 @@ class ComidaViewmodel @Inject constructor(
     private val _currentSelectedNotification: MutableStateFlow<AppNotification> = MutableStateFlow(appNotifications[0])
     val currentSelectedNotification: StateFlow<AppNotification> = _currentSelectedNotification
 
+    private val _currentRestaurantFoodList: MutableStateFlow<List<FoodItem>> = MutableStateFlow(emptyList())
+    val currentRestaurantFoodList: StateFlow<List<FoodItem>> = _currentRestaurantFoodList
+
+
     init {
         getAppStartDestination()
     }
@@ -103,6 +107,12 @@ class ComidaViewmodel @Inject constructor(
     fun updateCurrentNotification(newNotification: AppNotification){
         viewModelScope.launch {
             _currentSelectedNotification.emit(newNotification)
+        }
+    }
+
+    fun updateCurrentRestaurantFoodList(foodList: List<FoodItem>){
+        viewModelScope.launch {
+            _currentRestaurantFoodList.emit(foodList)
         }
     }
 }

@@ -20,6 +20,7 @@ import com.example.comida.screens.OrderStatusScreen
 import com.example.comida.screens.OrdersHistory
 import com.example.comida.screens.PaymentScreen
 import com.example.comida.screens.PrivacyPolicyScreen
+import com.example.comida.screens.RestaurantAvailableFoodsScreen
 import com.example.comida.screens.RestaurantScreen
 import com.example.comida.screens.RestaurantsScreen
 import com.example.comida.screens.SettingsScreen
@@ -54,6 +55,9 @@ fun ComidaNavigation(
 
         val currentFoodItem = comidaViewmodel.currentSelectedFood
         val currentNotification = comidaViewmodel.currentSelectedNotification
+        val currentRestaurant = comidaViewmodel.currentSelectedRestaurant
+        val availableRestaurantFoods = comidaViewmodel.currentRestaurantFoodList
+        val currentOffer = comidaViewmodel.selectedSpecialOffer
 
         composable(
             route = Screens.OnboardingScreen.route
@@ -175,16 +179,6 @@ fun ComidaNavigation(
         }
 
         composable(
-            route = Screens.OrdersHistory.route
-        ){
-            OrdersHistory(
-                onBackButtonClicked = {
-                    navController.popBackStack()
-                }
-            )
-        }
-
-        composable(
             route = Screens.MyAccount.route
         ){
             MyAccount(
@@ -207,7 +201,7 @@ fun ComidaNavigation(
             route = Screens.NotificationDetailsScreen.route
         ){
             NotificationDetailsScreen(
-                notification = currentNotification.value,
+                notification = currentNotification.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 },
@@ -266,9 +260,17 @@ fun ComidaNavigation(
             route = Screens.RestaurantScreen.route
         ){
             RestaurantScreen(
+                restaurant = currentRestaurant.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
-                }
+                },
+                onToggleFavouritesClicked = {},
+                onViewAllFoodsTapped = {
+                    comidaViewmodel.updateCurrentRestaurantFoodList(it)
+                    navController.navigate(Screens.RestaurantAvailableFoodsScreen.route)
+                },
+                onFoodItemClicked = {},
+                onFoodItemAddToCartClicked = {}
             )
         }
 
@@ -276,9 +278,26 @@ fun ComidaNavigation(
             route = Screens.OfferScreen.route
         ){
             OfferScreen(
+                offer = currentOffer.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
+            )
+        }
+
+        composable(
+            route = Screens.RestaurantAvailableFoodsScreen.route
+        ){
+            RestaurantAvailableFoodsScreen(
+                availableFoods = availableRestaurantFoods.collectAsStateWithLifecycle().value,
+                onBackButtonClicked = {
+                    navController.popBackStack()
+                },
+                onFoodItemClicked = {
+                    comidaViewmodel.updateCurrentSelectedFood(it)
+                    navController.navigate(Screens.FoodDetailsScreen.route)
+                },
+                onFoodItemAddToCartClicked = {}
             )
         }
     }

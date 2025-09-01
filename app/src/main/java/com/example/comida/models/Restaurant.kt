@@ -2,14 +2,17 @@ package com.example.comida.models
 
 import androidx.annotation.DrawableRes
 import com.example.comida.R
+import com.example.comida.dummy.burgersCategory
 
 data class Restaurant(
     val name: String,
+    val description: String,
     val isFreeDelivery: Boolean,
     val deliveryTime: Double,
     val isFavorites: Boolean,
     val ratingValue: Double,
-    @DrawableRes val image: Int
+    @DrawableRes val image: Int,
+    val availableFoods: List<FoodItem>
 )
 
 
@@ -20,7 +23,9 @@ val restaurants = listOf<Restaurant>(
         deliveryTime = 45.0,
         isFavorites = false,
         ratingValue = 4.5,
-        image = R.drawable.sushi_image
+        image = R.drawable.sushi_image,
+        description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        availableFoods = burgersCategory,
     ),
     Restaurant(
         name = "Seafood maki sushi",
@@ -28,6 +33,8 @@ val restaurants = listOf<Restaurant>(
         deliveryTime = 45.0,
         isFavorites = false,
         ratingValue = 4.5,
-        image = R.drawable.seafood_dish_image
+        image = R.drawable.seafood_dish_image,
+        description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        availableFoods = burgersCategory,
     ),
 )
