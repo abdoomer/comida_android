@@ -259,7 +259,7 @@ val pizzaCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = pizzaFoodAddOns,
-        image = "https://www.ezcater.com/lunchrush/wp-content/uploads/sites/2/2017/11/The-210-Carnivore-pizza-768x512.jpg.webp"
+        image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSysXsZvSgT1y82a771RXmF1xQNQ2_puE9mBg&s",
     ),
     FoodItem(
         categoryID = "Pizza",
@@ -274,7 +274,7 @@ val pizzaCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = pizzaFoodAddOns,
-        image = "https://www.ezcater.com/lunchrush/wp-content/uploads/sites/2/2017/10/shutterstock_570541132-768x506.jpg.webp"
+        image = "https://aplantifulpath.com/wp-content/uploads/2024/07/vegan-vegetable-pizza-square.jpg",
     ),
     FoodItem(
         categoryID = "Pizza",
@@ -289,7 +289,7 @@ val pizzaCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = pizzaFoodAddOns,
-        image = "https://www.ezcater.com/lunchrush/wp-content/uploads/sites/2/2017/10/shutterstock_184944413-768x512.jpg.webp"
+        image = "https://bakingamoment.com/wp-content/uploads/2024/06/IMG_3443-barbecue-chicken-pizza.jpg",
     ),
     FoodItem(
         categoryID = "Pizza",
@@ -304,7 +304,7 @@ val pizzaCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = pizzaFoodAddOns,
-        image = "https://www.ezcater.com/lunchrush/wp-content/uploads/sites/2/2021/02/Pizza-Buffalo-Chicken-768x512.jpg.webp"
+        image = "https://www.allrecipes.com/thmb/GK6zZbKChUTMmq9vHhGMbyPbQGA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/BuffaloChickenPizza_AR_Feb-Mar-24x3-07e2fcb74a1d472499f4c22980825b13.jpg",
     ),
     FoodItem(
         categoryID = "Pizza",
@@ -319,7 +319,7 @@ val pizzaCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = pizzaFoodAddOns,
-        image = "https://www.ezcater.com/lunchrush/wp-content/uploads/sites/2/2017/10/shutterstock_514457074.jpg.webp"
+        image = "https://ik.imagekit.io/smithfield/armour/4353bced-f940-00d0-8c6e-13a0a4a7f5c2/2ac60829-5178-4a6e-80cf-6ca43d862cee/Quick-and-Easy-Pepperoni-Pizza-700x700.jpeg?tr=w-1160,c-at_max,f-auto",
     ),
     FoodItem(
         categoryID = "Pizza",

@@ -34,7 +34,7 @@ val pastaCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = pastaFoodAddOns,
-        image = "https://www.foodnetwork.com/content/dam/images/food/fullset/2017/5/18/0/BX1302H_Lemon-Capellini_s4x3.jpg"
+        image = "https://www.thespruceeats.com/thmb/9y4iehTGvAD_V31UIdmI2NdTTtM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/angel-hair-pasta-with-tomatoes-3054078-hero-01-b40c65a9de2846298b67a9091d43a29f.jpg",
     ),
     FoodItem(
         categoryID = "Pasta",

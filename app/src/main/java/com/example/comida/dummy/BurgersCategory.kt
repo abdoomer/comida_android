@@ -19,10 +19,9 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Slaters_50-50_burger.jpg/250px-Slaters_50-50_burger.jpg"
+        image = "https://assets3.thrillist.com/v1/image/770942/1200x600/scale;;webp=auto;jpeg_quality=85.jpg"
     ),
     FoodItem(
-        id = "",
         categoryID = "Burger",
         title = "Afghani burger",
         description = "Also known as the Kabuli burger or the Ayatollah Burger, an Afghan fast food wrap consisting of a piece of Afghan bread rolled around french fries, along with chutney and other condiments, vegetables, and often sausages or other meat.",
@@ -50,7 +49,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/McDonald%27s_Angus_Deluxe_hamburger.jpg/960px-McDonald%27s_Angus_Deluxe_hamburger.jpg"
+        image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfC9I9r7ZboRmLoyEbVn7aPG6zCZ8m6-FC3A&s",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -65,7 +64,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Hamburger_in_New_Zealand.jpg/250px-Hamburger_in_New_Zealand.jpg"
+        image = "https://cdn.sanity.io/images/p6oh2x2n/production/881deeee2f8b8d2467d639fa5d467403ccfcb639-1920x1080.jpg",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -80,7 +79,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Bacon_cheeseburger.jpg/250px-Bacon_cheeseburger.jpg"
+        image = "https://www.meatloafandmelodrama.com/wp-content/uploads/2017/05/jalapeno-bacon-cheeseburger.jpg",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -95,7 +94,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "data:image/jpeg;base64,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K2N1saLzJT3SNDV3blhGdERdU54REQBERAEREAVd7XdkKGPDM5LKjD3ajIzReWmRdsmfA+asSLDSawycJyhLdF4Zx3ifYV1OoW0gwx+Fzg5s9R3oI5hQ2I7N12zdpN5737Cy7njMG2oL67FVLivDyx3eFtiNCtG2nbydKrxCx8M55huzD3wXk9OWm/QfJa9fshlN3S2dvvxK6HQZbRZPhNOoC03GfZl31ss8nIuI8MLQW5jY6eZ99VHf3Z9+K6T2m7NuqH4lGMx/E2YnkQdJ2v8A1qtXs9immDRI8wfkSsOU11Zv1SpsjnPPsQ7OGkjYc7+kLEODPJkAz1U9R4dVH5HHo0/otllV7DDmEeBBVLvkuYlkqYS4KxW4M7bMd/TwWi3DgGd/dXephn1PwscZ5A/Na7uy1TwB5KyGp4/UyPlVx64KuyjIv6KU4fwppEqSodnakw72VhwXBDAGgChdqFjECM5wj0NDBcABAiImdAVYMPw+CAQpLCYYNAC2w0Bai3T5bNSd76GiMKC0xYmRcEctOq18HwuCQ5xcT46fqpYaL5S1MeqlGKRDzHgyYchugAjcAA2trqt+hB7wWi5tgOaneD8PyiXDoPktjTRlZZtXT8Gvc4xjl9TbwWHi5W2iLv1wUFhHMlJt5YREUzAREQBERAEREAREQBeajA4QQCORXpEBCY3gIMmmcp5HTyOoUPisBWpiXstzBkfsrmi156eL6cFitaKIKq+ZhyVyrcNouMmm2ecR8lrV+B0naS3of1VEtNPHZlitRUbSYC8nDNN8o9FYK3Zk/lqDwlq1j2arRZzPU/otVaaxPDiXedHsyNpAagQvTmgred2cxGzmfzH/AMViqdncTNshH+cj6LLpn02hWR9zSptAKzlq+js/ix+Vv8/7L07gmLGjB/ONf0Vaqnj0v7E3OPuj4ymvoInZZaXZzEu/E5jR1JPoBHutmn2Uf+av6Mv65vooLS3PpD74Dth3kaT67Oa94ai95im031J2U5gOz1CneC88339tPZSoEaLZr8PnJ5saXwv+yuWpiuIc/uRuA4Q1kOeczvYdApNEXSqqhUsQRqTnKbywiIrCIREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAf/2Q=="
+        image = "https://banquetburger.com/wp-content/uploads/2023/10/Untitled-design-41-640x640.png",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -110,7 +109,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Danish_Beef_Sandwich.JPG/250px-Danish_Beef_Sandwich.JPG"
+        image = "https://eatsy.bold-themes.com/burger/wp-content/uploads/sites/2/2018/09/product_03.jpg",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -125,7 +124,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Maple_bourbon_butter_burger_with_salad.jpg/250px-Maple_bourbon_butter_burger_with_salad.jpg"
+        image = "https://dinnerthendessert.com/wp-content/uploads/2025/03/butter-burger-42-cropped.jpg",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -140,7 +139,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Black_Buffalo_Burger_and_fries_-_Black_Sheep_Lodge%2C_Austin%2C_Texas.jpg/250px-Black_Buffalo_Burger_and_fries_-_Black_Sheep_Lodge%2C_Austin%2C_Texas.jpg"
+        image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiqpsVo9kePgC6SoP6VS5pbI8GKCJr2EXCQA&s",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -155,7 +154,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Cheeseburger%2C_fries%2C_toppings_and_condiments.jpg/250px-Cheeseburger%2C_fries%2C_toppings_and_condiments.jpg"
+        image = "https://www.rachelcooks.com/wp-content/uploads/2024/07/California-Burger-WEB-24-square.jpg",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -170,7 +169,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Double_cheese_cheeseburger_%28cropped%29.jpg/250px-Double_cheese_cheeseburger_%28cropped%29.jpg"
+        image = "https://leitesculinaria.com/wp-content/uploads/2020/02/classic-cheeseburger-1200.jpg",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -185,7 +184,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Chili_burger_%28cropped%29.jpg/250px-Chili_burger_%28cropped%29.jpg"
+        image = "https://dyvn6jpt1f0d3.cloudfront.net/wp-content/uploads/2020/10/12151623/IMG_1332-scaled-e1611171206740.jpg",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -200,7 +199,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chimichurri_burger.jpg/120px-Chimichurri_burger.jpg"
+        image = "https://leitesculinaria.com/wp-content/uploads/2020/02/classic-cheeseburger-1200.jpg",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -215,7 +214,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Spoon_%26_Pork_chori_burger.jpg/250px-Spoon_%26_Pork_chori_burger.jpg"
+        image = "https://static01.nyt.com/images/2014/04/04/multimedia/fc-jeepney/fc-jeepney-superJumbo-v2.jpg",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -230,7 +229,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Green_chile_burger_at_Second_Street_Brewery_%283608804861%29.jpg/250px-Green_chile_burger_at_Second_Street_Brewery_%283608804861%29.jpg"
+        image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUJvW3D16FbSRm4A-zislAhEt3e4DW_4q9LQ&s",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -245,7 +244,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Peanut_butter_beef_burger_with_french_fries_at_Voyage_Bistro_%26_Bar.jpg/250px-Peanut_butter_beef_burger_with_french_fries_at_Voyage_Bistro_%26_Bar.jpg"
+        image = "https://www.thecookierookie.com/wp-content/uploads/2023/10/peanut-butter-burgers-recipe.jpg",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -260,7 +259,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "data:image/jpeg;base64,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"
+        image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThr-VDJLQKNsfmwK6aGZn1IxNVH5oPn-trT7ooN2bhsRwlBK_ZmxA9lBBy3XiJd4x1FCk&usqp=CAU",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -275,7 +274,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Wet_burger.jpg/250px-Wet_burger.jpg"
+        image = "https://static.ticimax.cloud/cdn-cgi/image/width=540,quality=99/9247/uploads/blog/islak-hamburger-nedir-ve-nasil-yapilir-e3ec.jpeg",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -290,7 +289,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Jucy_Lucy_burger_-_5-8_Club%2C_Minneapolis%2C_Minnesota.jpg/250px-Jucy_Lucy_burger_-_5-8_Club%2C_Minneapolis%2C_Minnesota.jpg"
+        image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFF00OhYZG3k-Dot9ELY0TwBgFrGuAwro7pg&s",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -305,7 +304,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Hamburger_-_Hawksmoor%2C_Covent_Garden%2C_London.jpg/250px-Hamburger_-_Hawksmoor%2C_Covent_Garden%2C_London.jpg"
+        image = "https://www.seriouseats.com/thmb/TI1XJh4710434bN8InouOVLzBfM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2017__06__20170617-bulgogi-burger-matt-clifton-1-b9769887cb1e4a4a8d9e9922bbabcace.jpg",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -320,7 +319,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Cheeseburger_at_Louis%27_Lunch%2C_New_Haven.jpg/250px-Cheeseburger_at_Louis%27_Lunch%2C_New_Haven.jpg"
+        image = "https://s.hdnux.com/photos/01/37/43/06/25047446/5/1440x0.jpg",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -335,7 +334,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Doughnut_burger.jpg/250px-Doughnut_burger.jpg"
+        image = "https://images.slurrp.com/prod/recipe_images/the-spruce-eats-set-2/luther-burger-doughnut-bacon-cheeseburger-4018810-1620404439_5UFKDCNJNKY03WSYYAHK.webp",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -350,7 +349,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Office_Burger.jpg/250px-Office_Burger.jpg"
+        image = "https://popmenucloud.com/cdn-cgi/image/width=1200,height=630,format=auto,fit=cover/mixkarbu/54c87959-05ce-4a97-82c8-ded55f3c0bbf.webp",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -365,7 +364,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/20130619-onion-burger-9.jpg/250px-20130619-onion-burger-9.jpg"
+        image = "https://www.seriouseats.com/thmb/naUL3asafVlR1YnTi2uCpgPAdQM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20210607-OKONIONBURGERS-JANJIGIAN-seriouseats-1ff54150234c421fa78a71da44ef1f6d.jpg",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -380,7 +379,7 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Olive_burger.jpg/250px-Olive_burger.jpg"
+        image = "https://bushwickgrillclub.com/wp-content/uploads/2023/11/OliveBurgerCrop_edited-960x1139.jpeg",
     ),
     FoodItem(
         categoryID = "Burger",
@@ -395,6 +394,6 @@ val burgersCategory = listOf<FoodItem>(
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
         addOns = burgerFoodAddOns,
-        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pastrami_cheeseburger.jpg/250px-Pastrami_cheeseburger.jpg"
+        image = "https://jamiecooksitup.net/wp-content/uploads/2016/08/Pastrami-Burger.jpg",
     ),
 )
