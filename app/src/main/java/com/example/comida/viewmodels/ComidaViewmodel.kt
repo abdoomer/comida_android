@@ -5,10 +5,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.comida.dummy.burgersCategory
+import com.example.comida.models.AppNotification
 import com.example.comida.models.FoodCategory
 import com.example.comida.models.FoodItem
 import com.example.comida.models.Restaurant
 import com.example.comida.models.SpecialOffer
+import com.example.comida.models.appNotifications
 import com.example.comida.models.foodCategories
 import com.example.comida.models.restaurants
 import com.example.comida.models.specialOffers
@@ -45,6 +47,9 @@ class ComidaViewmodel @Inject constructor(
 
     private val _currentSelectedRestaurant: MutableStateFlow<Restaurant> = MutableStateFlow(restaurants[0])
     val currentSelectedRestaurant: StateFlow<Restaurant> = _currentSelectedRestaurant
+
+    private val _currentSelectedNotification: MutableStateFlow<AppNotification> = MutableStateFlow(appNotifications[0])
+    val currentSelectedNotification: StateFlow<AppNotification> = _currentSelectedNotification
 
     init {
         getAppStartDestination()
@@ -92,6 +97,12 @@ class ComidaViewmodel @Inject constructor(
     fun updateCurrentSelectedRestaurant(newRestaurant: Restaurant){
         viewModelScope.launch {
             _currentSelectedRestaurant.emit(newRestaurant)
+        }
+    }
+
+    fun updateCurrentNotification(newNotification: AppNotification){
+        viewModelScope.launch {
+            _currentSelectedNotification.emit(newNotification)
         }
     }
 }

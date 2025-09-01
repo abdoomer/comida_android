@@ -43,7 +43,8 @@ import com.example.comida.ui.theme.sofiaFamily
 fun NotificationsScreen(
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues,
-    navController: NavHostController,
+    onBackButtonClicked: () -> Unit,
+    onNotificationClicked: (AppNotification) -> Unit
 ){
     Column(
         modifier = modifier
@@ -54,9 +55,7 @@ fun NotificationsScreen(
         CustomTopAppTitleBar(
             title = "Notifications",
             haveBackButton = false,
-            onBackButtonPressed = {
-                navController.popBackStack()
-            }
+            onBackButtonPressed = onBackButtonClicked
         )
 
         LazyColumn(
@@ -68,9 +67,7 @@ fun NotificationsScreen(
             items(appNotifications){ notification ->
                 AppNotificationCard(
                     notification = notification,
-                    onClicked = {
-                        navController.navigate(Screens.NotificationDetailsScreen.route)
-                    }
+                    onClicked = onNotificationClicked
                 )
             }
         }
@@ -152,7 +149,8 @@ private fun NotificationsScreenPreview(){
     ComidaTheme {
         NotificationsScreen(
             paddingValues = PaddingValues(0.dp),
-            navController = rememberNavController()
+            onNotificationClicked = {},
+            onBackButtonClicked = {}
         )
     }
 }

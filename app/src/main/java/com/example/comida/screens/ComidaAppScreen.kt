@@ -4,16 +4,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.comida.components.CustomBottomNavigationBar
+import com.example.comida.navigation.Screens
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.viewmodels.ComidaViewmodel
 
@@ -44,9 +43,25 @@ fun ComidaAppScreen(
             0 -> {
                 HomeScreen(
                     paddingValues = innerPadding,
-                    navController = navController,
                     onCategorySelected = {
                         viewmodel.updateSelectedCategory(it)
+                        navController.navigate(Screens.FoodCategoryScreen.route)
+                    },
+                    onBuyNowClicked = {},
+                    onSpecialOfferTapped = {
+                        viewmodel.updateCurrentSelectedSpecialOffer(it)
+                        navController.navigate(Screens.OfferScreen.route)
+                    },
+                    onRestaurantTapped = {
+                        viewmodel.updateCurrentSelectedRestaurant(it)
+                        navController.navigate(Screens.RestaurantScreen.route)
+                    },
+                    onToggleIsFavoriteTapped = {},
+                    onViewAllOfferTapped = {
+                        navController.navigate(Screens.SpecialOffersScreen.route)
+                    },
+                    onViewAllRestaurantsTapped = {
+                        navController.navigate(Screens.RestaurantsScreen.route)
                     }
                 )
             }
@@ -65,7 +80,13 @@ fun ComidaAppScreen(
             3 -> {
                 NotificationsScreen(
                     paddingValues = innerPadding,
-                    navController = navController
+                    onNotificationClicked = {
+                        viewmodel.updateCurrentNotification(it)
+                        navController.navigate(Screens.NotificationDetailsScreen.route)
+                    },
+                    onBackButtonClicked = {
+                        navController.popBackStack()
+                    }
                 )
             }
         }

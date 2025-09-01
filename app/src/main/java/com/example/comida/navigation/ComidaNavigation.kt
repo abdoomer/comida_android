@@ -53,6 +53,7 @@ fun ComidaNavigation(
     ) {
 
         val currentFoodItem = comidaViewmodel.currentSelectedFood
+        val currentNotification = comidaViewmodel.currentSelectedNotification
 
         composable(
             route = Screens.OnboardingScreen.route
@@ -206,9 +207,11 @@ fun ComidaNavigation(
             route = Screens.NotificationDetailsScreen.route
         ){
             NotificationDetailsScreen(
+                notification = currentNotification.value,
                 onBackButtonClicked = {
                     navController.popBackStack()
-                }
+                },
+                onMarkAsReadClicked = {}
             )
         }
 

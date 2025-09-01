@@ -404,7 +404,7 @@ private fun DeliveryAddressCard(
         modifier = modifier
             .fillMaxWidth()
             .fillMaxHeight(0.3f)
-            .clip(RoundedCornerShape(24.dp))
+            .clip(RoundedCornerShape(topEnd = 24.dp, topStart = 24.dp))
             .background(PrimaryTextColor)
     ){
         Column(

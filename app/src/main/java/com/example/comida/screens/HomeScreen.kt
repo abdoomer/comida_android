@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,15 +16,11 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -47,7 +42,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import com.example.comida.R
 import com.example.comida.components.RestaurantCard
 import com.example.comida.components.SpecialOfferCard
@@ -62,17 +56,13 @@ import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.HomeFoodCategoryTitleColor
 import com.example.comida.ui.theme.IconButtonColor
 import com.example.comida.ui.theme.IconsColor
-import com.example.comida.ui.theme.OfferBuyNowButtonColor
-import com.example.comida.ui.theme.OfferSmallLabelColor
 import com.example.comida.ui.theme.OnboardingBackgroundColor3
 import com.example.comida.ui.theme.PrimaryButtonColor
 import com.example.comida.ui.theme.PrimaryTextColor
 import com.example.comida.ui.theme.SearchLabelTextColor
 import com.example.comida.ui.theme.SecondaryTextColor
-import com.example.comida.ui.theme.SmallIconLabelColor
 import com.example.comida.ui.theme.SmallLabelColor
 import com.example.comida.ui.theme.TextFieldBackgroundColor
-import com.example.comida.ui.theme.bebasFamily
 import com.example.comida.ui.theme.poppinsFamily
 
 
@@ -80,8 +70,13 @@ import com.example.comida.ui.theme.poppinsFamily
 fun HomeScreen(
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues,
-    navController: NavHostController,
-    onCategorySelected: (FoodCategory) -> Unit
+    onCategorySelected: (FoodCategory) -> Unit,
+    onSpecialOfferTapped: (SpecialOffer) -> Unit,
+    onViewAllOfferTapped: () -> Unit,
+    onBuyNowClicked: (SpecialOffer) -> Unit,
+    onRestaurantTapped: (Restaurant) -> Unit,
+    onViewAllRestaurantsTapped: () -> Unit,
+    onToggleIsFavoriteTapped: (Restaurant) -> Unit,
 ){
 
     val searchText by remember { mutableStateOf("") }
@@ -118,30 +113,19 @@ fun HomeScreen(
         )
 
         FoodCategoriesSelectionMenu(
-            onNewCategorySelected = {
-                navController.navigate(Screens.FoodCategoryScreen.route)
-                onCategorySelected(it)
-            }
+            onNewCategorySelected = onCategorySelected
         )
 
         AvailableSpecialOffers(
-            onSpecialOfferTapped = {
-                navController.navigate(Screens.OfferScreen.route)
-            },
-            onViewAllOfferTapped = {
-                navController.navigate(Screens.SpecialOffersScreen.route)
-            },
-            onBuyNowClicked = {}
+            onSpecialOfferTapped = onSpecialOfferTapped,
+            onViewAllOfferTapped = onViewAllOfferTapped,
+            onBuyNowClicked = onBuyNowClicked
         )
 
         AvailableRestaurants(
-            onRestaurantTapped = {
-                navController.navigate(Screens.RestaurantScreen.route)
-            },
-            onViewAllRestaurantsTapped = {
-                navController.navigate(Screens.RestaurantsScreen.route)
-            },
-            onToggleIsFavoriteTapped = {}
+            onRestaurantTapped = onRestaurantTapped,
+            onViewAllRestaurantsTapped = onViewAllRestaurantsTapped,
+            onToggleIsFavoriteTapped = onToggleIsFavoriteTapped
         )
     }
 }
@@ -395,7 +379,7 @@ private fun AvailableRestaurants(
     modifier: Modifier = Modifier,
     onViewAllRestaurantsTapped: () -> Unit,
     onRestaurantTapped: (Restaurant) -> Unit,
-    onToggleIsFavoriteTapped: (Boolean) -> Unit,
+    onToggleIsFavoriteTapped: (Restaurant) -> Unit,
 ){
     Column(
         modifier = modifier
@@ -440,7 +424,9 @@ private fun AvailableRestaurants(
                 RestaurantCard(
                     restaurant = restaurant,
                     onRestaurantTapped = onRestaurantTapped,
-                    onToggleIsFavoriteTapped = onToggleIsFavoriteTapped
+                    onToggleIsFavoriteTapped = {
+                        onToggleIsFavoriteTapped(restaurant)
+                    }
                 )
             }
         }
