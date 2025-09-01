@@ -218,7 +218,12 @@ fun ComidaNavigation(
             RestaurantsScreen(
                 onBackButtonClicked = {
                     navController.popBackStack()
-                }
+                },
+                onRestaurantTapped = {
+                    comidaViewmodel.updateCurrentSelectedRestaurant(it)
+                    navController.navigate(Screens.RestaurantScreen.route)
+                },
+                onToggleIsFavoriteTapped = {}
             )
         }
 
@@ -228,7 +233,12 @@ fun ComidaNavigation(
             SpecialOffersScreen(
                 onBackButtonClicked = {
                     navController.popBackStack()
-                }
+                },
+                onSpecialOfferTapped = {
+                    comidaViewmodel.updateCurrentSelectedSpecialOffer(it)
+                    navController.navigate(Screens.OfferScreen.route)
+                },
+                onBuyNowClicked = {}
             )
         }
 

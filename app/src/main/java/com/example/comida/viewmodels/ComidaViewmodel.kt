@@ -7,7 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.comida.dummy.burgersCategory
 import com.example.comida.models.FoodCategory
 import com.example.comida.models.FoodItem
+import com.example.comida.models.Restaurant
+import com.example.comida.models.SpecialOffer
 import com.example.comida.models.foodCategories
+import com.example.comida.models.restaurants
+import com.example.comida.models.specialOffers
 import com.example.comida.navigation.Screens
 import com.example.comida.services.ComidaSharedPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -35,6 +39,12 @@ class ComidaViewmodel @Inject constructor(
 
     private val _currentSelectedFood: MutableStateFlow<FoodItem> = MutableStateFlow(burgersCategory[0])
     val currentSelectedFood: StateFlow<FoodItem> = _currentSelectedFood
+
+    private val _selectedSpecialOffer: MutableStateFlow<SpecialOffer> = MutableStateFlow<SpecialOffer>(specialOffers[0])
+    val selectedSpecialOffer: StateFlow<SpecialOffer> = _selectedSpecialOffer
+
+    private val _currentSelectedRestaurant: MutableStateFlow<Restaurant> = MutableStateFlow(restaurants[0])
+    val currentSelectedRestaurant: StateFlow<Restaurant> = _currentSelectedRestaurant
 
     init {
         getAppStartDestination()
@@ -70,6 +80,18 @@ class ComidaViewmodel @Inject constructor(
     fun updateCurrentSelectedFood(item: FoodItem){
         viewModelScope.launch {
             _currentSelectedFood.emit(item)
+        }
+    }
+
+    fun updateCurrentSelectedSpecialOffer(newOffer: SpecialOffer){
+        viewModelScope.launch {
+            _selectedSpecialOffer.emit(newOffer)
+        }
+    }
+
+    fun updateCurrentSelectedRestaurant(newRestaurant: Restaurant){
+        viewModelScope.launch {
+            _currentSelectedRestaurant.emit(newRestaurant)
         }
     }
 }
