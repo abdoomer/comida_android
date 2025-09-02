@@ -41,7 +41,7 @@ import coil.request.ImageRequest
 import coil.transform.CircleCropTransformation
 import com.example.comida.R
 import com.example.comida.components.CustomTopAppTitleBar
-import com.example.comida.dummy.burgersCategory
+import com.example.comida.dummy.foodItems.burgersCategory
 import com.example.comida.models.FoodAddOn
 import com.example.comida.models.FoodItem
 import com.example.comida.ui.theme.ComidaTheme

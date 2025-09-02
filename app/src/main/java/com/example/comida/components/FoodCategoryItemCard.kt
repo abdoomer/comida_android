@@ -35,9 +35,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import coil.transform.CircleCropTransformation
 import com.example.comida.R
-import com.example.comida.dummy.burgersCategory
+import com.example.comida.dummy.foodItems.burgersCategory
 import com.example.comida.models.FoodItem
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.PrimaryButtonColor

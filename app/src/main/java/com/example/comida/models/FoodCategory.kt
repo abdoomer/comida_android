@@ -2,11 +2,11 @@ package com.example.comida.models
 
 import androidx.annotation.DrawableRes
 import com.example.comida.R
-import com.example.comida.dummy.burgersCategory
-import com.example.comida.dummy.donutsCategory
-import com.example.comida.dummy.hotDogCategory
-import com.example.comida.dummy.pastaCategory
-import com.example.comida.dummy.pizzaCategory
+import com.example.comida.dummy.foodItems.burgersCategory
+import com.example.comida.dummy.foodItems.donutsCategory
+import com.example.comida.dummy.foodItems.hotDogCategory
+import com.example.comida.dummy.foodItems.pastaCategory
+import com.example.comida.dummy.foodItems.pizzaCategory
 import java.util.UUID
 
 data class FoodCategory(

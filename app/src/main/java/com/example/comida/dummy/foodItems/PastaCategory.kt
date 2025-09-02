@@ -1,4 +1,4 @@
-package com.example.comida.dummy
+package com.example.comida.dummy.foodItems
 
 import com.example.comida.models.FoodItem
 import com.example.comida.models.pastaFoodAddOns

@@ -1,10 +1,8 @@
 package com.example.comida.viewmodels
 
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.comida.dummy.burgersCategory
+import com.example.comida.dummy.foodItems.burgersCategory
 import com.example.comida.models.AppNotification
 import com.example.comida.models.FoodCategory
 import com.example.comida.models.FoodItem

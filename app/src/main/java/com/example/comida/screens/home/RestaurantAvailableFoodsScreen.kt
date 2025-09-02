@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.components.FoodCategoryItemCard
-import com.example.comida.dummy.burgersCategory
+import com.example.comida.dummy.foodItems.burgersCategory
 import com.example.comida.models.FoodItem
 import com.example.comida.ui.theme.ComidaTheme
 

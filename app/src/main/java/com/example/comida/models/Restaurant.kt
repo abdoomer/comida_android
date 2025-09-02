@@ -2,7 +2,7 @@ package com.example.comida.models
 
 import androidx.annotation.DrawableRes
 import com.example.comida.R
-import com.example.comida.dummy.burgersCategory
+import com.example.comida.dummy.foodItems.burgersCategory
 
 data class Restaurant(
     val name: String,

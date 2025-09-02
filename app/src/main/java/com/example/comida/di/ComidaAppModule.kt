@@ -3,6 +3,13 @@ package com.example.comida.di
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.comida.ComidaApp
+import com.example.comida.domain.usecase.CartUseCase
+import com.example.comida.domain.usecase.FoodCategoryUseCase
+import com.example.comida.domain.usecase.NotificationsUseCase
+import com.example.comida.domain.usecase.OrdersUseCase
+import com.example.comida.domain.usecase.PaymentUseCase
+import com.example.comida.domain.usecase.RestaurantsUseCase
+import com.example.comida.domain.usecase.SpecialOffersUseCase
 import com.example.comida.services.ComidaSharedPreferences
 import com.example.comida.viewmodels.ComidaViewmodel
 import dagger.Module
@@ -36,5 +43,47 @@ object ComidaAppModule {
         return ComidaSharedPreferences(
             sharedPreferences = sharedPreferences
         )
+    }
+
+    @Singleton
+    @Provides
+    fun providesFoodCategoryUseCase() : FoodCategoryUseCase {
+        return FoodCategoryUseCase()
+    }
+
+    @Singleton
+    @Provides
+    fun providesNotificationsUseCase() : NotificationsUseCase {
+        return NotificationsUseCase()
+    }
+
+    @Singleton
+    @Provides
+    fun providesRestaurantsUseCase() : RestaurantsUseCase {
+        return RestaurantsUseCase()
+    }
+
+    @Singleton
+    @Provides
+    fun providesSpecialOffersUseCase() : SpecialOffersUseCase {
+        return SpecialOffersUseCase()
+    }
+
+    @Singleton
+    @Provides
+    fun providesCartUseCase() : CartUseCase {
+        return CartUseCase()
+    }
+
+    @Singleton
+    @Provides
+    fun providesOrdersUseCase() : OrdersUseCase {
+        return OrdersUseCase()
+    }
+
+    @Singleton
+    @Provides
+    fun providesPaymentUseCase() : PaymentUseCase {
+        return PaymentUseCase()
     }
 }
