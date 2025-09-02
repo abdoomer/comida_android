@@ -66,13 +66,13 @@ import com.example.comida.ui.theme.PrimaryTextColor
 import com.example.comida.ui.theme.TextFieldBackgroundColor
 import com.example.comida.ui.theme.bebasFamily
 import com.example.comida.ui.theme.poppinsFamily
-import com.example.comida.viewmodels.auth.OTPViewmodel
+import com.example.comida.viewmodels.auth.OTPViewModel
 
 
 @Composable
 fun OTPVerificationScreen(
     modifier: Modifier = Modifier,
-    viewModel: OTPViewmodel,
+    viewModel: OTPViewModel,
     onBackButtonClicked: () -> Unit
 ){
 

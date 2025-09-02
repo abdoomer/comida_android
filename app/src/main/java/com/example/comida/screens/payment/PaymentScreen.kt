@@ -1,4 +1,4 @@
-package com.example.comida.screens
+package com.example.comida.screens.payment
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

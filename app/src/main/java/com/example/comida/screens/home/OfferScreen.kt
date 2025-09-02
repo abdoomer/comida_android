@@ -1,4 +1,4 @@
-package com.example.comida.screens.orders
+package com.example.comida.screens.home
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image

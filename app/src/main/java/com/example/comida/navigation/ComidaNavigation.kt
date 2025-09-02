@@ -14,11 +14,11 @@ import com.example.comida.screens.auth.ForgetPasswordScreen
 import com.example.comida.screens.profile.MyAccount
 import com.example.comida.screens.notifications.NotificationDetailsScreen
 import com.example.comida.screens.auth.OTPVerificationScreen
-import com.example.comida.screens.orders.OfferScreen
+import com.example.comida.screens.home.OfferScreen
 import com.example.comida.screens.onboarding.OnboardingScreen
 import com.example.comida.screens.orders.OrderDetailsScreen
 import com.example.comida.screens.orders.OrderStatusScreen
-import com.example.comida.screens.PaymentScreen
+import com.example.comida.screens.payment.PaymentScreen
 import com.example.comida.screens.profile.PrivacyPolicyScreen
 import com.example.comida.screens.home.RestaurantAvailableFoodsScreen
 import com.example.comida.screens.home.RestaurantScreen
@@ -30,7 +30,7 @@ import com.example.comida.screens.home.SpecialOffersScreen
 import com.example.comida.screens.profile.TermsOfServiceScreen
 import com.example.comida.viewmodels.ComidaViewmodel
 import com.example.comida.viewmodels.auth.ForgetPasswordViewModel
-import com.example.comida.viewmodels.auth.OTPViewmodel
+import com.example.comida.viewmodels.auth.OTPViewModel
 import com.example.comida.viewmodels.auth.SignInViewModel
 import com.example.comida.viewmodels.auth.SignUpViewModel
 
@@ -40,7 +40,7 @@ fun ComidaNavigation(
     modifier: Modifier = Modifier,
     startDestination: String
 ){
-    val otpViewmodel: OTPViewmodel = viewModel()
+    val otpViewmodel: OTPViewModel = viewModel()
     val signInViewmodel: SignInViewModel = viewModel()
     val signUpViewmodel: SignUpViewModel = viewModel()
     val forgetPasswordViewmodel: ForgetPasswordViewModel = viewModel()
