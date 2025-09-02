@@ -1,8 +1,10 @@
 package com.example.comida.domain.usecase
 
+import jakarta.inject.Singleton
 import javax.inject.Inject
-import javax.inject.Singleton
+
 
 @Singleton
-class NotificationsUseCase @Inject constructor() {
+class FoodUseCase @Inject constructor() {
+
 }

@@ -4,14 +4,13 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.example.comida.ComidaApp
 import com.example.comida.domain.usecase.CartUseCase
-import com.example.comida.domain.usecase.FoodCategoryUseCase
+import com.example.comida.domain.usecase.FoodUseCase
 import com.example.comida.domain.usecase.NotificationsUseCase
 import com.example.comida.domain.usecase.OrdersUseCase
 import com.example.comida.domain.usecase.PaymentUseCase
 import com.example.comida.domain.usecase.RestaurantsUseCase
 import com.example.comida.domain.usecase.SpecialOffersUseCase
 import com.example.comida.services.ComidaSharedPreferences
-import com.example.comida.viewmodels.ComidaViewmodel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,8 +46,8 @@ object ComidaAppModule {
 
     @Singleton
     @Provides
-    fun providesFoodCategoryUseCase() : FoodCategoryUseCase {
-        return FoodCategoryUseCase()
+    fun providesFoodCategoryUseCase() : FoodUseCase {
+        return FoodUseCase()
     }
 
     @Singleton

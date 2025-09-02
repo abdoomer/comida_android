@@ -1,4 +1,8 @@
 package com.example.comida.domain.usecase
 
-class CartUseCase {
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class CartUseCase @Inject constructor() {
 }

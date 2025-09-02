@@ -1,4 +1,9 @@
 package com.example.comida.domain.usecase
 
-class OrdersUseCase {
+import javax.inject.Inject
+import javax.inject.Singleton
+
+
+@Singleton
+class OrdersUseCase @Inject constructor() {
 }
