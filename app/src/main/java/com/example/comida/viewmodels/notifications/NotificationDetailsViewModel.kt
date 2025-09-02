@@ -1,6 +1,12 @@
 package com.example.comida.viewmodels.notifications
 
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import jakarta.inject.Inject
 
-class NotificationDetailsViewModel: ViewModel() {
+
+@HiltViewModel
+class NotificationDetailsViewModel @Inject constructor(
+
+): ViewModel() {
 }

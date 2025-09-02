@@ -1,6 +1,11 @@
 package com.example.comida.viewmodels.home
 
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import jakarta.inject.Inject
 
-class OfferViewModel: ViewModel() {
+@HiltViewModel
+class OfferViewModel @Inject constructor(
+
+): ViewModel() {
 }

@@ -37,14 +37,4 @@ object ComidaAppModule {
             sharedPreferences = sharedPreferences
         )
     }
-
-    @Singleton
-    @Provides
-    fun providesComidaViewModel(
-        sharedPreferences: ComidaSharedPreferences,
-    ) : ComidaViewmodel {
-        return ComidaViewmodel(
-            sharedPreferences = sharedPreferences
-        )
-    }
 }
