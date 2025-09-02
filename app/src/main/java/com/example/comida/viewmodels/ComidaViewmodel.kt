@@ -42,19 +42,19 @@ class ComidaViewmodel @Inject constructor(
     private val _currentSelectedFood: MutableStateFlow<FoodItem> = MutableStateFlow(burgersCategory[0])//
     val currentSelectedFood: StateFlow<FoodItem> = _currentSelectedFood
 
-    private val _selectedSpecialOffer: MutableStateFlow<SpecialOffer> = MutableStateFlow<SpecialOffer>(specialOffers[0])//
+    private val _selectedSpecialOffer: MutableStateFlow<SpecialOffer> = MutableStateFlow<SpecialOffer>(specialOffers[0])
     val selectedSpecialOffer: StateFlow<SpecialOffer> = _selectedSpecialOffer
 
-    private val _currentSelectedRestaurant: MutableStateFlow<Restaurant> = MutableStateFlow(restaurants[0])//
+    private val _currentSelectedRestaurant: MutableStateFlow<Restaurant> = MutableStateFlow(restaurants[0])
     val currentSelectedRestaurant: StateFlow<Restaurant> = _currentSelectedRestaurant
 
-    private val _currentSelectedNotification: MutableStateFlow<AppNotification> = MutableStateFlow(appNotifications[0])//
+    private val _currentSelectedNotification: MutableStateFlow<AppNotification> = MutableStateFlow(appNotifications[0])
     val currentSelectedNotification: StateFlow<AppNotification> = _currentSelectedNotification
 
-    private val _currentRestaurantFoodList: MutableStateFlow<List<FoodItem>> = MutableStateFlow(emptyList())//
+    private val _currentRestaurantFoodList: MutableStateFlow<List<FoodItem>> = MutableStateFlow(emptyList())
     val currentRestaurantFoodList: StateFlow<List<FoodItem>> = _currentRestaurantFoodList
 
-    private val _currentSelectedOrder: MutableStateFlow<OrderItem> = MutableStateFlow(orders[0])//
+    private val _currentSelectedOrder: MutableStateFlow<OrderItem> = MutableStateFlow(orders[0])
     val currentSelectedOrder: StateFlow<OrderItem> = _currentSelectedOrder
 
 

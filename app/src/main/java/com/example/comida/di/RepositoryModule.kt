@@ -28,70 +28,84 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun providesAppNotificationRepository(
-        notificationsUseCase: NotificationsUseCase
+        notificationsUseCase: NotificationsUseCase,
+        appCoroutineScope: AppCoroutineScope
     ) : AppNotificationRepository {
         return AppNotificationRepository(
-            notificationsUseCase = notificationsUseCase
+            notificationsUseCase = notificationsUseCase,
+            appCoroutineScope = appCoroutineScope
         )
     }
 
     @Singleton
     @Provides
     fun providesCartRepository(
-        cartUseCase: CartUseCase
+        cartUseCase: CartUseCase,
+        appCoroutineScope: AppCoroutineScope
     ) : CartRepository {
         return CartRepository(
-            cartUseCase = cartUseCase
+            cartUseCase = cartUseCase,
+            appCoroutineScope = appCoroutineScope
         )
     }
 
     @Singleton
     @Provides
     fun providesFoodRepository(
-        foodUseCase: FoodUseCase
+        foodUseCase: FoodUseCase,
+        appCoroutineScope: AppCoroutineScope
     ) : FoodRepository {
         return FoodRepository(
-            foodUseCase = foodUseCase
+            foodUseCase = foodUseCase,
+            appCoroutineScope = appCoroutineScope
         )
     }
 
     @Singleton
     @Provides
     fun providesOrdersRepository(
-        ordersUseCase: OrdersUseCase
+        ordersUseCase: OrdersUseCase,
+        appCoroutineScope: AppCoroutineScope
     ) : OrdersRepository {
         return OrdersRepository(
-            ordersUseCase = ordersUseCase
+            ordersUseCase = ordersUseCase,
+            appCoroutineScope = appCoroutineScope
         )
     }
 
     @Singleton
     @Provides
     fun providesRestaurantRepository(
-        restaurantsUseCase: RestaurantsUseCase
+        restaurantsUseCase: RestaurantsUseCase,
+        appCoroutineScope: AppCoroutineScope
     ) : RestaurantsRepository {
         return RestaurantsRepository(
-            restaurantsUseCase = restaurantsUseCase
+            restaurantsUseCase = restaurantsUseCase,
+            appCoroutineScope = appCoroutineScope
         )
     }
 
     @Singleton
     @Provides
     fun providesSpecialOfferRepository(
-        specialOffersUseCase: SpecialOffersUseCase
+        specialOffersUseCase: SpecialOffersUseCase,
+        appCoroutineScope: AppCoroutineScope
     ) : SpecialOfferRepository {
         return SpecialOfferRepository(
-            specialOffersUseCase = specialOffersUseCase
+            specialOffersUseCase = specialOffersUseCase,
+            appCoroutineScope = appCoroutineScope
         )
     }
 
     @Singleton
     @Provides
     fun providesPaymentRepository(
-        paymentUseCase: PaymentUseCase
+        paymentUseCase: PaymentUseCase,
+        appCoroutineScope: AppCoroutineScope
     ) : PaymentRepository {
         return PaymentRepository(
-            paymentUseCase = paymentUseCase
+            paymentUseCase = paymentUseCase,
+            appCoroutineScope = appCoroutineScope
         )
     }
 }

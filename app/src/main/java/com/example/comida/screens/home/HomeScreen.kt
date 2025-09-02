@@ -27,9 +27,7 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -42,15 +40,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.R
 import com.example.comida.components.RestaurantCard
 import com.example.comida.components.SpecialOfferCard
 import com.example.comida.models.FoodCategory
 import com.example.comida.models.Restaurant
 import com.example.comida.models.SpecialOffer
-import com.example.comida.models.foodCategories
-import com.example.comida.models.restaurants
-import com.example.comida.models.specialOffers
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.HomeFoodCategoryTitleColor
 import com.example.comida.ui.theme.IconButtonColor
@@ -63,6 +60,7 @@ import com.example.comida.ui.theme.SecondaryTextColor
 import com.example.comida.ui.theme.SmallLabelColor
 import com.example.comida.ui.theme.TextFieldBackgroundColor
 import com.example.comida.ui.theme.poppinsFamily
+import com.example.comida.viewmodels.home.HomeViewModel
 
 
 @Composable
@@ -78,7 +76,15 @@ fun HomeScreen(
     onToggleIsFavoriteTapped: (Restaurant) -> Unit,
 ){
 
-    val searchText by remember { mutableStateOf("") }
+    val viewModel: HomeViewModel = hiltViewModel<HomeViewModel>()
+    val searchText = viewModel.searchText.collectAsStateWithLifecycle()
+    val foodCategories = viewModel.foodCategories.collectAsStateWithLifecycle()
+    val specialOffers = viewModel.specialOffers.collectAsStateWithLifecycle()
+    val restaurants = viewModel.restaurants.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = true) {
+        viewModel.fetchData()
+    }
 
     Column(
         modifier = modifier
@@ -106,22 +112,29 @@ fun HomeScreen(
         )
 
         CustomSearchTextField(
-            searchText = searchText,
-            onSearchTextChanged = {},
-            onSearchButtonClicked = {}
+            searchText = searchText.value,
+            onSearchTextChanged = {
+                viewModel.onSearchTextValueChanged(it)
+            },
+            onSearchButtonClicked = {
+                viewModel.onSearchTextButtonClicked()
+            }
         )
 
         FoodCategoriesSelectionMenu(
+            foodCategories = foodCategories.value,
             onNewCategorySelected = onCategorySelected
         )
 
         AvailableSpecialOffers(
+            specialOffers = specialOffers.value,
             onSpecialOfferTapped = onSpecialOfferTapped,
             onViewAllOfferTapped = onViewAllOfferTapped,
             onBuyNowClicked = onBuyNowClicked
         )
 
         AvailableRestaurants(
+            restaurants = restaurants.value,
             onRestaurantTapped = onRestaurantTapped,
             onViewAllRestaurantsTapped = onViewAllRestaurantsTapped,
             onToggleIsFavoriteTapped = onToggleIsFavoriteTapped
@@ -147,7 +160,7 @@ private fun TopTitleBar(
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.White
             ),
-            shape = RoundedCornerShape(16.dp),
+            shape = RoundedCornerShape(8.dp),
             elevation = ButtonDefaults.buttonElevation(4.dp)
         ) {
             Icon(
@@ -155,8 +168,7 @@ private fun TopTitleBar(
                 contentDescription = "Menu Icon Button",
                 tint = IconButtonColor,
                 modifier = Modifier
-                    .width(41.6.dp)
-                    .height(40.dp)
+                    .size(24.dp)
             )
         }
 
@@ -277,6 +289,7 @@ private fun CustomSearchTextField(
 @Composable
 private fun FoodCategoriesSelectionMenu(
     modifier: Modifier = Modifier,
+    foodCategories: List<FoodCategory>,
     onNewCategorySelected: (FoodCategory) -> Unit
 ) {
     LazyRow(
@@ -319,6 +332,7 @@ private fun FoodCategoriesSelectionMenu(
 @Composable
 private fun AvailableSpecialOffers(
     modifier: Modifier = Modifier,
+    specialOffers: List<SpecialOffer>,
     onViewAllOfferTapped: () -> Unit,
     onBuyNowClicked: (SpecialOffer) -> Unit,
     onSpecialOfferTapped: (SpecialOffer) -> Unit
@@ -376,6 +390,7 @@ private fun AvailableSpecialOffers(
 @Composable
 private fun AvailableRestaurants(
     modifier: Modifier = Modifier,
+    restaurants: List<Restaurant>,
     onViewAllRestaurantsTapped: () -> Unit,
     onRestaurantTapped: (Restaurant) -> Unit,
     onToggleIsFavoriteTapped: (Restaurant) -> Unit,

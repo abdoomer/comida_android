@@ -5,7 +5,11 @@ import com.example.comida.models.SpecialOffer
 
 interface SpecialOfferDao {
 
-    fun fetchSpecialOffers(id: String) : List<SpecialOffer>
+    fun fetchDummySpecialOffers()
 
-    fun fetchSpecialOffer(id: String) : SpecialOffer
+    fun fetchAllSpecialOffers(): List<SpecialOffer>
+
+    fun setCurrentSpecialOffer(selectedOffer: SpecialOffer)
+
+    fun getCurrentSpecialOffer(): SpecialOffer
 }

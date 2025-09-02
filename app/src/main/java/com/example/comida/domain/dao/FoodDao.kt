@@ -5,7 +5,15 @@ import com.example.comida.models.FoodItem
 
 interface FoodDao {
 
-    fun fetchFoodCategory(category: String): FoodCategory
+    fun fetchDummyFoodCategories()
 
-    fun fetchFoodItem(id: String): FoodItem
+    fun fetchAllFoodCategories(): List<FoodCategory>
+
+    fun setSelectedCategory(newCategory: FoodCategory)
+
+    fun getSelectedCategory(): FoodCategory
+
+    fun setSelectedFood(newFood: FoodItem)
+
+    fun getSelectedFood(): FoodItem
 }

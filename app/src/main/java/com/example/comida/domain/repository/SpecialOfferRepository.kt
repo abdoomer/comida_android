@@ -1,21 +1,56 @@
 package com.example.comida.domain.repository
 
+import com.example.comida.di.AppCoroutineScope
 import com.example.comida.domain.dao.SpecialOfferDao
 import com.example.comida.domain.usecase.SpecialOffersUseCase
+import com.example.comida.models.ResourceResult
 import com.example.comida.models.SpecialOffer
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
 
 @Singleton
 class SpecialOfferRepository @Inject constructor(
-    private val specialOffersUseCase: SpecialOffersUseCase
+    private val specialOffersUseCase: SpecialOffersUseCase,
+    private val appCoroutineScope: AppCoroutineScope
 ): SpecialOfferDao {
-    override fun fetchSpecialOffers(id: String): List<SpecialOffer> {
-        TODO("Not yet implemented")
+
+    private val _specialOffers: MutableStateFlow<List<SpecialOffer>> = MutableStateFlow(emptyList())
+
+    private val _selectedSpecialOffer: MutableStateFlow<SpecialOffer> = MutableStateFlow<SpecialOffer>(SpecialOffer())
+
+    init {
+        fetchDummySpecialOffers()
     }
 
-    override fun fetchSpecialOffer(id: String): SpecialOffer {
-        TODO("Not yet implemented")
+    override fun fetchDummySpecialOffers(){
+        appCoroutineScope.launch {
+            specialOffersUseCase().collect { result ->
+                when(result){
+                    is ResourceResult.Loading -> {}
+                    is ResourceResult.Success -> {
+                        _specialOffers.emit(result.data)
+                    }
+                    is ResourceResult.Error -> {}
+                    else -> Unit
+                }
+            }
+        }
+    }
+
+    override fun fetchAllSpecialOffers(): List<SpecialOffer> {
+        return _specialOffers.value
+    }
+
+    override fun setCurrentSpecialOffer(selectedOffer: SpecialOffer){
+        appCoroutineScope.launch {
+            _selectedSpecialOffer.emit(selectedOffer)
+        }
+    }
+
+    override fun getCurrentSpecialOffer(): SpecialOffer {
+        return _selectedSpecialOffer.value
     }
 }

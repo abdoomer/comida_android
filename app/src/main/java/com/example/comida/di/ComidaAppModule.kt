@@ -16,6 +16,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 
 
@@ -27,6 +28,12 @@ object ComidaAppModule {
     @Singleton
     fun provideComidaApplication(@ApplicationContext context: Context): ComidaApp {
         return context as ComidaApp
+    }
+
+    @Singleton
+    @Provides
+    fun providesAppCoroutineScope() : AppCoroutineScope {
+        return AppCoroutineScope(Dispatchers.Default)
     }
 
     @Singleton

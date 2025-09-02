@@ -5,7 +5,11 @@ import com.example.comida.models.OrderItem
 
 interface OrdersDao {
 
-    fun fetchOrdersHistory() : List<OrderItem>
+    fun fetchDummyOrders()
 
-    fun fetchOrder(id: String) : OrderItem
+    fun getAllOrders(): List<OrderItem>
+
+    fun setSelectedOrder(newOrder: OrderItem)
+
+    fun getSelectedOrder(): OrderItem
 }

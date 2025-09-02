@@ -82,4 +82,7 @@ dependencies {
 
     // Coil
     implementation(libs.coil.compose)
+
+    // ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 }
