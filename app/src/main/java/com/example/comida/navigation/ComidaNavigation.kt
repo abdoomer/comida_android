@@ -7,32 +7,32 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.comida.screens.ComidaAppScreen
-import com.example.comida.screens.FoodCategoryScreen
-import com.example.comida.screens.FoodDetailsScreen
-import com.example.comida.screens.ForgetPasswordScreen
-import com.example.comida.screens.MyAccount
-import com.example.comida.screens.NotificationDetailsScreen
-import com.example.comida.screens.OTPVerificationScreen
-import com.example.comida.screens.OfferScreen
-import com.example.comida.screens.OnboardingScreen
-import com.example.comida.screens.OrderStatusScreen
-import com.example.comida.screens.OrdersHistory
+import com.example.comida.screens.navigation.ComidaAppScreen
+import com.example.comida.screens.home.FoodCategoryScreen
+import com.example.comida.screens.home.FoodDetailsScreen
+import com.example.comida.screens.auth.ForgetPasswordScreen
+import com.example.comida.screens.profile.MyAccount
+import com.example.comida.screens.notifications.NotificationDetailsScreen
+import com.example.comida.screens.auth.OTPVerificationScreen
+import com.example.comida.screens.orders.OfferScreen
+import com.example.comida.screens.onboarding.OnboardingScreen
+import com.example.comida.screens.orders.OrderDetailsScreen
+import com.example.comida.screens.orders.OrderStatusScreen
 import com.example.comida.screens.PaymentScreen
-import com.example.comida.screens.PrivacyPolicyScreen
-import com.example.comida.screens.RestaurantAvailableFoodsScreen
-import com.example.comida.screens.RestaurantScreen
-import com.example.comida.screens.RestaurantsScreen
-import com.example.comida.screens.SettingsScreen
-import com.example.comida.screens.SignInScreen
-import com.example.comida.screens.SignUpScreen
-import com.example.comida.screens.SpecialOffersScreen
-import com.example.comida.screens.TermsOfServiceScreen
+import com.example.comida.screens.profile.PrivacyPolicyScreen
+import com.example.comida.screens.home.RestaurantAvailableFoodsScreen
+import com.example.comida.screens.home.RestaurantScreen
+import com.example.comida.screens.home.RestaurantsScreen
+import com.example.comida.screens.profile.SettingsScreen
+import com.example.comida.screens.auth.SignInScreen
+import com.example.comida.screens.auth.SignUpScreen
+import com.example.comida.screens.home.SpecialOffersScreen
+import com.example.comida.screens.profile.TermsOfServiceScreen
 import com.example.comida.viewmodels.ComidaViewmodel
-import com.example.comida.viewmodels.ForgetPasswordViewModel
-import com.example.comida.viewmodels.OTPViewmodel
-import com.example.comida.viewmodels.SignInViewModel
-import com.example.comida.viewmodels.SignUpViewModel
+import com.example.comida.viewmodels.auth.ForgetPasswordViewModel
+import com.example.comida.viewmodels.auth.OTPViewmodel
+import com.example.comida.viewmodels.auth.SignInViewModel
+import com.example.comida.viewmodels.auth.SignUpViewModel
 
 
 @Composable
@@ -58,6 +58,7 @@ fun ComidaNavigation(
         val currentRestaurant = comidaViewmodel.currentSelectedRestaurant
         val availableRestaurantFoods = comidaViewmodel.currentRestaurantFoodList
         val currentOffer = comidaViewmodel.selectedSpecialOffer
+        val currentOrder = comidaViewmodel.currentSelectedOrder
 
         composable(
             route = Screens.OnboardingScreen.route
@@ -298,6 +299,17 @@ fun ComidaNavigation(
                     navController.navigate(Screens.FoodDetailsScreen.route)
                 },
                 onFoodItemAddToCartClicked = {}
+            )
+        }
+
+        composable(
+            route = Screens.OrderDetailsScreen.route
+        ){
+            OrderDetailsScreen(
+                order = currentOrder.collectAsStateWithLifecycle().value,
+                onBackButtonClicked = {
+                    navController.popBackStack()
+                }
             )
         }
     }

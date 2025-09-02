@@ -8,10 +8,12 @@ import com.example.comida.dummy.burgersCategory
 import com.example.comida.models.AppNotification
 import com.example.comida.models.FoodCategory
 import com.example.comida.models.FoodItem
+import com.example.comida.models.OrderItem
 import com.example.comida.models.Restaurant
 import com.example.comida.models.SpecialOffer
 import com.example.comida.models.appNotifications
 import com.example.comida.models.foodCategories
+import com.example.comida.models.orders
 import com.example.comida.models.restaurants
 import com.example.comida.models.specialOffers
 import com.example.comida.navigation.Screens
@@ -53,6 +55,9 @@ class ComidaViewmodel @Inject constructor(
 
     private val _currentRestaurantFoodList: MutableStateFlow<List<FoodItem>> = MutableStateFlow(emptyList())
     val currentRestaurantFoodList: StateFlow<List<FoodItem>> = _currentRestaurantFoodList
+
+    private val _currentSelectedOrder: MutableStateFlow<OrderItem> = MutableStateFlow(orders[0])
+    val currentSelectedOrder: StateFlow<OrderItem> = _currentSelectedOrder
 
 
     init {
@@ -113,6 +118,12 @@ class ComidaViewmodel @Inject constructor(
     fun updateCurrentRestaurantFoodList(foodList: List<FoodItem>){
         viewModelScope.launch {
             _currentRestaurantFoodList.emit(foodList)
+        }
+    }
+
+    fun updateCurrentSelectedOrder(currentOrder: OrderItem){
+        viewModelScope.launch {
+            _currentSelectedOrder.emit(currentOrder)
         }
     }
 }

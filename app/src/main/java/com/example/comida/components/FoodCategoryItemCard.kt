@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -84,12 +85,12 @@ fun FoodCategoryItemCard(
                     model = ImageRequest
                         .Builder(context)
                         .data(item.image)
-                        .crossfade(true)
-                        .transformations(CircleCropTransformation())
                         .build(),
                     contentDescription = item.title,
+                    contentScale = ContentScale.FillBounds,
                     placeholder = painterResource(R.drawable.ic_placeholder_image),
                     modifier = Modifier
+                        .clip(RoundedCornerShape(20.dp))
                         .size(140.dp)
                 )
 

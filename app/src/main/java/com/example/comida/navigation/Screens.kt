@@ -33,4 +33,6 @@ sealed class Screens(
     data object OfferScreen: Screens(route = "offer_screen")
 
     data object RestaurantAvailableFoodsScreen: Screens(route = "restaurant_available_foods_screen")
+
+    data object OrderDetailsScreen: Screens(route = "order_details_screen")
 }
