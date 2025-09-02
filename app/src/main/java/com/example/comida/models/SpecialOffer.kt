@@ -8,14 +8,14 @@ import com.example.comida.ui.theme.PrimaryButtonColor
 
 
 data class SpecialOffer(
-    val title: String,
-    val ratingValue: Double,
-    val isFreeDelivery: Boolean,
-    val price: Double,
-    val backgroundColor: Color,
-    @DrawableRes val offerImage: Int,
-    val description: String,
-    val deliveryTime: Double,
+    val title: String = "",
+    val ratingValue: Double = 0.0,
+    val isFreeDelivery: Boolean = false,
+    val price: Double = 0.0,
+    val backgroundColor: Color = Color.White,
+    @DrawableRes val offerImage: Int = 0,
+    val description: String = "",
+    val deliveryTime: Double = 0.0,
     )
 
 

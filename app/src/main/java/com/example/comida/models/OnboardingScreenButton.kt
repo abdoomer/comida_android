@@ -7,10 +7,10 @@ import com.example.comida.ui.theme.PrimaryTextColor
 
 
 data class OnboardingScreenButton(
-    val id: Int,
-    val text: String,
-    val backgroundColor: Color,
-    val routeDestination: String
+    val id: Int = 0,
+    val text: String = "",
+    val backgroundColor: Color = Color.White,
+    val routeDestination: String = ""
 )
 
 

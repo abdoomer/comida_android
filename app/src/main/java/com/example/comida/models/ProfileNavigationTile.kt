@@ -6,9 +6,9 @@ import com.example.comida.navigation.Screens
 
 
 data class ProfileNavigationTile(
-    val title: String,
-    val destinationRoute: String,
-    @DrawableRes val icon: Int
+    val title: String = "",
+    val destinationRoute: String = "",
+    @DrawableRes val icon: Int = 0
 )
 
 

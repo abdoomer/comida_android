@@ -11,9 +11,9 @@ import java.util.UUID
 
 data class FoodCategory(
     val categoryID: String = UUID.randomUUID().toString(),
-    val title: String,
-    val foodItems: List<FoodItem>,
-    @DrawableRes val image: Int
+    val title: String = "",
+    val foodItems: List<FoodItem> = emptyList<FoodItem>(),
+    @DrawableRes val image: Int = 0
 )
 
 

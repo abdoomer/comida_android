@@ -7,16 +7,16 @@ import java.util.UUID
 
 data class Restaurant(
     val id: String = UUID.randomUUID().toString(),
-    val name: String,
-    val description: String,
-    val isFreeDelivery: Boolean,
-    val deliveryTime: Double,
-    val isFavorites: Boolean,
-    val ratingValue: Double,
-    val category: String,
-    val availableFoods: List<FoodItem>,
-    val reviews: RestaurantReviews,
-    @DrawableRes val image: Int,
+    val name: String = "",
+    val description: String = "",
+    val isFreeDelivery: Boolean = false,
+    val deliveryTime: Double = 0.0,
+    val isFavorites: Boolean = false,
+    val ratingValue: Double = 0.0,
+    val category: String = "",
+    val availableFoods: List<FoodItem> = emptyList<FoodItem>(),
+    val reviews: RestaurantReviews = RestaurantReviews(),
+    @DrawableRes val image: Int = 0,
 )
 
 

@@ -5,10 +5,10 @@ import com.example.comida.R
 
 
 data class CustomBottomNavigationBarItem(
-    val index: Int,
+    val index: Int = 0,
     val badgeCount: Int? = null,
-    val contentDescription: String,
-    @DrawableRes val icon: Int
+    val contentDescription: String = "",
+    @DrawableRes val icon: Int = 0
 )
 
 

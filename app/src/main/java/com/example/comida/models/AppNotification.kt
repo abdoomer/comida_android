@@ -5,9 +5,9 @@ import com.example.comida.R
 
 
 data class AppNotification(
-    val title: String,
-    val description: String,
-    val date: String,
+    val title: String = "",
+    val description: String = "",
+    val date: String = "",
     val isRead: Boolean = false,
     @DrawableRes val readImage: Int = R.drawable.ic_read_notification,
     @DrawableRes val unreadImage: Int = R.drawable.ic_unread_notification,

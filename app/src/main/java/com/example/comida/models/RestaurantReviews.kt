@@ -12,6 +12,6 @@ data class RestaurantReviews(
 
 data class CustomerReview(
     val id: String = UUID.randomUUID().toString(),
-    val customerID: String,
-    val customerReviewText: String,
+    val customerID: String = "",
+    val customerReviewText: String = "",
 )

@@ -3,7 +3,7 @@ package com.example.comida.domain.dao
 import com.example.comida.models.Restaurant
 
 
-interface RestaurantDao {
+interface RestaurantsDao {
 
     fun fetchRestaurants(): List<Restaurant>
 

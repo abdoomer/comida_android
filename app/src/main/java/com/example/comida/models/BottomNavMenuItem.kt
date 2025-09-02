@@ -5,7 +5,7 @@ import com.example.comida.R
 
 data class BottomNavMenuItem(
     val badgeCount: Int? = null,
-    @DrawableRes val icon: Int
+    @DrawableRes val icon: Int = 0
 )
 
 

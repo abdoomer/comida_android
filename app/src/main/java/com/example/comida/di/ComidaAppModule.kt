@@ -43,46 +43,4 @@ object ComidaAppModule {
             sharedPreferences = sharedPreferences
         )
     }
-
-    @Singleton
-    @Provides
-    fun providesFoodCategoryUseCase() : FoodUseCase {
-        return FoodUseCase()
-    }
-
-    @Singleton
-    @Provides
-    fun providesNotificationsUseCase() : NotificationsUseCase {
-        return NotificationsUseCase()
-    }
-
-    @Singleton
-    @Provides
-    fun providesRestaurantsUseCase() : RestaurantsUseCase {
-        return RestaurantsUseCase()
-    }
-
-    @Singleton
-    @Provides
-    fun providesSpecialOffersUseCase() : SpecialOffersUseCase {
-        return SpecialOffersUseCase()
-    }
-
-    @Singleton
-    @Provides
-    fun providesCartUseCase() : CartUseCase {
-        return CartUseCase()
-    }
-
-    @Singleton
-    @Provides
-    fun providesOrdersUseCase() : OrdersUseCase {
-        return OrdersUseCase()
-    }
-
-    @Singleton
-    @Provides
-    fun providesPaymentUseCase() : PaymentUseCase {
-        return PaymentUseCase()
-    }
 }

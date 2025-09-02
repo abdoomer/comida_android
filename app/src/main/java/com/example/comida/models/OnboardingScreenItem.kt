@@ -13,17 +13,17 @@ import com.example.comida.ui.theme.PrimaryTextColor
 
 
 data class OnboardingScreenItem(
-    val id: Int,
-    val descriptionText: String,
+    val id: Int = 0,
+    val descriptionText: String = "",
     val descriptionTextColor: Color = PrimaryTextColor,
     val imageTopRight: Boolean = true,
-    val imageWidth: Dp,
-    val imageHeight: Dp,
-    val backgroundColor: Color,
-    val displayImageYOffset:  Dp,
-    val descriptionTextYOffset:  Dp,
-    @DrawableRes val backgroundImage: Int,
-    @DrawableRes val displayImage: Int
+    val imageWidth: Dp = 0.dp,
+    val imageHeight: Dp = 0.dp,
+    val backgroundColor: Color = Color.White,
+    val displayImageYOffset: Dp = 0.dp,
+    val descriptionTextYOffset: Dp = 0.dp,
+    @DrawableRes val backgroundImage: Int = 0,
+    @DrawableRes val displayImage: Int = 0
 )
 
 

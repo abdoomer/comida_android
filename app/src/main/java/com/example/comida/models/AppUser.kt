@@ -5,11 +5,11 @@ import com.example.comida.R
 
 
 data class AppUser(
-    val firstName: String,
-    val lastName: String,
-    val username: String,
-    val email: String,
-    @DrawableRes val profilePicture: Int
+    val firstName: String = "",
+    val lastName: String = "",
+    val username: String = "",
+    val email: String = "",
+    @DrawableRes val profilePicture: Int = 0
 )
 
 

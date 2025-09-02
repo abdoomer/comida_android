@@ -6,20 +6,20 @@ import java.util.UUID
 
 data class FoodItem(
     val id: String = UUID.randomUUID().toString(),
-    val categoryID: String,
-    val title: String,
-    val description: String,
-    val image: String,
-    val price: Double,
-    val ratingValue: Double,
-    var discountPercentage: Double,
-    var weight: Double,
-    val isFreeDelivery: Boolean,
-    val deliveryTime: Double,
-    val deliveryFees: Double,
-    val isFavorites: Boolean,
+    val categoryID: String = "",
+    val title: String = "",
+    val description: String = "",
+    val image: String = "",
+    val price: Double = 0.0,
+    val ratingValue: Double = 0.0,
+    var discountPercentage: Double = 0.0,
+    var weight: Double = 0.0,
+    val isFreeDelivery: Boolean = false,
+    val deliveryTime: Double = 0.0,
+    val deliveryFees: Double = 0.0,
+    val isFavorites: Boolean = false,
     val restaurant: Restaurant? = null,
-    var addOns: List<FoodAddOn>
+    var addOns: List<FoodAddOn> = emptyList<FoodAddOn>()
 )
 
 
