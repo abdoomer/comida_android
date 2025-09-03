@@ -12,6 +12,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,6 +20,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.models.AppNotification
 import com.example.comida.models.appNotifications
@@ -29,15 +32,23 @@ import com.example.comida.ui.theme.SmallLabelTextColor
 import com.example.comida.ui.theme.bebasFamily
 import com.example.comida.ui.theme.poppinsFamily
 import com.example.comida.ui.theme.sofiaFamily
+import com.example.comida.viewmodels.notifications.NotificationDetailsViewModel
 
 
 @Composable
 fun NotificationDetailsScreen(
     modifier: Modifier = Modifier,
-    notification: AppNotification,
     onBackButtonClicked: () -> Unit,
     onMarkAsReadClicked: (AppNotification) -> Unit
 ){
+
+    val viewModel: NotificationDetailsViewModel = hiltViewModel()
+    val notification = viewModel.notification.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = true) {
+        viewModel.fetNotification()
+    }
+
     Scaffold(
         modifier = modifier
             .fillMaxSize()
@@ -62,7 +73,7 @@ fun NotificationDetailsScreen(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = notification.title,
+                    text = notification.value.title,
                     fontFamily = poppinsFamily,
                     fontSize = 26.sp,
                     fontWeight = FontWeight.Bold,
@@ -71,7 +82,7 @@ fun NotificationDetailsScreen(
 
                 TextButton(
                     onClick = {
-                        onMarkAsReadClicked(notification)
+                        onMarkAsReadClicked(notification.value)
                     }
                 ) {
                     Text(
@@ -87,7 +98,7 @@ fun NotificationDetailsScreen(
             Text(
                 modifier = Modifier
                     .padding(horizontal = 16.dp),
-                text = notification.description,
+                text = notification.value.description,
                 fontFamily = sofiaFamily,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Normal,
@@ -100,7 +111,7 @@ fun NotificationDetailsScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = notification.date,
+                    text = notification.value.date,
                     fontFamily = bebasFamily,
                     fontWeight = FontWeight.Medium,
                     fontSize = 16.sp,
@@ -118,7 +129,6 @@ fun NotificationDetailsScreen(
 private fun NotificationDetailsScreenPreview(){
     ComidaTheme {
         NotificationDetailsScreen(
-            notification = appNotifications[0],
             onBackButtonClicked = {},
             onMarkAsReadClicked = {}
         )

@@ -36,6 +36,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import coil.transform.CircleCropTransformation
@@ -53,14 +55,18 @@ import com.example.comida.ui.theme.SmallLabelTextColor
 import com.example.comida.ui.theme.bebasFamily
 import com.example.comida.ui.theme.poppinsFamily
 import com.example.comida.ui.theme.sofiaFamily
+import com.example.comida.viewmodels.home.FoodDetailsViewModel
 
 
 @Composable
 fun FoodDetailsScreen(
     modifier: Modifier = Modifier,
-    item: FoodItem,
     onBackButtonClicked: () -> Unit
 ){
+    
+    val viewModel: FoodDetailsViewModel = hiltViewModel()
+    val item = viewModel.item.collectAsStateWithLifecycle()
+
     Scaffold(
         modifier = modifier
             .fillMaxSize()
@@ -74,7 +80,7 @@ fun FoodDetailsScreen(
             FoodDetails(
                 modifier = Modifier
                     .align(Alignment.TopCenter),
-                item = item,
+                item = item.value,
                 onBackButtonClicked = onBackButtonClicked,
                 onToggleFavouritesClicked = {}
             )
@@ -83,7 +89,7 @@ fun FoodDetailsScreen(
             FoodAddOnItems(
                 modifier = Modifier
                     .align(Alignment.BottomCenter),
-                addOns = item.addOns,
+                addOns = item.value.addOns,
                 onAddOnClicked = {},
                 onAddItemToCartClicked = {},
                 onIncreaseAddOnQuantityClicked = {},
@@ -444,7 +450,6 @@ private fun AddOnCell(
 private fun FoodDetailsScreenPreview(){
     ComidaTheme {
         FoodDetailsScreen(
-            item = burgersCategory[0],
             onBackButtonClicked = {}
         )
     }

@@ -16,7 +16,7 @@ import com.example.comida.navigation.Screens
 import com.example.comida.screens.cart.CartScreen
 import com.example.comida.screens.home.HomeScreen
 import com.example.comida.screens.notifications.NotificationsScreen
-import com.example.comida.screens.orders.OrdersHistory
+import com.example.comida.screens.orders.OrdersHistoryScreen
 import com.example.comida.screens.profile.ProfileScreen
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.viewmodels.ComidaViewmodel
@@ -49,16 +49,13 @@ fun ComidaAppScreen(
                 HomeScreen(
                     paddingValues = innerPadding,
                     onCategorySelected = {
-                        viewmodel.updateSelectedCategory(it)
                         navController.navigate(Screens.FoodCategoryScreen.route)
                     },
                     onBuyNowClicked = {},
                     onSpecialOfferTapped = {
-                        viewmodel.updateCurrentSelectedSpecialOffer(it)
                         navController.navigate(Screens.OfferScreen.route)
                     },
                     onRestaurantTapped = {
-                        viewmodel.updateCurrentSelectedRestaurant(it)
                         navController.navigate(Screens.RestaurantScreen.route)
                     },
                     onToggleIsFavoriteTapped = {},
@@ -77,10 +74,9 @@ fun ComidaAppScreen(
                 )
             }
             2 -> {
-                OrdersHistory(
+                OrdersHistoryScreen(
                     paddingValues = innerPadding,
                     onOrderClicked = {
-                        viewmodel.updateCurrentSelectedOrder(it)
                         navController.navigate(Screens.OrderDetailsScreen.route)
                     }
                 )
@@ -95,7 +91,6 @@ fun ComidaAppScreen(
                 NotificationsScreen(
                     paddingValues = innerPadding,
                     onNotificationClicked = {
-                        viewmodel.updateCurrentNotification(it)
                         navController.navigate(Screens.NotificationDetailsScreen.route)
                     },
                     onBackButtonClicked = {

@@ -73,4 +73,22 @@ class HomeViewModel @Inject constructor(
     }
 
     fun onSearchTextButtonClicked(){}
+
+    fun updateSelectedFoodCategory(newCategory: FoodCategory){
+        viewModelScope.launch {
+            foodRepository.setSelectedCategory(newCategory)
+        }
+    }
+
+    fun updateCurrentSelectedSpecialOffer(newOffer: SpecialOffer){
+        viewModelScope.launch {
+            specialOfferRepository.setCurrentSpecialOffer(newOffer)
+        }
+    }
+
+    fun updateCurrentSelectedRestaurant(newRestaurant: Restaurant){
+        viewModelScope.launch {
+            restaurantsRepository.setSelectedRestaurant(newRestaurant)
+        }
+    }
 }

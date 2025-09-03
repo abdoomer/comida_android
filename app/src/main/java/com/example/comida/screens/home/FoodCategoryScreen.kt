@@ -19,6 +19,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -28,24 +29,32 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.R
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.components.FoodCategoryItemCard
-import com.example.comida.models.FoodCategory
 import com.example.comida.models.FoodItem
-import com.example.comida.models.foodCategories
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.PrimaryTextColor
 import com.example.comida.ui.theme.poppinsFamily
+import com.example.comida.viewmodels.home.FoodCategoryViewModel
 
 
 @Composable
 fun FoodCategoryScreen(
     modifier: Modifier = Modifier,
-    category: FoodCategory,
     onBackButtonClicked: () -> Unit,
     onFoodItemClicked: (FoodItem) -> Unit,
 ){
+
+    val viewModel: FoodCategoryViewModel = hiltViewModel()
+    val category = viewModel.category.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = true) {
+        viewModel.fetchSelectedFoodCategory()
+    }
+
     Scaffold(
         modifier = modifier
             .fillMaxSize()
@@ -57,7 +66,7 @@ fun FoodCategoryScreen(
                 .padding(innerPadding)
         ) {
             CustomTopAppTitleBar(
-                title = category.title,
+                title = category.value.title,
                 haveBackButton = true,
                 onBackButtonPressed = onBackButtonClicked
             )
@@ -72,10 +81,13 @@ fun FoodCategoryScreen(
                 modifier = Modifier,
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                items(category.foodItems){ item ->
+                items(category.value.foodItems){ item ->
                     FoodCategoryItemCard(
                         item = item,
-                        onItemClicked = onFoodItemClicked,
+                        onItemClicked = {
+                            viewModel.updateCurrentSelectedFood(it)
+                            onFoodItemClicked(it)
+                        },
                         onAddToCartClicked = {}
                     )
                 }
@@ -187,7 +199,6 @@ private fun CategoryFilter(
 private fun FoodCategoryScreenPreview(){
     ComidaTheme {
         FoodCategoryScreen(
-            category = foodCategories[0],
             onBackButtonClicked = {},
             onFoodItemClicked = {}
         )

@@ -17,6 +17,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,15 +26,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.models.AppNotification
-import com.example.comida.models.appNotifications
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.PrimaryButtonColor
 import com.example.comida.ui.theme.PrimaryTextColor
 import com.example.comida.ui.theme.SmallLabelTextColor
 import com.example.comida.ui.theme.poppinsFamily
 import com.example.comida.ui.theme.sofiaFamily
+import com.example.comida.viewmodels.notifications.NotificationsViewModel
 
 
 @Composable
@@ -43,6 +46,14 @@ fun NotificationsScreen(
     onBackButtonClicked: () -> Unit,
     onNotificationClicked: (AppNotification) -> Unit
 ){
+
+    val viewModel: NotificationsViewModel = hiltViewModel()
+    val notifications = viewModel.appNotifications.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = true) {
+        viewModel.fetchAllNotifications()
+    }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -61,10 +72,13 @@ fun NotificationsScreen(
                 .padding(top = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(appNotifications){ notification ->
+            items(notifications.value){ notification ->
                 AppNotificationCard(
                     notification = notification,
-                    onClicked = onNotificationClicked
+                    onClicked = {
+                        viewModel.updateCurrentNotification(it)
+                        onNotificationClicked
+                    }
                 )
             }
         }

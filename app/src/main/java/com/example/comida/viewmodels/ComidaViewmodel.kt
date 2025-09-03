@@ -36,27 +36,6 @@ class ComidaViewmodel @Inject constructor(
     private val _currentPage: MutableStateFlow<Int> = MutableStateFlow(0)
     val currentPage: StateFlow<Int> = _currentPage
 
-    private val _selectedCategory: MutableStateFlow<FoodCategory> = MutableStateFlow<FoodCategory>(foodCategories[0])//
-    val selectedCategory: StateFlow<FoodCategory> = _selectedCategory
-
-    private val _currentSelectedFood: MutableStateFlow<FoodItem> = MutableStateFlow(burgersCategory[0])//
-    val currentSelectedFood: StateFlow<FoodItem> = _currentSelectedFood
-
-    private val _selectedSpecialOffer: MutableStateFlow<SpecialOffer> = MutableStateFlow<SpecialOffer>(specialOffers[0])
-    val selectedSpecialOffer: StateFlow<SpecialOffer> = _selectedSpecialOffer
-
-    private val _currentSelectedRestaurant: MutableStateFlow<Restaurant> = MutableStateFlow(restaurants[0])
-    val currentSelectedRestaurant: StateFlow<Restaurant> = _currentSelectedRestaurant
-
-    private val _currentSelectedNotification: MutableStateFlow<AppNotification> = MutableStateFlow(appNotifications[0])
-    val currentSelectedNotification: StateFlow<AppNotification> = _currentSelectedNotification
-
-    private val _currentRestaurantFoodList: MutableStateFlow<List<FoodItem>> = MutableStateFlow(emptyList())
-    val currentRestaurantFoodList: StateFlow<List<FoodItem>> = _currentRestaurantFoodList
-
-    private val _currentSelectedOrder: MutableStateFlow<OrderItem> = MutableStateFlow(orders[0])
-    val currentSelectedOrder: StateFlow<OrderItem> = _currentSelectedOrder
-
 
     init {
         getAppStartDestination()
@@ -80,48 +59,6 @@ class ComidaViewmodel @Inject constructor(
     fun updateCurrentPage(index: Int){
         viewModelScope.launch {
             _currentPage.emit(index)
-        }
-    }
-
-    fun updateSelectedCategory(newCategory: FoodCategory){
-        viewModelScope.launch {
-            _selectedCategory.emit(newCategory)
-        }
-    }
-
-    fun updateCurrentSelectedFood(item: FoodItem){
-        viewModelScope.launch {
-            _currentSelectedFood.emit(item)
-        }
-    }
-
-    fun updateCurrentSelectedSpecialOffer(newOffer: SpecialOffer){
-        viewModelScope.launch {
-            _selectedSpecialOffer.emit(newOffer)
-        }
-    }
-
-    fun updateCurrentSelectedRestaurant(newRestaurant: Restaurant){
-        viewModelScope.launch {
-            _currentSelectedRestaurant.emit(newRestaurant)
-        }
-    }
-
-    fun updateCurrentNotification(newNotification: AppNotification){
-        viewModelScope.launch {
-            _currentSelectedNotification.emit(newNotification)
-        }
-    }
-
-    fun updateCurrentRestaurantFoodList(foodList: List<FoodItem>){
-        viewModelScope.launch {
-            _currentRestaurantFoodList.emit(foodList)
-        }
-    }
-
-    fun updateCurrentSelectedOrder(currentOrder: OrderItem){
-        viewModelScope.launch {
-            _currentSelectedOrder.emit(currentOrder)
         }
     }
 }

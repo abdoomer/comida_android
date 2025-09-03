@@ -19,6 +19,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,25 +30,35 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.models.OrderItem
-import com.example.comida.models.orders
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.PrimaryButtonColor
 import com.example.comida.ui.theme.PrimaryTextColor
 import com.example.comida.ui.theme.SmallLabelTextColor
 import com.example.comida.ui.theme.poppinsFamily
 import com.example.comida.ui.theme.sofiaFamily
+import com.example.comida.viewmodels.orders.OrdersHistoryViewModel
 
 
 @Composable
-fun OrdersHistory(
+fun OrdersHistoryScreen(
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues,
     onOrderClicked: (OrderItem) -> Unit
 ){
+
+    val viewModel: OrdersHistoryViewModel = hiltViewModel()
+    val orders = viewModel.orders.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = true) {
+        viewModel.fetchOrdersHistory()
+    }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -61,8 +72,11 @@ fun OrdersHistory(
         )
 
         OrderItemsList(
-            orders = orders,
-            onOrderItemClicked = onOrderClicked
+            orders = orders.value,
+            onOrderItemClicked = {
+                viewModel.updateCurrentSelectedOrder(it)
+                onOrderClicked
+            }
         )
     }
 }
@@ -160,7 +174,7 @@ private fun OrderItemsList(
 @Preview(showBackground = true, showSystemUi = true)
 private fun OrdersHistoryPreview(){
     ComidaTheme {
-        OrdersHistory(
+        OrdersHistoryScreen(
             paddingValues = PaddingValues(),
             onOrderClicked = {}
         )

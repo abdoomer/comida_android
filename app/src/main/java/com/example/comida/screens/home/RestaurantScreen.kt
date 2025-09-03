@@ -22,6 +22,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -32,6 +33,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import coil.transform.CircleCropTransformation
@@ -49,18 +52,26 @@ import com.example.comida.ui.theme.SmallLabelTextColor
 import com.example.comida.ui.theme.bebasFamily
 import com.example.comida.ui.theme.poppinsFamily
 import com.example.comida.ui.theme.sofiaFamily
+import com.example.comida.viewmodels.home.RestaurantViewModel
 
 
 @Composable
 fun RestaurantScreen(
     modifier: Modifier = Modifier,
-    restaurant: Restaurant,
     onBackButtonClicked: () -> Unit,
     onToggleFavouritesClicked: (Restaurant) -> Unit,
     onViewAllFoodsTapped: (List<FoodItem>) -> Unit,
     onFoodItemClicked: (FoodItem) -> Unit,
     onFoodItemAddToCartClicked: (FoodItem) -> Unit,
 ){
+
+    val viewModel: RestaurantViewModel = hiltViewModel()
+    val restaurant = viewModel.restaurant.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = true) {
+        viewModel.fetchRestaurant()
+    }
+
     Scaffold(
         modifier = modifier
             .fillMaxSize()
@@ -78,18 +89,19 @@ fun RestaurantScreen(
             )
 
             RestaurantImage(
-                restaurant = restaurant,
+                restaurant = restaurant.value,
                 onToggleFavouritesClicked = onToggleFavouritesClicked
             )
 
             RestaurantInformation(
-                restaurant = restaurant
+                restaurant = restaurant.value
             )
 
             RestaurantAvailableFood(
-                availableFoods = restaurant.availableFoods,
+                availableFoods = restaurant.value.availableFoods,
                 onViewAllFoodsTapped = {
-                    onViewAllFoodsTapped(restaurant.availableFoods)
+                    viewModel.updateCurrentRestaurantFoodList(restaurant.value.availableFoods)
+                    onViewAllFoodsTapped(restaurant.value.availableFoods)
                 },
                 onFoodItemClicked = onFoodItemClicked,
                 onFoodItemAddToCartClicked = onFoodItemAddToCartClicked
@@ -332,7 +344,6 @@ private fun RestaurantAvailableFood(
 private fun RestaurantScreenPreview(){
     ComidaTheme {
         RestaurantScreen(
-            restaurant = restaurants[0],
             onBackButtonClicked = {},
             onToggleFavouritesClicked = {},
             onViewAllFoodsTapped = {},

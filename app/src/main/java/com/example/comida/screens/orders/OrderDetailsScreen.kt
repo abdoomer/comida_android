@@ -6,21 +6,30 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.components.CustomTopAppTitleBar
-import com.example.comida.models.OrderItem
-import com.example.comida.models.orders
 import com.example.comida.ui.theme.ComidaTheme
+import com.example.comida.viewmodels.orders.OrderDetailsViewModel
 
 
 @Composable
 fun OrderDetailsScreen(
     modifier: Modifier = Modifier,
-    order: OrderItem,
     onBackButtonClicked: () -> Unit
 ){
+
+    val viewModel: OrderDetailsViewModel = hiltViewModel()
+    val order = viewModel.order.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = true) {
+        viewModel.fetchOrder()
+    }
+
     Scaffold(
         modifier = modifier
             .fillMaxSize()
@@ -48,7 +57,6 @@ fun OrderDetailsScreen(
 fun OrderDetailsScreenPreview(){
     ComidaTheme {
         OrderDetailsScreen(
-            order = orders[0],
             onBackButtonClicked = {}
         )
     }

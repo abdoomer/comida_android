@@ -17,6 +17,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,6 +27,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import coil.transform.CircleCropTransformation
@@ -41,14 +44,22 @@ import com.example.comida.ui.theme.SmallLabelTextColor
 import com.example.comida.ui.theme.bebasFamily
 import com.example.comida.ui.theme.poppinsFamily
 import com.example.comida.ui.theme.sofiaFamily
+import com.example.comida.viewmodels.home.OfferViewModel
 
 
 @Composable
 fun OfferScreen(
     modifier: Modifier = Modifier,
-    offer: SpecialOffer,
     onBackButtonClicked: () -> Unit
 ){
+
+    val viewModel: OfferViewModel = hiltViewModel()
+    val offer = viewModel.offer.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = true) {
+        viewModel.fetchOffer()
+    }
+
     Scaffold(
         modifier = modifier
             .fillMaxSize()
@@ -67,11 +78,11 @@ fun OfferScreen(
             )
 
             OfferImage(
-                offer = offer
+                offer = offer.value
             )
 
             OfferInformation(
-                offer = offer
+                offer = offer.value
             )
         }
     }
@@ -234,7 +245,6 @@ private fun OfferInformation(
 private fun OfferScreenPreview(){
     ComidaTheme {
         OfferScreen(
-            offer = specialOffers[0],
             onBackButtonClicked = {}
         )
     }

@@ -52,14 +52,6 @@ fun ComidaNavigation(
         navController = navController,
         startDestination = startDestination
     ) {
-
-        val currentFoodItem = comidaViewmodel.currentSelectedFood
-        val currentNotification = comidaViewmodel.currentSelectedNotification
-        val currentRestaurant = comidaViewmodel.currentSelectedRestaurant
-        val availableRestaurantFoods = comidaViewmodel.currentRestaurantFoodList
-        val currentOffer = comidaViewmodel.selectedSpecialOffer
-        val currentOrder = comidaViewmodel.currentSelectedOrder
-
         composable(
             route = Screens.OnboardingScreen.route
         ){
@@ -128,7 +120,6 @@ fun ComidaNavigation(
             route = Screens.FoodDetailsScreen.route
         ){
             FoodDetailsScreen(
-                item = currentFoodItem.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
@@ -202,7 +193,6 @@ fun ComidaNavigation(
             route = Screens.NotificationDetailsScreen.route
         ){
             NotificationDetailsScreen(
-                notification = currentNotification.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 },
@@ -218,7 +208,6 @@ fun ComidaNavigation(
                     navController.popBackStack()
                 },
                 onRestaurantTapped = {
-                    comidaViewmodel.updateCurrentSelectedRestaurant(it)
                     navController.navigate(Screens.RestaurantScreen.route)
                 },
                 onToggleIsFavoriteTapped = {}
@@ -233,7 +222,6 @@ fun ComidaNavigation(
                     navController.popBackStack()
                 },
                 onSpecialOfferTapped = {
-                    comidaViewmodel.updateCurrentSelectedSpecialOffer(it)
                     navController.navigate(Screens.OfferScreen.route)
                 },
                 onBuyNowClicked = {}
@@ -243,15 +231,11 @@ fun ComidaNavigation(
         composable(
             route = Screens.FoodCategoryScreen.route
         ){
-            val foodCategory = comidaViewmodel.selectedCategory.collectAsStateWithLifecycle()
-
             FoodCategoryScreen(
-                category = foodCategory.value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 },
                 onFoodItemClicked = {
-                    comidaViewmodel.updateCurrentSelectedFood(it)
                     navController.navigate(Screens.FoodDetailsScreen.route)
                 }
             )
@@ -261,13 +245,11 @@ fun ComidaNavigation(
             route = Screens.RestaurantScreen.route
         ){
             RestaurantScreen(
-                restaurant = currentRestaurant.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 },
                 onToggleFavouritesClicked = {},
                 onViewAllFoodsTapped = {
-                    comidaViewmodel.updateCurrentRestaurantFoodList(it)
                     navController.navigate(Screens.RestaurantAvailableFoodsScreen.route)
                 },
                 onFoodItemClicked = {},
@@ -279,7 +261,6 @@ fun ComidaNavigation(
             route = Screens.OfferScreen.route
         ){
             OfferScreen(
-                offer = currentOffer.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
@@ -290,12 +271,10 @@ fun ComidaNavigation(
             route = Screens.RestaurantAvailableFoodsScreen.route
         ){
             RestaurantAvailableFoodsScreen(
-                availableFoods = availableRestaurantFoods.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 },
                 onFoodItemClicked = {
-                    comidaViewmodel.updateCurrentSelectedFood(it)
                     navController.navigate(Screens.FoodDetailsScreen.route)
                 },
                 onFoodItemAddToCartClicked = {}
@@ -306,7 +285,6 @@ fun ComidaNavigation(
             route = Screens.OrderDetailsScreen.route
         ){
             OrderDetailsScreen(
-                order = currentOrder.collectAsStateWithLifecycle().value,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }

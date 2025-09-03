@@ -121,19 +121,28 @@ fun HomeScreen(
 
         FoodCategoriesSelectionMenu(
             foodCategories = foodCategories.value,
-            onNewCategorySelected = onCategorySelected
+            onNewCategorySelected = {
+                viewModel.updateSelectedFoodCategory(it)
+                onCategorySelected(it)
+            }
         )
 
         AvailableSpecialOffers(
             specialOffers = specialOffers.value,
-            onSpecialOfferTapped = onSpecialOfferTapped,
+            onSpecialOfferTapped = {
+                viewModel.updateCurrentSelectedSpecialOffer(it)
+                onSpecialOfferTapped(it)
+            },
             onViewAllOfferTapped = onViewAllOfferTapped,
             onBuyNowClicked = onBuyNowClicked
         )
 
         AvailableRestaurants(
             restaurants = restaurants.value,
-            onRestaurantTapped = onRestaurantTapped,
+            onRestaurantTapped = {
+                viewModel.updateCurrentSelectedRestaurant(it)
+                onRestaurantTapped(it)
+            },
             onViewAllRestaurantsTapped = onViewAllRestaurantsTapped,
             onToggleIsFavoriteTapped = onToggleIsFavoriteTapped
         )
