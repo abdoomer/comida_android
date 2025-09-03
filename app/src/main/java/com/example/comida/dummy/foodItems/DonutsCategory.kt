@@ -1,7 +1,7 @@
 package com.example.comida.dummy.foodItems
 
+import com.example.comida.dummy.foodAddOns.donutsFoodAddOns
 import com.example.comida.models.FoodItem
-import com.example.comida.models.donatsFoodAddOns
 import kotlin.random.Random
 
 
@@ -18,7 +18,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://sugargeekshow.com/wp-content/uploads/2020/09/cake_donut_recipe_featured2.jpg",
     ),
     FoodItem(
@@ -33,7 +33,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://assets.epicurious.com/photos/54b026ee766062b20344655e/6:4/w_1010,h_673,c_limit/51157200_french-crullers_1x1.jpg",
     ),
     FoodItem(
@@ -48,7 +48,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRSHybwf1d5KjQcicHAYx2jrYUKioGUSviBQ&s",
     ),
     FoodItem(
@@ -63,7 +63,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://www.littlesweetbaker.com/wp-content/uploads/2020/04/old-fashioned-donuts-1.jpg",
     ),
     FoodItem(
@@ -78,7 +78,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXHWen6NdXvsU474nwr3DDghL7HfF1iIk2MLmclu-j9IPDZzlGilcXkEiSshy8VgRZEGQ&usqp=CAU"
     ),
     FoodItem(
@@ -93,7 +93,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://bakerbynature.com/wp-content/uploads/2021/08/Boston-Cream-Donuts-1-1-of-1.jpg",
     ),
     FoodItem(
@@ -108,7 +108,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaMASdXAnOHCfMIuy59kKwX-bcbegb87GcfA&s",
     ),
     FoodItem(
@@ -123,7 +123,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_4:3/k%2FPhoto%2FRecipe%20Ramp%20Up%2F2021-10-Donut-Holes%2Fkitchnoctkitchnoct3958-1",
     ),
     FoodItem(
@@ -138,7 +138,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3uXKceQJTlgD-AilQk_uYggdC3fzg1hn7DA&s",
     ),
     FoodItem(
@@ -153,7 +153,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4U3sV3jXbmu97WNZuOiPnsEqs8d-REZgK9Q&s",
     ),
     FoodItem(
@@ -168,7 +168,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://cardamomandtea.com/wp-content/uploads/2021/06/IMG_2059-min.jpg",
     ),
     FoodItem(
@@ -183,7 +183,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://whiskfullyso.com/wp-content/uploads/2021/02/Strawberry-Vanilla-Cronut-10.jpg",
     ),
     FoodItem(
@@ -198,7 +198,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://www.smalltownwoman.com/wp-content/uploads/2019/04/Apple-Fritters-DSC_0145-4.jpg",
     ),
     FoodItem(
@@ -213,7 +213,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://tatyanaseverydayfood.com/wp-content/uploads/2022/10/Sea-Salt-Caramel-Beignets-Recipe-2.jpg",
     ),
     FoodItem(
@@ -228,7 +228,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://www.barbarabakes.com/wp-content/uploads/2022/11/chocolate-glazed-donuts-recipe-35-of-38-500x500.jpg",
     ),
     FoodItem(
@@ -243,7 +243,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThkpjj5DG9VPDUqFK4RgtuHzq_maU85Y0ckw&s",
     ),
     FoodItem(
@@ -258,7 +258,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxoU7dgUlj2-WWVIKPPg8fxS77d2Lj3CAKmg&s",
     ),
     FoodItem(
@@ -273,7 +273,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://thebigmansworld.com/wp-content/uploads/2022/07/mochi-donut-recipe.jpg",
     ),
     FoodItem(
@@ -288,7 +288,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://mikebakesnyc.com/wp-content/uploads/2018/05/Photo-Aug-05-6-47-01-PM-683x1024.jpg",
     ),
     FoodItem(
@@ -303,7 +303,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT44JGaH0kSszybA8Yb2VjL3vN0rl9kUcqF2g&s",
     ),
     FoodItem(
@@ -318,7 +318,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://gluttodigest.com/wp-content/uploads/2020/12/zeppole-italian-donut-holes-720x540.jpg",
     ),
     FoodItem(
@@ -333,7 +333,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://preppykitchen.com/wp-content/uploads/2022/03/Zeppole-Blog2.jpg",
     ),
     FoodItem(
@@ -348,7 +348,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpNEvm_a3sxD1Wlf81d17uxd8QUeR-IoPU9w&s",
     ),
     FoodItem(
@@ -363,7 +363,7 @@ val donutsCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = donatsFoodAddOns,
+        addOns = donutsFoodAddOns,
         image = "https://bakeitwithlove.com/wp-content/uploads/2022/09/lemon-sugar-baked-donuts-sq-500x500.jpg",
     ),
 )

@@ -19,14 +19,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.example.comida.R
 import com.example.comida.models.SpecialOffer
-import com.example.comida.models.specialOffers
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.OfferBuyNowButtonColor
 import com.example.comida.ui.theme.OfferSmallLabelColor
@@ -42,6 +44,9 @@ fun SpecialOfferCard(
     onSpecialOfferTapped: (SpecialOffer) -> Unit,
     onBuyNowClicked: (SpecialOffer) -> Unit,
 ){
+
+    val context = LocalContext.current
+
     Card(
         modifier = modifier
             .fillMaxWidth(0.85f)
@@ -59,8 +64,11 @@ fun SpecialOfferCard(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(16.dp, alignment = Alignment.CenterHorizontally)
         ) {
-            Image(
-                painter = painterResource(offer.offerImage),
+            AsyncImage(
+                model = ImageRequest
+                    .Builder(context)
+                    .data(offer.offerImage)
+                    .build(),
                 contentDescription = offer.title,
                 contentScale = ContentScale.FillBounds,
                 modifier = Modifier
@@ -167,10 +175,10 @@ fun SpecialOfferCard(
 @Preview(showBackground = true, showSystemUi = true)
 fun SpecialOfferCardPreview(){
     ComidaTheme {
-        SpecialOfferCard(
-            offer = specialOffers[0],
-            onSpecialOfferTapped = {},
-            onBuyNowClicked = {}
-        )
+//        SpecialOfferCard(
+//            offer = specialOffers[0],
+//            onSpecialOfferTapped = {},
+//            onBuyNowClicked = {}
+//        )
     }
 }

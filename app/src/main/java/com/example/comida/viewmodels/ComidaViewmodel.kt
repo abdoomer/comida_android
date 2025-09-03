@@ -2,18 +2,6 @@ package com.example.comida.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.comida.dummy.foodItems.burgersCategory
-import com.example.comida.models.AppNotification
-import com.example.comida.models.FoodCategory
-import com.example.comida.models.FoodItem
-import com.example.comida.models.OrderItem
-import com.example.comida.models.Restaurant
-import com.example.comida.models.SpecialOffer
-import com.example.comida.models.appNotifications
-import com.example.comida.models.foodCategories
-import com.example.comida.models.orders
-import com.example.comida.models.restaurants
-import com.example.comida.models.specialOffers
 import com.example.comida.navigation.Screens
 import com.example.comida.services.ComidaSharedPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel

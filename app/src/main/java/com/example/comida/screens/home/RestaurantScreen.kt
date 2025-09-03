@@ -43,7 +43,6 @@ import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.components.FoodCategoryItemCard
 import com.example.comida.models.FoodItem
 import com.example.comida.models.Restaurant
-import com.example.comida.models.restaurants
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.OnboardingBackgroundColor3
 import com.example.comida.ui.theme.PrimaryButtonColor

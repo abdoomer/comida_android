@@ -1,5 +1,6 @@
 package com.example.comida.domain.repository
 
+import android.util.Log
 import com.example.comida.di.AppCoroutineScope
 import com.example.comida.domain.dao.FoodDao
 import com.example.comida.domain.usecase.FoodUseCase
@@ -61,11 +62,13 @@ class FoodRepository @Inject constructor(
 
     override fun setSelectedFood(newFood: FoodItem) {
         appCoroutineScope.launch {
+            Log.d("FoodRepository", "setting selected food")
             _currentSelectedFood.emit(newFood)
         }
     }
 
     override fun getSelectedFood(): FoodItem {
+        Log.d("FoodRepository", "getting selected food")
         return _currentSelectedFood.value
     }
 }

@@ -10,25 +10,3 @@ data class OrderItem(
     val itemsCount: Int = 0,
     val date: String = "",
 )
-
-
-var orders = listOf<OrderItem>(
-    OrderItem(
-        restaurant = restaurants[0],
-        orderItems = restaurants[0].availableFoods,
-        itemsCount = restaurants[0].availableFoods.size,
-        date = "Dec 16, 2025"
-    ),
-    OrderItem(
-        restaurant = restaurants[1],
-        orderItems = restaurants[1].availableFoods,
-        itemsCount = restaurants[1].availableFoods.size,
-        date = "Dec 16, 2025"
-    ),
-    OrderItem(
-        restaurant = restaurants[0],
-        orderItems = restaurants[0].availableFoods,
-        itemsCount = restaurants[0].availableFoods.size,
-        date = "Dec 16, 2025"
-    )
-)

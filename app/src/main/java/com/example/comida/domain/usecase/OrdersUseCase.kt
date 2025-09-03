@@ -1,9 +1,9 @@
 package com.example.comida.domain.usecase
 
 import android.util.Log
+import com.example.comida.dummy.orders.currentOrders
 import com.example.comida.models.OrderItem
 import com.example.comida.models.ResourceResult
-import com.example.comida.models.orders
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -20,7 +20,7 @@ class OrdersUseCase @Inject constructor() {
             emit(ResourceResult.Loading)
 
             try {
-                emit(ResourceResult.Success(orders))
+                emit(ResourceResult.Success(currentOrders))
 
                 Log.d("OrdersUseCase", "fetching orders success")
 

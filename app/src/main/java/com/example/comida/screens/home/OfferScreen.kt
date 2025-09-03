@@ -35,7 +35,6 @@ import coil.transform.CircleCropTransformation
 import com.example.comida.R
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.models.SpecialOffer
-import com.example.comida.models.specialOffers
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.OnboardingBackgroundColor3
 import com.example.comida.ui.theme.PrimaryButtonColor

@@ -44,7 +44,7 @@ fun NotificationsScreen(
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues,
     onBackButtonClicked: () -> Unit,
-    onNotificationClicked: (AppNotification) -> Unit
+    onNotificationClicked: () -> Unit
 ){
 
     val viewModel: NotificationsViewModel = hiltViewModel()
@@ -77,7 +77,7 @@ fun NotificationsScreen(
                     notification = notification,
                     onClicked = {
                         viewModel.updateCurrentNotification(it)
-                        onNotificationClicked
+                        onNotificationClicked()
                     }
                 )
             }

@@ -1,9 +1,9 @@
 package com.example.comida.domain.usecase
 
 import android.util.Log
+import com.example.comida.dummy.specialOffers.availableSpecialOffers
 import com.example.comida.models.ResourceResult
 import com.example.comida.models.SpecialOffer
-import com.example.comida.models.specialOffers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -22,7 +22,7 @@ class SpecialOffersUseCase @Inject constructor() {
             emit(ResourceResult.Loading)
 
             try {
-                emit(ResourceResult.Success(specialOffers))
+                emit(ResourceResult.Success(availableSpecialOffers))
 
                 Log.d("SpecialOffersUseCase", "fetching special offers success")
 

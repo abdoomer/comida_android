@@ -28,14 +28,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.example.comida.R
 import com.example.comida.models.Restaurant
-import com.example.comida.models.restaurants
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.OnboardingBackgroundColor3
 import com.example.comida.ui.theme.PrimaryButtonColor
@@ -52,6 +54,9 @@ fun RestaurantCard(
     onRestaurantTapped: (Restaurant) -> Unit,
     onToggleIsFavoriteTapped: (Boolean) -> Unit
 ){
+
+    val context = LocalContext.current
+
     Card(
         modifier = modifier
             .clickable{
@@ -72,13 +77,14 @@ fun RestaurantCard(
                 modifier = Modifier
                     .fillMaxWidth()
             ){
-                Image(
-                    painter = painterResource(restaurant.image),
+                AsyncImage(
+                    model = ImageRequest
+                        .Builder(context)
+                        .data(restaurant.image)
+                        .build(),
                     contentDescription = restaurant.name,
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier
-                        .height(120.dp)
-                        .width(300.dp)
                 )
 
                 Button(
@@ -222,10 +228,9 @@ fun RestaurantCard(
 @Preview(showBackground = true, showSystemUi = true)
 fun RestaurantCardPreview(){
     ComidaTheme {
-        RestaurantCard(
-            restaurant = restaurants[0],
-            onRestaurantTapped = {},
-            onToggleIsFavoriteTapped = {}
-        )
+//        RestaurantCard(
+//            onRestaurantTapped = {},
+//            onToggleIsFavoriteTapped = {}
+//        )
     }
 }

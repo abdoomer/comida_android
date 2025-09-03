@@ -31,6 +31,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.R
 import com.example.comida.components.CustomTextField
@@ -48,9 +49,9 @@ import com.example.comida.viewmodels.auth.SignUpViewModel
 @Composable
 fun SignUpScreen(
     modifier: Modifier = Modifier,
-    viewmodel: SignUpViewModel,
     onBackButtonClicked: () -> Unit
 ){
+    val viewmodel: SignUpViewModel = hiltViewModel()
     val email = viewmodel.email.collectAsStateWithLifecycle()
     val fullName = viewmodel.fullName.collectAsStateWithLifecycle()
     val password = viewmodel.password.collectAsStateWithLifecycle()

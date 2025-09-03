@@ -9,16 +9,19 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.components.RestaurantCard
 import com.example.comida.models.Restaurant
-import com.example.comida.models.restaurants
 import com.example.comida.ui.theme.ComidaTheme
+import com.example.comida.viewmodels.home.RestaurantsViewModel
 
 
 @Composable
@@ -28,6 +31,14 @@ fun RestaurantsScreen(
     onRestaurantTapped: (Restaurant) -> Unit,
     onToggleIsFavoriteTapped: (Boolean) -> Unit,
 ){
+
+    val viewModel: RestaurantsViewModel = hiltViewModel()
+    val restaurants = viewModel.restaurants.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = true) {
+        viewModel.fetchAllRestaurant()
+    }
+
     Scaffold(
         modifier = modifier
             .fillMaxSize()
@@ -51,7 +62,7 @@ fun RestaurantsScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                items(restaurants) { restaurant ->
+                items(restaurants.value) { restaurant ->
                     RestaurantCard(
                         restaurant = restaurant,
                         onRestaurantTapped = onRestaurantTapped,

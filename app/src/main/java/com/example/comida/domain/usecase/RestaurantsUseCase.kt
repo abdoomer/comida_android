@@ -1,9 +1,9 @@
 package com.example.comida.domain.usecase
 
 import android.util.Log
+import com.example.comida.dummy.restaurants.availableRestaurants
 import com.example.comida.models.ResourceResult
 import com.example.comida.models.Restaurant
-import com.example.comida.models.restaurants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -19,7 +19,7 @@ class RestaurantsUseCase @Inject constructor() {
             emit(ResourceResult.Loading)
 
             try {
-                emit(ResourceResult.Success(restaurants))
+                emit(ResourceResult.Success(availableRestaurants))
 
                 Log.d("RestaurantsUseCase", "fetching restaurants success")
 

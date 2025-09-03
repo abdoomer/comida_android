@@ -28,6 +28,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -42,12 +43,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.R
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.models.CartItem
-import com.example.comida.models.cartItems
 import com.example.comida.ui.theme.BottomNavigationIconsColor
 import com.example.comida.ui.theme.CellDividerColor
 import com.example.comida.ui.theme.CheckoutOverlayBoxColor
@@ -60,14 +60,22 @@ import com.example.comida.ui.theme.SecondarySmallLabelTextColor
 import com.example.comida.ui.theme.SmallLabelTextColor
 import com.example.comida.ui.theme.bebasFamily
 import com.example.comida.ui.theme.poppinsFamily
+import com.example.comida.viewmodels.cart.CartViewModel
 
 
 @Composable
 fun CartScreen(
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues,
-    navController: NavHostController
 ){
+
+    val viewModel: CartViewModel = hiltViewModel()
+    val cartItems = viewModel.cartItems.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = true) {
+        viewModel.fetchAllCartItems()
+    }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -90,7 +98,7 @@ fun CartScreen(
                     .align(Alignment.TopCenter),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                items(cartItems){ item ->
+                items(cartItems.value){ item ->
                     CartFoodItem(
                         item = item,
                         onRemoveItemClicked = {}
@@ -488,7 +496,6 @@ private fun CartScreenPreview(){
     ComidaTheme {
         CartScreen(
             paddingValues = PaddingValues(0.dp),
-            navController = rememberNavController()
         )
     }
 }

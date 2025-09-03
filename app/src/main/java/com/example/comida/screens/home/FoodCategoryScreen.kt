@@ -34,7 +34,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.R
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.components.FoodCategoryItemCard
-import com.example.comida.models.FoodItem
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.PrimaryTextColor
 import com.example.comida.ui.theme.poppinsFamily
@@ -45,7 +44,7 @@ import com.example.comida.viewmodels.home.FoodCategoryViewModel
 fun FoodCategoryScreen(
     modifier: Modifier = Modifier,
     onBackButtonClicked: () -> Unit,
-    onFoodItemClicked: (FoodItem) -> Unit,
+    onFoodItemClicked: () -> Unit,
 ){
 
     val viewModel: FoodCategoryViewModel = hiltViewModel()
@@ -85,8 +84,8 @@ fun FoodCategoryScreen(
                     FoodCategoryItemCard(
                         item = item,
                         onItemClicked = {
-                            viewModel.updateCurrentSelectedFood(it)
-                            onFoodItemClicked(it)
+                            viewModel.updateCurrentSelectedFood(item)
+                            onFoodItemClicked()
                         },
                         onAddToCartClicked = {}
                     )

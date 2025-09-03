@@ -29,6 +29,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.R
 import com.example.comida.components.CustomTextField
@@ -41,10 +42,10 @@ import com.example.comida.viewmodels.auth.ForgetPasswordViewModel
 @Composable
 fun ForgetPasswordScreen(
     modifier: Modifier = Modifier,
-    viewModel: ForgetPasswordViewModel,
     onBackButtonClicked: () -> Unit
 ){
 
+    val viewModel: ForgetPasswordViewModel = hiltViewModel()
     val email = viewModel.email.collectAsStateWithLifecycle()
 
     Box(

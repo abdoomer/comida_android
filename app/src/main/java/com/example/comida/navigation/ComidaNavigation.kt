@@ -42,8 +42,6 @@ fun ComidaNavigation(
 ){
     val otpViewmodel: OTPViewModel = viewModel()
     val signInViewmodel: SignInViewModel = viewModel()
-    val signUpViewmodel: SignUpViewModel = viewModel()
-    val forgetPasswordViewmodel: ForgetPasswordViewModel = viewModel()
     val comidaViewmodel: ComidaViewmodel = viewModel()
     val navController = rememberNavController()
 
@@ -70,7 +68,6 @@ fun ComidaNavigation(
             route = Screens.SignInScreen.route
         ){
             SignInScreen(
-                viewmodel = signInViewmodel,
                 onSignInClicked = {
                     navController.navigate(Screens.ComidaAppScreen.route)
                 },
@@ -87,7 +84,6 @@ fun ComidaNavigation(
             route = Screens.SignUpScreen.route
         ){
             SignUpScreen(
-                viewmodel = signUpViewmodel,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
@@ -98,7 +94,6 @@ fun ComidaNavigation(
             route = Screens.ForgetPasswordScreen.route
         ){
             ForgetPasswordScreen(
-                viewModel = forgetPasswordViewmodel,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }

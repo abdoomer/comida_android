@@ -1,7 +1,7 @@
 package com.example.comida.dummy.foodItems
 
+import com.example.comida.dummy.foodAddOns.burgerFoodAddOns
 import com.example.comida.models.FoodItem
-import com.example.comida.models.burgerFoodAddOns
 import kotlin.random.Random
 
 

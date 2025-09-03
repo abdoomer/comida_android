@@ -1,9 +1,9 @@
 package com.example.comida.domain.usecase
 
 import android.util.Log
+import com.example.comida.dummy.cartItems.availableCartItems
 import com.example.comida.models.CartItem
 import com.example.comida.models.ResourceResult
-import com.example.comida.models.cartItems
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -20,7 +20,7 @@ class CartUseCase @Inject constructor() {
             emit(ResourceResult.Loading)
 
             try {
-                emit(ResourceResult.Success(cartItems))
+                emit(ResourceResult.Success(availableCartItems))
 
                 Log.d("CartUseCase", "fetching cart items success")
 

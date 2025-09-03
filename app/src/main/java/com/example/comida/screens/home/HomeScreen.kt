@@ -89,6 +89,8 @@ fun HomeScreen(
             .fillMaxSize()
             .padding(paddingValues)
             .background(Color.White)
+            .padding(top = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         TopTitleBar()
 

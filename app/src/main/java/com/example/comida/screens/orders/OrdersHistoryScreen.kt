@@ -49,7 +49,7 @@ import com.example.comida.viewmodels.orders.OrdersHistoryViewModel
 fun OrdersHistoryScreen(
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues,
-    onOrderClicked: (OrderItem) -> Unit
+    onOrderClicked: () -> Unit
 ){
 
     val viewModel: OrdersHistoryViewModel = hiltViewModel()
@@ -75,7 +75,7 @@ fun OrdersHistoryScreen(
             orders = orders.value,
             onOrderItemClicked = {
                 viewModel.updateCurrentSelectedOrder(it)
-                onOrderClicked
+                onOrderClicked()
             }
         )
     }

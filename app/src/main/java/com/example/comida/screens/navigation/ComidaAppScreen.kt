@@ -70,7 +70,6 @@ fun ComidaAppScreen(
             1 -> {
                 CartScreen(
                     paddingValues = innerPadding,
-                    navController = navController
                 )
             }
             2 -> {

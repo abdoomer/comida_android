@@ -1,7 +1,7 @@
 package com.example.comida.dummy.foodItems
 
+import com.example.comida.dummy.foodAddOns.hotDogFoodAddOns
 import com.example.comida.models.FoodItem
-import com.example.comida.models.hotdogFoodAddOns
 import kotlin.random.Random
 
 
@@ -18,7 +18,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://colemannatural.com/wp-content/uploads/2023/08/Two-new-york-hot-dogs-topped-with-ketchup-and-mustard-920.jpg"
     ),
     FoodItem(
@@ -33,7 +33,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://colemannatural.com/wp-content/uploads/2023/08/Chicago-style-hot-dog-on-a-table-920.jpg"
     ),
     FoodItem(
@@ -48,7 +48,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://colemannatural.com/wp-content/uploads/2023/08/Three-Coney-Dogs-on-a-wooden-cutting-board-920.jpg"
     ),
     FoodItem(
@@ -63,7 +63,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://colemannatural.com/wp-content/uploads/2023/08/Three-Cincinnati-chili-dogs-on-a-wood-table-920.jpg"
     ),
     FoodItem(
@@ -78,7 +78,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://colemannatural.com/wp-content/uploads/2023/08/Three-Kansas-city-hot-dogs-on-a-wood-cutting-board-920.jpg"
     ),
     FoodItem(
@@ -93,7 +93,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://colemannatural.com/wp-content/uploads/2023/08/Three-Sonoran-hot-dogs-on-a-cutting-board-next-to-a-knife-920.jpg"
     ),
     FoodItem(
@@ -108,7 +108,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://colemannatural.com/wp-content/uploads/2023/08/Close-up-of-a-Los-Angeles-hot-dog-toppings-920.jpg"
     ),
     FoodItem(
@@ -123,7 +123,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://www.thespruceeats.com/thmb/6GUcR9vorsT2ntIKDq34oEjuyUM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/puka-dog-4774786-hero-01-190ed36488114e7bb2bab9ec3684c454.jpg"
     ),
     FoodItem(
@@ -138,7 +138,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://www.seriouseats.com/thmb/qQxeIzHn6wHsN5Usa04Aeg42ZlY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__images__2014__10__20140930-dchalfsmokes-meatsandfoods-brian-oh-17e81e4830014a458bc391686e082c5f.jpg",
     ),
     FoodItem(
@@ -153,7 +153,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQPJf9GgTDb1fp0Xvqr3jenepljv79i09kippTTuO9mKJLUMbL3L92jIQAaiO1P_gUs5i3mYPCkaOKCNQiza_ij-5RkhGPx37xvqNrSXg8ktQ"
     ),
     FoodItem(
@@ -168,7 +168,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://lifewiththecrustcutoff.com/wp-content/uploads/2019/05/Slaw-Dogs-4.jpg",
     ),
     FoodItem(
@@ -183,7 +183,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyNd2fUaOLrFSt8Gx4SV_dzE8kckVJbL1lxCGXdR9Jfvw_7ukp44hRt89Pyg4vXBvXwaQSjGtEwE5F76XV4UWUuOUzV4SbYUViZeFfW5OE"
     ),
     FoodItem(
@@ -198,7 +198,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRIkJ6YSsWqDp6unsvw_EbjpO0sWIqV-NFXvWHdauEKItsUYLohO8R0cSz0bPXIJ8348qeVSWwayaIRR_ijRdbRg8_38rXtQRtqHrk4iLtv"
     ),
     FoodItem(
@@ -213,7 +213,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT1t8qw2fsb0ewGUFPsm1yvYqH2aoQve6T7t1Qcq4FQxKN5_qoZqB4s8F8AqHar0q1Yg9_9e6ke0V_XKnXz0XOuXTaiOENDESlzjUt7HTl6"
     ),
     FoodItem(
@@ -228,7 +228,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRyPJQqEUmTy2aXkmOeiINKZkC1myQlVcoWjM1OilZi8xqJz83omM8QmMyugX8T5gtI-OrR_2sdTbZTXuRDhiJRlticpHr7T_WBru-fDXPh"
     ),
     FoodItem(
@@ -243,7 +243,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT1zzcb1by-42gjKKrUyZqmSFQmrySEBtDMbsd0gxggcrv-0WVjsjHMePaZLMjsXdMO-g230H2HChFKB2am6zhkprQdpInusieppd6mTWFO"
     ),
     FoodItem(
@@ -258,7 +258,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9iur8BKAScH2LLO8K2AHsFemtaMS4euYhcw&s"
     ),
     FoodItem(
@@ -273,7 +273,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://www.keyingredient.com/uploads/media/29/17/5f2d3cfd438f73017a198fa03e5e20a3b08e.jpg?1560436497",
     ),
     FoodItem(
@@ -288,7 +288,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://hips.hearstapps.com/hmg-prod/images/chili-dog-recipe-2-68237b9b3e6e9.jpeg?crop=0.502xw:1.00xh;0.250xw,0&resize=1200:*",
     ),
     FoodItem(
@@ -303,7 +303,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://stpierrebakery-com.s3.amazonaws.com/app/uploads/2023/09/Pretzel-Family-Style-Brioche-Hot-Dogs-1440x960.jpg",
     ),
     FoodItem(
@@ -318,7 +318,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://www.licious.in/blog/wp-content/uploads/2021/04/3-600x600.jpg",
     ),
     FoodItem(
@@ -333,7 +333,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9GSDNB0nq0ReLFlhHs4eAB46SNMbmMqmFbQ&s",
     ),
     FoodItem(
@@ -348,7 +348,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://i.pinimg.com/564x/50/08/1a/50081a4ecf4b0fe35b92378941ee2e39.jpg",
     ),
     FoodItem(
@@ -363,7 +363,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://images.ctfassets.net/0yf82hjfqumz/2HRiLDxT2VQwKapPW9eN2N/0eb26f69c56d76f573370f5b744696f0/Korealainen_miso_hodari_vaaka_netti.jpg",
     ),
     FoodItem(
@@ -378,7 +378,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNr_E1m_Zqktvj9XjTipOo9PFoMedDGYyY8w&s",
     ),
     FoodItem(
@@ -393,7 +393,7 @@ val hotDogCategory = listOf<FoodItem>(
         isFreeDelivery = Random.nextBoolean(),
         deliveryTime = Random.nextDouble(1.0, 60.0),
         deliveryFees = Random.nextDouble(1.0, 30.0),
-        addOns = hotdogFoodAddOns,
+        addOns = hotDogFoodAddOns,
         image = "https://www.simplymaderecipes.com/wp-content/uploads/2018/03/Mexican-Hot-Dog-main.png",
     ),
 )

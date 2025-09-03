@@ -51,7 +51,7 @@ fun FoodCategoryItemCard(
     modifier: Modifier = Modifier,
     item: FoodItem,
     onAddToCartClicked: (FoodItem) -> Unit,
-    onItemClicked: (FoodItem) -> Unit,
+    onItemClicked: () -> Unit,
 ){
     val context = LocalContext.current
 
@@ -63,7 +63,7 @@ fun FoodCategoryItemCard(
                 .background(Color.White)
                 .padding(horizontal = 16.dp)
                 .clickable{
-                    onItemClicked(item)
+                    onItemClicked()
                 },
             elevation = CardDefaults.cardElevation(4.dp),
             shape = RoundedCornerShape(24.dp),
@@ -195,10 +195,10 @@ fun FoodCategoryItemCard(
 @Preview(showBackground = true, showSystemUi = true)
 fun FoodCategoryItemCardPreview(){
     ComidaTheme {
-        FoodCategoryItemCard(
-            item = burgersCategory[0],
-            onAddToCartClicked = {},
-            onItemClicked = {},
-        )
+//        FoodCategoryItemCard(
+//            item = burgersCategory[0],
+//            onAddToCartClicked = {},
+//            onItemClicked = {},
+//        )
     }
 }
