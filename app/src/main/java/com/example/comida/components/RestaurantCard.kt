@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -37,6 +39,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.comida.R
+import com.example.comida.dummy.restaurants.availableRestaurants
 import com.example.comida.models.Restaurant
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.OnboardingBackgroundColor3
@@ -59,10 +62,10 @@ fun RestaurantCard(
 
     Card(
         modifier = modifier
+            .fillMaxWidth()
             .clickable{
                 onRestaurantTapped(restaurant)
-            }
-            .wrapContentSize(),
+            },
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
@@ -72,10 +75,12 @@ fun RestaurantCard(
     {
         Column(
             modifier = Modifier
+                .fillMaxWidth()
         ) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .fillMaxHeight(0.6f)
             ){
                 AsyncImage(
                     model = ImageRequest
@@ -83,13 +88,16 @@ fun RestaurantCard(
                         .data(restaurant.image)
                         .build(),
                     contentDescription = restaurant.name,
-                    contentScale = ContentScale.FillBounds,
+                    contentScale = ContentScale.Crop, // Add this back
                     modifier = Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)) // Optional: clip to match card corners
                 )
 
                 Button(
                     modifier = Modifier
-                        .align(Alignment.TopEnd),
+                        .align(Alignment.TopEnd)
+                        .padding(8.dp), // Add some padding from edge
                     onClick = {
                         onToggleIsFavoriteTapped(restaurant.isFavorites)
                     },
@@ -110,113 +118,98 @@ fun RestaurantCard(
                 }
             }
 
-            Row(
+            // Content section with weight
+            Column(
                 modifier = Modifier
+//                    .weight(0.4f) // Use remaining space
                     .fillMaxWidth()
-                    .padding(start = 16.dp, top = 8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween,
-
-                ) {
-                Text(
-                    text = restaurant.name,
-                    fontFamily = poppinsFamily,
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = PrimaryTextColor,
-                )
-
-                Spacer(
-                    modifier = Modifier
-                        .width(80.dp)
-                )
-
-                Row(
-                    modifier = Modifier,
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    Icon(
-                        painter = painterResource(R.drawable.star),
-                        contentDescription = "Rating Icon",
-                        tint = OnboardingBackgroundColor3,
-                        modifier = Modifier
-                            .size(16.dp)
-                    )
-
-                    Text(
-                        text = "${restaurant.ratingValue}",
-                        fontFamily = bebasFamily,
-                        fontSize = 10.sp,
-                        fontWeight = FontWeight.Normal,
-                        color = PrimaryTextColor
-                    )
-                }
-            }
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
             ) {
                 Row(
                     modifier = Modifier
-                        .padding(start = 16.dp),
+                        .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-
-                    Icon(
-                        painter = painterResource(R.drawable.delivery_icon),
-                        contentDescription = "Delivery Icon",
-                        tint = PrimaryButtonColor,
-                        modifier = Modifier
-                            .size(16.dp)
-                    )
-
                     Text(
-                        text = if (restaurant.isFreeDelivery) "Free delivery" else "$5 Delivery fee",
-                        fontWeight = FontWeight.Normal,
-                        fontFamily = bebasFamily,
-                        fontSize = 12.sp,
-                        color = SmallIconLabelColor
+                        text = restaurant.name,
+                        fontFamily = poppinsFamily,
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = PrimaryTextColor,
+//                        modifier = Modifier.weight(1f)
                     )
+
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        Icon(
+                            painter = painterResource(R.drawable.star),
+                            contentDescription = "Rating Icon",
+                            tint = OnboardingBackgroundColor3,
+                            modifier = Modifier.size(16.dp)
+                        )
+
+                        Text(
+                            text = "${restaurant.ratingValue}",
+                            fontFamily = bebasFamily,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Normal,
+                            color = PrimaryTextColor
+                        )
+                    }
                 }
 
-                Spacer(
-                    modifier = Modifier
-                        .width(150.dp)
-                )
+                Spacer(modifier = Modifier.height(8.dp))
 
                 Row(
-                    modifier = Modifier,
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        Icon(
+                            painter = painterResource(R.drawable.delivery_icon),
+                            contentDescription = "Delivery Icon",
+                            tint = PrimaryButtonColor,
+                            modifier = Modifier.size(16.dp)
+                        )
 
-                    Icon(
-                        painter = painterResource(R.drawable.timer_icon),
-                        contentDescription = "Delivery Icon",
-                        tint = PrimaryButtonColor,
-                        modifier = Modifier
-                            .size(16.dp)
-                    )
+                        Text(
+                            text = if (restaurant.isFreeDelivery) "Free delivery" else "$5 Delivery fee",
+                            fontWeight = FontWeight.Normal,
+                            fontFamily = bebasFamily,
+                            fontSize = 12.sp,
+                            color = SmallIconLabelColor
+                        )
+                    }
 
-                    Text(
-                        text = "${restaurant.deliveryTime}",
-                        fontWeight = FontWeight.Normal,
-                        fontFamily = bebasFamily,
-                        fontSize = 12.sp,
-                        color = SmallIconLabelColor
-                    )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        Icon(
+                            painter = painterResource(R.drawable.timer_icon),
+                            contentDescription = "Timer Icon",
+                            tint = PrimaryButtonColor,
+                            modifier = Modifier.size(16.dp)
+                        )
+
+                        Text(
+                            text = "${restaurant.deliveryTime}",
+                            fontWeight = FontWeight.Normal,
+                            fontFamily = bebasFamily,
+                            fontSize = 12.sp,
+                            color = SmallIconLabelColor
+                        )
+                    }
                 }
             }
-
-            Spacer(
-                modifier = Modifier
-                    .height(16.dp)
-            )
         }
     }
 }
@@ -228,9 +221,10 @@ fun RestaurantCard(
 @Preview(showBackground = true, showSystemUi = true)
 fun RestaurantCardPreview(){
     ComidaTheme {
-//        RestaurantCard(
-//            onRestaurantTapped = {},
-//            onToggleIsFavoriteTapped = {}
-//        )
+        RestaurantCard(
+            restaurant = availableRestaurants[0],
+            onRestaurantTapped = {},
+            onToggleIsFavoriteTapped = {}
+        )
     }
 }

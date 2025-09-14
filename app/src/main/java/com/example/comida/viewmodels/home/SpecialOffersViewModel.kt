@@ -15,6 +15,9 @@ class SpecialOffersViewModel @Inject constructor(
     private val specialOfferRepository: SpecialOfferRepository,
 ): ViewModel() {
 
+    private val _searchText: MutableStateFlow<String> = MutableStateFlow("")
+    val searchText: StateFlow<String> = _searchText
+
     private val _specialOffers: MutableStateFlow<List<SpecialOffer>> = MutableStateFlow(emptyList())
     val specialOffers: StateFlow<List<SpecialOffer>> = _specialOffers
 
@@ -26,4 +29,12 @@ class SpecialOffersViewModel @Inject constructor(
             _specialOffers.emit(offersList)
         }
     }
+
+    fun onSearchTextValueChanged(newText: String){
+        viewModelScope.launch {
+            _searchText.emit(newText)
+        }
+    }
+
+    fun onSearchTextButtonClicked(){}
 }

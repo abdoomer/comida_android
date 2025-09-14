@@ -5,8 +5,10 @@ import com.example.comida.domain.usecase.FoodUseCase
 import com.example.comida.domain.usecase.NotificationsUseCase
 import com.example.comida.domain.usecase.OrdersUseCase
 import com.example.comida.domain.usecase.PaymentUseCase
+import com.example.comida.domain.usecase.PrivacyPolicyUseCase
 import com.example.comida.domain.usecase.RestaurantsUseCase
 import com.example.comida.domain.usecase.SpecialOffersUseCase
+import com.example.comida.domain.usecase.TermsOfServiceUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -60,4 +62,16 @@ object UseCaseModule {
         return SpecialOffersUseCase()
     }
 
+
+    @Provides
+    @Singleton
+    fun providesPrivacyPolicyUseCase(): PrivacyPolicyUseCase {
+        return PrivacyPolicyUseCase()
+    }
+
+    @Singleton
+    @Provides
+    fun providesTermsOfServiceUseCase(): TermsOfServiceUseCase{
+        return TermsOfServiceUseCase()
+    }
 }

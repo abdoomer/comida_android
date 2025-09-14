@@ -15,6 +15,9 @@ class RestaurantsViewModel @Inject constructor(
     private val restaurantsRepository: RestaurantsRepository,
 ): ViewModel() {
 
+    private val _searchText: MutableStateFlow<String> = MutableStateFlow("")
+    val searchText: StateFlow<String> = _searchText
+
     private val _restaurants: MutableStateFlow<List<Restaurant>> = MutableStateFlow(emptyList())
     val restaurants: StateFlow<List<Restaurant>> = _restaurants
 
@@ -26,4 +29,12 @@ class RestaurantsViewModel @Inject constructor(
             _restaurants.emit(restaurantsList)
         }
     }
+
+    fun onSearchTextValueChanged(newText: String){
+        viewModelScope.launch {
+            _searchText.emit(newText)
+        }
+    }
+
+    fun onSearchTextButtonClicked(){}
 }

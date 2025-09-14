@@ -20,8 +20,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -49,14 +47,11 @@ import com.example.comida.models.SpecialOffer
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.HomeFoodCategoryTitleColor
 import com.example.comida.ui.theme.IconButtonColor
-import com.example.comida.ui.theme.IconsColor
 import com.example.comida.ui.theme.OnboardingBackgroundColor3
 import com.example.comida.ui.theme.PrimaryButtonColor
 import com.example.comida.ui.theme.PrimaryTextColor
-import com.example.comida.ui.theme.SearchLabelTextColor
 import com.example.comida.ui.theme.SecondaryTextColor
 import com.example.comida.ui.theme.SmallLabelColor
-import com.example.comida.ui.theme.TextFieldBackgroundColor
 import com.example.comida.ui.theme.poppinsFamily
 import com.example.comida.viewmodels.home.HomeViewModel
 
@@ -75,7 +70,6 @@ fun HomeScreen(
 ){
 
     val viewModel: HomeViewModel = hiltViewModel<HomeViewModel>()
-    val searchText = viewModel.searchText.collectAsStateWithLifecycle()
     val foodCategories = viewModel.foodCategories.collectAsStateWithLifecycle()
     val specialOffers = viewModel.specialOffers.collectAsStateWithLifecycle()
     val restaurants = viewModel.restaurants.collectAsStateWithLifecycle()
@@ -109,16 +103,6 @@ fun HomeScreen(
             ),
             modifier = Modifier
                 .padding(start = 16.dp)
-        )
-
-        CustomSearchTextField(
-            searchText = searchText.value,
-            onSearchTextChanged = {
-                viewModel.onSearchTextValueChanged(it)
-            },
-            onSearchButtonClicked = {
-                viewModel.onSearchTextButtonClicked()
-            }
         )
 
         FoodCategoriesSelectionMenu(
@@ -241,57 +225,6 @@ private fun TopTitleBar(
             )
         }
     }
-}
-
-
-@Composable
-private fun CustomSearchTextField(
-    modifier: Modifier = Modifier,
-    searchText: String,
-    onSearchTextChanged: (String) -> Unit,
-    onSearchButtonClicked: () -> Unit,
-){
-    OutlinedTextField(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp),
-        value = searchText,
-        shape = RoundedCornerShape(16.dp),
-        onValueChange = onSearchTextChanged,
-        placeholder = {
-            Text(
-                text = "Search dishes, restaurants",
-                fontFamily = poppinsFamily,
-                fontWeight = FontWeight.Normal,
-                fontSize = 12.sp,
-                color = SearchLabelTextColor
-            )
-        },
-        leadingIcon = {
-            Button(
-                onClick = onSearchButtonClicked,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Transparent
-                )
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.search_icon),
-                    contentDescription = "Search TextField Icon",
-                    tint = IconsColor,
-                    modifier = Modifier
-                        .size(24.dp)
-                )
-            }
-        },
-        colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = TextFieldBackgroundColor,
-            unfocusedContainerColor = TextFieldBackgroundColor,
-            focusedBorderColor = PrimaryButtonColor,
-            unfocusedBorderColor = Color.Transparent,
-            errorBorderColor = Color.Transparent,
-            disabledBorderColor = Color.Transparent,
-        )
-    )
 }
 
 
@@ -445,6 +378,9 @@ private fun AvailableRestaurants(
         ){
             items(restaurants) { restaurant ->
                 RestaurantCard(
+                    modifier = Modifier
+                        .fillMaxWidth(0.8f)
+                        .fillMaxHeight(),
                     restaurant = restaurant,
                     onRestaurantTapped = onRestaurantTapped,
                     onToggleIsFavoriteTapped = {

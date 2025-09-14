@@ -16,6 +16,9 @@ class FoodCategoryViewModel @Inject constructor(
     private val foodRepository: FoodRepository,
 ): ViewModel() {
 
+    private val _searchText: MutableStateFlow<String> = MutableStateFlow("")
+    val searchText: StateFlow<String> = _searchText
+
     private val _category: MutableStateFlow<FoodCategory> = MutableStateFlow(FoodCategory())
     val category: StateFlow<FoodCategory> = _category
 
@@ -33,4 +36,12 @@ class FoodCategoryViewModel @Inject constructor(
             foodRepository.setSelectedFood(item)
         }
     }
+
+    fun onSearchTextValueChanged(newText: String){
+        viewModelScope.launch {
+            _searchText.emit(newText)
+        }
+    }
+
+    fun onSearchTextButtonClicked(){}
 }

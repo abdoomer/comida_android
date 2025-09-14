@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.R
+import com.example.comida.components.CustomSearchTextField
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.components.FoodCategoryItemCard
 import com.example.comida.ui.theme.ComidaTheme
@@ -49,6 +50,7 @@ fun FoodCategoryScreen(
 
     val viewModel: FoodCategoryViewModel = hiltViewModel()
     val category = viewModel.category.collectAsStateWithLifecycle()
+    val searchText = viewModel.searchText.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = true) {
         viewModel.fetchSelectedFoodCategory()
@@ -74,6 +76,17 @@ fun FoodCategoryScreen(
                 sortBy = "Relevance",
                 onSortClicked = {},
                 onFilterClicked = {}
+            )
+
+            CustomSearchTextField(
+                searchText = searchText.value,
+                placeHolderText = "Search food category",
+                onSearchTextChanged = {
+                    viewModel.onSearchTextValueChanged(it)
+                },
+                onSearchButtonClicked = {
+                    viewModel.onSearchTextButtonClicked()
+                }
             )
 
             LazyColumn(

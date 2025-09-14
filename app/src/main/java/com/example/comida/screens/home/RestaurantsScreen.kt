@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.comida.components.CustomSearchTextField
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.components.RestaurantCard
 import com.example.comida.models.Restaurant
@@ -34,6 +35,7 @@ fun RestaurantsScreen(
 
     val viewModel: RestaurantsViewModel = hiltViewModel()
     val restaurants = viewModel.restaurants.collectAsStateWithLifecycle()
+    val searchText = viewModel.searchText.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = true) {
         viewModel.fetchAllRestaurant()
@@ -53,6 +55,17 @@ fun RestaurantsScreen(
                 title = "Restaurants",
                 haveBackButton = true,
                 onBackButtonPressed = onBackButtonClicked
+            )
+
+            CustomSearchTextField(
+                searchText = searchText.value,
+                placeHolderText = "Search restaurants",
+                onSearchTextChanged = {
+                    viewModel.onSearchTextValueChanged(it)
+                },
+                onSearchButtonClicked = {
+                    viewModel.onSearchTextButtonClicked()
+                }
             )
 
             LazyColumn(

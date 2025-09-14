@@ -5,15 +5,19 @@ import com.example.comida.domain.repository.CartRepository
 import com.example.comida.domain.repository.FoodRepository
 import com.example.comida.domain.repository.OrdersRepository
 import com.example.comida.domain.repository.PaymentRepository
+import com.example.comida.domain.repository.PrivacyPolicyRepository
 import com.example.comida.domain.repository.RestaurantsRepository
 import com.example.comida.domain.repository.SpecialOfferRepository
+import com.example.comida.domain.repository.TermsOfServiceRepository
 import com.example.comida.domain.usecase.CartUseCase
 import com.example.comida.domain.usecase.FoodUseCase
 import com.example.comida.domain.usecase.NotificationsUseCase
 import com.example.comida.domain.usecase.OrdersUseCase
 import com.example.comida.domain.usecase.PaymentUseCase
+import com.example.comida.domain.usecase.PrivacyPolicyUseCase
 import com.example.comida.domain.usecase.RestaurantsUseCase
 import com.example.comida.domain.usecase.SpecialOffersUseCase
+import com.example.comida.domain.usecase.TermsOfServiceUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -106,6 +110,31 @@ object RepositoryModule {
         return PaymentRepository(
             paymentUseCase = paymentUseCase,
             appCoroutineScope = appCoroutineScope
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun providesPrivacyPolicyRepository(
+        appCoroutineScope: AppCoroutineScope,
+        privacyPolicyUseCase: PrivacyPolicyUseCase
+    ): PrivacyPolicyRepository {
+        return PrivacyPolicyRepository(
+            appCoroutineScope = appCoroutineScope,
+            privacyPolicyUseCase = privacyPolicyUseCase
+        )
+    }
+
+
+    @Singleton
+    @Provides
+    fun providesTermsOfServiceRepository(
+        appCoroutineScope: AppCoroutineScope,
+        termsOfServiceUseCase: TermsOfServiceUseCase
+    ): TermsOfServiceRepository {
+        return TermsOfServiceRepository(
+            appCoroutineScope = appCoroutineScope,
+            termsOfServiceUseCase = termsOfServiceUseCase
         )
     }
 }
