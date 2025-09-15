@@ -2,8 +2,8 @@ package com.example.comida.viewmodels.auth
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.comida.models.OTPAction
-import com.example.comida.models.OTPState
+import com.example.comida.models.auth.OTPAction
+import com.example.comida.models.auth.OTPState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -2,6 +2,7 @@ package com.example.comida.viewmodels.auth
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.comida.domain.repository.AuthenticationRepository
 import com.example.comida.services.ComidaSharedPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,13 +13,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignInViewModel @Inject constructor(
-    private val sharedPreferences: ComidaSharedPreferences
+    private val sharedPreferences: ComidaSharedPreferences,
+    private val authenticationRepository: AuthenticationRepository,
 ): ViewModel() {
 
-    private val _email: MutableStateFlow<String> = MutableStateFlow("")
+    private val _email: MutableStateFlow<String> = MutableStateFlow("example3@email.com")
     val email: StateFlow<String> = _email
 
-    private val _password: MutableStateFlow<String> = MutableStateFlow("")
+    private val _password: MutableStateFlow<String> = MutableStateFlow("123456")
     val password: StateFlow<String> = _password
 
     private val _showPassword: MutableStateFlow<Boolean> = MutableStateFlow(true)
@@ -49,9 +51,23 @@ class SignInViewModel @Inject constructor(
         }
     }
 
-    fun onUserLogin(){}
+    fun validateLoginInformation(){}
 
-    fun onFacebookLogin(){}
+    fun onUserLogin(){
+        viewModelScope.launch {
+            authenticationRepository.loginWithEmailPassword(email = email.value, password = password.value)
+        }
+    }
 
-    fun onGoogleLogin(){}
+    fun onFacebookLogin(){
+        viewModelScope.launch {
+            authenticationRepository.loginWithFacebook()
+        }
+    }
+
+    fun onGoogleLogin(){
+        viewModelScope.launch {
+            authenticationRepository.loginWithGoogle()
+        }
+    }
 }

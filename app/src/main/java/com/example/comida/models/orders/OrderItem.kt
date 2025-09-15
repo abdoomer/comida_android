@@ -1,7 +1,8 @@
-package com.example.comida.models
+package com.example.comida.models.orders
 
+import com.example.comida.models.FoodItem
+import com.example.comida.models.Restaurant
 import java.util.UUID
-
 
 data class OrderItem(
     val id: String = UUID.randomUUID().toString(),

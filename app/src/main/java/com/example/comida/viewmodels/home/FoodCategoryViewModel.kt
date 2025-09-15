@@ -3,7 +3,7 @@ package com.example.comida.viewmodels.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.comida.domain.repository.FoodRepository
-import com.example.comida.models.FoodCategory
+import com.example.comida.models.home.FoodCategory
 import com.example.comida.models.FoodItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject

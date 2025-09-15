@@ -1,7 +1,7 @@
 package com.example.comida.domain.usecase
 
 import com.example.comida.dummy.privacyPolicy.dummyPrivacyPolicy
-import com.example.comida.models.PrivacyPolicy
+import com.example.comida.models.profile.PrivacyPolicy
 import com.example.comida.models.ResourceResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

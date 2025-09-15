@@ -2,7 +2,7 @@ package com.example.comida.domain.usecase
 
 import android.util.Log
 import com.example.comida.dummy.orders.currentOrders
-import com.example.comida.models.OrderItem
+import com.example.comida.models.orders.OrderItem
 import com.example.comida.models.ResourceResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

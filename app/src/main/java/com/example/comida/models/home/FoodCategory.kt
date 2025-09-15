@@ -1,4 +1,4 @@
-package com.example.comida.models
+package com.example.comida.models.home
 
 import androidx.annotation.DrawableRes
 import com.example.comida.R
@@ -7,6 +7,7 @@ import com.example.comida.dummy.foodItems.donutsCategory
 import com.example.comida.dummy.foodItems.hotDogCategory
 import com.example.comida.dummy.foodItems.pastaCategory
 import com.example.comida.dummy.foodItems.pizzaCategory
+import com.example.comida.models.FoodItem
 import java.util.UUID
 
 data class FoodCategory(

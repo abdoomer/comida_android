@@ -1,6 +1,6 @@
 package com.example.comida.domain.dao
 
-import com.example.comida.models.OrderItem
+import com.example.comida.models.orders.OrderItem
 
 
 interface OrdersDao {

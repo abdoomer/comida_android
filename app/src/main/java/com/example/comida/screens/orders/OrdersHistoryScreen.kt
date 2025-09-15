@@ -35,7 +35,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.comida.components.CustomTopAppTitleBar
-import com.example.comida.models.OrderItem
+import com.example.comida.models.orders.OrderItem
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.PrimaryButtonColor
 import com.example.comida.ui.theme.PrimaryTextColor

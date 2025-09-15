@@ -26,8 +26,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.comida.models.CustomBottomNavigationBarItem
-import com.example.comida.models.bottomNavigationBarItems
+import com.example.comida.models.navigation.CustomBottomNavigationBarItem
+import com.example.comida.models.navigation.bottomNavigationBarItems
 import com.example.comida.ui.theme.BottomNavigationIconsColor
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.OnboardingBackgroundColor3

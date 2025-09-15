@@ -3,7 +3,7 @@ package com.example.comida.viewmodels.orders
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.comida.domain.repository.OrdersRepository
-import com.example.comida.models.OrderItem
+import com.example.comida.models.orders.OrderItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

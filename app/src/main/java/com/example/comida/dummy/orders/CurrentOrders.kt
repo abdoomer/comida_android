@@ -1,7 +1,7 @@
 package com.example.comida.dummy.orders
 
 import com.example.comida.dummy.restaurants.availableRestaurants
-import com.example.comida.models.OrderItem
+import com.example.comida.models.orders.OrderItem
 
 
 val currentOrders = listOf<OrderItem>(

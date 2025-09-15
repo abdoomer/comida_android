@@ -1,3 +1,6 @@
+import java.util.Properties
+import kotlin.apply
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -6,6 +9,13 @@ plugins {
     id("com.google.gms.google-services")
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
+}
+
+val localProperties = Properties().apply {
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        load(localPropertiesFile.inputStream())
+    }
 }
 
 android {
@@ -20,6 +30,39 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField(
+            "String",
+            "WEB_CLIENT_ID",
+            "\"${localProperties.getProperty("web_client_id", "")}\""
+        )
+
+        buildConfigField(
+            "String",
+            "FACEBOOK_APP_ID",
+            "\"${localProperties.getProperty("facebook_app_id", "")}\""
+        )
+
+        buildConfigField(
+            "String",
+            "FACEBOOK_CLIENT_TOKEN",
+            "\"${localProperties.getProperty("facebook_client_token", "")}\""
+        )
+
+        buildConfigField(
+            "String",
+            "FB_LOGIN_PROTOCOL_SCHEME",
+            "\"${localProperties.getProperty("fb_login_protocol_scheme", "")}\""
+        )
+
+        val facebookAppId = localProperties.getProperty("facebook_app_id", "")
+        val facebookClientToken = localProperties.getProperty("facebook_client_token", "")
+        val fbLoginProtocolScheme = localProperties.getProperty("fb_login_protocol_scheme", "")
+            ?: "fb$facebookAppId"
+
+        manifestPlaceholders["facebookAppId"] = facebookAppId
+        manifestPlaceholders["facebookClientToken"] = facebookClientToken
+        manifestPlaceholders["fbLoginProtocolScheme"] = fbLoginProtocolScheme
     }
 
     buildTypes {
@@ -41,6 +84,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -85,4 +129,16 @@ dependencies {
 
     // ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    // Lottie
+    implementation(libs.lottie.compose)
+
+    // Google Credential Manager libraries Firebase Google Auth
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
+
+    // Facebook Firebase Login SDK
+    implementation(libs.facebook.login)
+    implementation(libs.facebook.android.sdk)
 }

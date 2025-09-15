@@ -35,9 +35,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.comida.R
-import com.example.comida.models.AppUser
-import com.example.comida.models.dummyUser
-import com.example.comida.models.profileNavigationTiles
+import com.example.comida.models.firebase.AppUser
+import com.example.comida.models.firebase.dummyUser
+import com.example.comida.models.profile.profileNavigationTiles
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.IconButtonColor
 import com.example.comida.ui.theme.OfferBuyNowButtonColor

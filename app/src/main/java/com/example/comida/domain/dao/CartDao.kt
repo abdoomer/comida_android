@@ -1,6 +1,6 @@
 package com.example.comida.domain.dao
 
-import com.example.comida.models.CartItem
+import com.example.comida.models.cart.CartItem
 
 interface CartDao {
 

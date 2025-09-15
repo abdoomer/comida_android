@@ -3,7 +3,7 @@ package com.example.comida.domain.repository
 import com.example.comida.di.AppCoroutineScope
 import com.example.comida.domain.dao.AppNotificationDao
 import com.example.comida.domain.usecase.NotificationsUseCase
-import com.example.comida.models.AppNotification
+import com.example.comida.models.notifications.AppNotification
 import com.example.comida.models.ResourceResult
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch

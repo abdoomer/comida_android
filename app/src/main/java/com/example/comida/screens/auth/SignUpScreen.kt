@@ -1,5 +1,7 @@
 package com.example.comida.screens.auth
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -46,6 +48,7 @@ import com.example.comida.ui.theme.poppinsFamily
 import com.example.comida.viewmodels.auth.SignUpViewModel
 
 
+@RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 @Composable
 fun SignUpScreen(
     modifier: Modifier = Modifier,

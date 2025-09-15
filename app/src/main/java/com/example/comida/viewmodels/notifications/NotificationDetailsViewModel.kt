@@ -3,7 +3,7 @@ package com.example.comida.viewmodels.notifications
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.comida.domain.repository.AppNotificationRepository
-import com.example.comida.models.AppNotification
+import com.example.comida.models.notifications.AppNotification
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

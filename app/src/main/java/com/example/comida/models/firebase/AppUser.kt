@@ -1,4 +1,4 @@
-package com.example.comida.models
+package com.example.comida.models.firebase
 
 import androidx.annotation.DrawableRes
 import com.example.comida.R

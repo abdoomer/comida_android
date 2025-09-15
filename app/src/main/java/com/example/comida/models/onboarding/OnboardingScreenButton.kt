@@ -1,4 +1,4 @@
-package com.example.comida.models
+package com.example.comida.models.onboarding
 
 import androidx.compose.ui.graphics.Color
 import com.example.comida.navigation.Screens

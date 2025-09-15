@@ -3,7 +3,7 @@ package com.example.comida.domain.repository
 import com.example.comida.di.AppCoroutineScope
 import com.example.comida.domain.dao.PrivacyPolicyDao
 import com.example.comida.domain.usecase.PrivacyPolicyUseCase
-import com.example.comida.models.PrivacyPolicy
+import com.example.comida.models.profile.PrivacyPolicy
 import com.example.comida.models.ResourceResult
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch

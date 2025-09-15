@@ -4,7 +4,7 @@ import com.example.comida.di.AppCoroutineScope
 import com.example.comida.domain.dao.TermsOfServiceDao
 import com.example.comida.domain.usecase.TermsOfServiceUseCase
 import com.example.comida.models.ResourceResult
-import com.example.comida.models.TermsOfService
+import com.example.comida.models.profile.TermsOfService
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -1,7 +1,7 @@
 package com.example.comida.domain.usecase
 
 import android.util.Log
-import com.example.comida.models.OrderPayment
+import com.example.comida.models.payment.OrderPayment
 import com.example.comida.models.ResourceResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

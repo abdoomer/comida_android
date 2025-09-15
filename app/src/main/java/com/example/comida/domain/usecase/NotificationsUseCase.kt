@@ -1,9 +1,9 @@
 package com.example.comida.domain.usecase
 
 import android.util.Log
-import com.example.comida.models.AppNotification
+import com.example.comida.models.notifications.AppNotification
 import com.example.comida.models.ResourceResult
-import com.example.comida.models.appNotifications
+import com.example.comida.models.notifications.appNotifications
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

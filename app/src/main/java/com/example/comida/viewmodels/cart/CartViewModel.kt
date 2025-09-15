@@ -3,7 +3,7 @@ package com.example.comida.viewmodels.cart
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.comida.domain.repository.CartRepository
-import com.example.comida.models.CartItem
+import com.example.comida.models.cart.CartItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

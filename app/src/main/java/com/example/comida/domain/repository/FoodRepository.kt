@@ -5,10 +5,10 @@ import com.example.comida.di.AppCoroutineScope
 import com.example.comida.domain.dao.FoodDao
 import com.example.comida.domain.usecase.FoodUseCase
 import com.example.comida.dummy.foodItems.burgersCategory
-import com.example.comida.models.FoodCategory
+import com.example.comida.models.home.FoodCategory
 import com.example.comida.models.FoodItem
 import com.example.comida.models.ResourceResult
-import com.example.comida.models.foodCategories
+import com.example.comida.models.home.foodCategories
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject

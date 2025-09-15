@@ -1,4 +1,4 @@
-package com.example.comida.models
+package com.example.comida.models.profile
 
 
 data class TermsOfService(

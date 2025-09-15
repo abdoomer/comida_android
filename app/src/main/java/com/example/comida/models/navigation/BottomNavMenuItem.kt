@@ -1,4 +1,4 @@
-package com.example.comida.models
+package com.example.comida.models.navigation
 
 import androidx.annotation.DrawableRes
 import com.example.comida.R

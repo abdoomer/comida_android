@@ -10,6 +10,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.navigation.ComidaNavigation
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.viewmodels.ComidaViewmodel
+import com.facebook.FacebookSdk
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        FacebookSdk.sdkInitialize(applicationContext)
         enableEdgeToEdge()
         installSplashScreen().apply {
             setKeepOnScreenCondition {

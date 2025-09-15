@@ -41,7 +41,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.R
 import com.example.comida.components.RestaurantCard
 import com.example.comida.components.SpecialOfferCard
-import com.example.comida.models.FoodCategory
+import com.example.comida.models.home.FoodCategory
 import com.example.comida.models.Restaurant
 import com.example.comida.models.SpecialOffer
 import com.example.comida.ui.theme.ComidaTheme

@@ -150,7 +150,8 @@ fun SignInScreen(
                 MainTextButton(
                     title = "Login",
                     onClicked = {
-                        onSignInClicked()
+//                        onSignInClicked()
+                        viewmodel.onUserLogin()
                     }
                 )
 

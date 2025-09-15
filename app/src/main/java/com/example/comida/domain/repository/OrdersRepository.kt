@@ -3,7 +3,7 @@ package com.example.comida.domain.repository
 import com.example.comida.di.AppCoroutineScope
 import com.example.comida.domain.dao.OrdersDao
 import com.example.comida.domain.usecase.OrdersUseCase
-import com.example.comida.models.OrderItem
+import com.example.comida.models.orders.OrderItem
 import com.example.comida.models.ResourceResult
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch

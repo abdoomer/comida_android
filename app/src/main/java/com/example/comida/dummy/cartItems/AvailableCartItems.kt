@@ -1,7 +1,7 @@
 package com.example.comida.dummy.cartItems
 
 import com.example.comida.R
-import com.example.comida.models.CartItem
+import com.example.comida.models.cart.CartItem
 
 
 val availableCartItems = listOf<CartItem>(

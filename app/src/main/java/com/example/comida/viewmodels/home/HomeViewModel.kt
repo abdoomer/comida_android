@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.comida.domain.repository.FoodRepository
 import com.example.comida.domain.repository.RestaurantsRepository
 import com.example.comida.domain.repository.SpecialOfferRepository
-import com.example.comida.models.FoodCategory
+import com.example.comida.models.home.FoodCategory
 import com.example.comida.models.Restaurant
 import com.example.comida.models.SpecialOffer
 import dagger.hilt.android.lifecycle.HiltViewModel

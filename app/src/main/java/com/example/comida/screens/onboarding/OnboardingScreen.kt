@@ -31,8 +31,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.comida.models.onboardingScreenButtons
-import com.example.comida.models.onboardingScreenItems
+import com.example.comida.models.onboarding.onboardingScreenButtons
+import com.example.comida.models.onboarding.onboardingScreenItems
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.poppinsFamily
 import com.example.comida.ui.theme.sofiaFamily

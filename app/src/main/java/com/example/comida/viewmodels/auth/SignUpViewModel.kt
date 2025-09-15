@@ -1,20 +1,25 @@
 package com.example.comida.viewmodels.auth
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.comida.domain.repository.AuthenticationRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class SignUpViewModel @Inject constructor(
-
+    private val authenticationRepository: AuthenticationRepository,
 ): ViewModel() {
 
-    private val _email: MutableStateFlow<String> = MutableStateFlow("")
+    private val _email: MutableStateFlow<String> = MutableStateFlow("example3@email.com")
     val email: StateFlow<String> = _email
 
-    private val _password: MutableStateFlow<String> = MutableStateFlow("")
+    private val _password: MutableStateFlow<String> = MutableStateFlow("123456")
     val password: StateFlow<String> = _password
 
     private val _showPassword: MutableStateFlow<Boolean> = MutableStateFlow(true)
@@ -47,9 +52,22 @@ class SignUpViewModel @Inject constructor(
         }
     }
 
-    fun onUserRegister(){}
+    fun onUserRegister(){
+        viewModelScope.launch {
+            authenticationRepository.registerWithEmailPassword(email = email.value, password = password.value)
+        }
+    }
 
-    fun onFacebookRegister(){}
+    fun onFacebookRegister(){
+        viewModelScope.launch {
+            authenticationRepository.loginWithFacebook()
+        }
+    }
 
-    fun onGoogleRegister(){}
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    fun onGoogleRegister(){
+        viewModelScope.launch {
+            authenticationRepository.loginWithGoogle()
+        }
+    }
 }

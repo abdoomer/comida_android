@@ -1,4 +1,4 @@
-package com.example.comida.models
+package com.example.comida.models.notifications
 
 import androidx.annotation.DrawableRes
 import com.example.comida.R

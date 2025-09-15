@@ -1,6 +1,6 @@
 package com.example.comida.domain.dao
 
-import com.example.comida.models.FoodCategory
+import com.example.comida.models.home.FoodCategory
 import com.example.comida.models.FoodItem
 
 interface FoodDao {

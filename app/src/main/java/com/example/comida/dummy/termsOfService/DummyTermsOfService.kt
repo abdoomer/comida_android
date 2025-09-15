@@ -1,7 +1,7 @@
 package com.example.comida.dummy.termsOfService
 
-import com.example.comida.models.TermItem
-import com.example.comida.models.TermsOfService
+import com.example.comida.models.profile.TermItem
+import com.example.comida.models.profile.TermsOfService
 
 
 val dummyTermsOfService = TermsOfService(

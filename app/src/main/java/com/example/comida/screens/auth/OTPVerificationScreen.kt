@@ -58,8 +58,8 @@ import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.R
 import com.example.comida.components.MainTextButton
-import com.example.comida.models.OTPAction
-import com.example.comida.models.OTPState
+import com.example.comida.models.auth.OTPAction
+import com.example.comida.models.auth.OTPState
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.PrimaryButtonColor
 import com.example.comida.ui.theme.PrimaryTextColor

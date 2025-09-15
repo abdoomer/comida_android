@@ -1,7 +1,7 @@
 package com.example.comida.dummy.privacyPolicy
 
-import com.example.comida.models.PolicyItem
-import com.example.comida.models.PrivacyPolicy
+import com.example.comida.models.profile.PolicyItem
+import com.example.comida.models.profile.PrivacyPolicy
 
 
 val dummyPrivacyPolicy = PrivacyPolicy(

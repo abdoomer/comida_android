@@ -47,7 +47,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.R
 import com.example.comida.components.CustomTopAppTitleBar
-import com.example.comida.models.CartItem
+import com.example.comida.models.cart.CartItem
 import com.example.comida.ui.theme.BottomNavigationIconsColor
 import com.example.comida.ui.theme.CellDividerColor
 import com.example.comida.ui.theme.CheckoutOverlayBoxColor

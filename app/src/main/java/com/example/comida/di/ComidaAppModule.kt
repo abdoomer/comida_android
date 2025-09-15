@@ -26,7 +26,9 @@ object ComidaAppModule {
 
     @Provides
     @Singleton
-    fun provideComidaApplication(@ApplicationContext context: Context): ComidaApp {
+    fun provideComidaApplication(
+        @ApplicationContext context: Context
+    ): ComidaApp {
         return context as ComidaApp
     }
 

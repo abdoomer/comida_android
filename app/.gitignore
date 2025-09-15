@@ -60,8 +60,14 @@ captures/
 .cxx/
 
 # Google Services (Firebase)
+# Note: These files are ignored to prevent pushing sensitive Firebase config to GitHub
+# but should exist locally in your project for builds to work
 google-services.json
 google-services-*.json
+
+# Keep template/example files for reference (optional)
+# !google-services-template.json
+# !google-services-example.json
 
 # Freeline
 freeline.py

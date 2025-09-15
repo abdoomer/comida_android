@@ -1,8 +1,6 @@
-package com.example.comida.models
+package com.example.comida.models.cart
 
 import androidx.annotation.DrawableRes
-import com.example.comida.R
-
 
 data class CartItem(
     val name: String = "",
