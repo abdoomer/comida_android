@@ -55,6 +55,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.text.isDigitsOnly
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comida.R
 import com.example.comida.components.MainTextButton
@@ -72,25 +73,25 @@ import com.example.comida.viewmodels.auth.OTPViewModel
 @Composable
 fun OTPVerificationScreen(
     modifier: Modifier = Modifier,
-    viewModel: OTPViewModel,
     onBackButtonClicked: () -> Unit
 ){
 
-    val otpState by viewModel.otpState.collectAsStateWithLifecycle()
+    val viewModel: OTPViewModel = hiltViewModel()
+    val otpState = viewModel.otpState.collectAsStateWithLifecycle()
     val focusRequesters = remember {
         (1..4).map { FocusRequester() }
     }
     val focusManager = LocalFocusManager.current
     val keyboardManager = LocalSoftwareKeyboardController.current
 
-    LaunchedEffect(otpState.focusedIndex) {
-        otpState.focusedIndex?.let { index ->
+    LaunchedEffect(otpState.value.focusedIndex) {
+        otpState.value.focusedIndex?.let { index ->
             focusRequesters.getOrNull(index)?.requestFocus()
         }
     }
 
-    LaunchedEffect(key1 = otpState.otpCode, keyboardManager) {
-        val allNumbersEntered = otpState.otpCode.none { it == null }
+    LaunchedEffect(key1 = otpState.value.otpCode, keyboardManager) {
+        val allNumbersEntered = otpState.value.otpCode.none { it == null }
 
         if (allNumbersEntered) {
             focusRequesters.forEach { it.freeFocus() }
@@ -174,7 +175,7 @@ fun OTPVerificationScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 OTPTextFields(
-                   state = otpState,
+                   state = otpState.value,
                     onAction = { action ->
                         when(action){
                             is OTPAction.OnEnterNumber -> {

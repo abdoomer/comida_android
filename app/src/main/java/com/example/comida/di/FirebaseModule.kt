@@ -3,9 +3,9 @@ package com.example.comida.di
 import android.content.Context
 import com.example.comida.domain.repository.AuthenticationRepository
 import com.example.comida.domain.repository.FBDatabaseRepository
+import com.example.comida.domain.repository.FBRealtimeDatabaseRepository
 import com.example.comida.domain.repository.FirebaseRepository
 import com.example.comida.domain.repository.RealTimeRepository
-import com.google.android.gms.auth.api.identity.Identity
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,17 +27,18 @@ object FirebaseModule {
         return FirebaseRepository(
             appCoroutineScope = appCoroutineScope,
             context = context,
-            oneTapClient = Identity.getSignInClient(context)
         )
     }
 
     @Singleton
     @Provides
     fun providesAuthenticationRepository(
-        firebaseRepository: FirebaseRepository
+        firebaseRepository: FirebaseRepository,
+        appCoroutineScope: AppCoroutineScope,
     ): AuthenticationRepository {
         return AuthenticationRepository(
-            firebaseRepository = firebaseRepository
+            firebaseRepository = firebaseRepository,
+            appCoroutineScope = appCoroutineScope
         )
     }
 
@@ -62,6 +63,18 @@ object FirebaseModule {
         return RealTimeRepository(
             appCoroutineScope = appCoroutineScope,
             firebaseRepository = firebaseRepository
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun providesFBRealtimeDatabaseRepository(
+        appCoroutineScope: AppCoroutineScope,
+        firebaseRepository: FirebaseRepository
+    ): FBRealtimeDatabaseRepository {
+        return FBRealtimeDatabaseRepository(
+            firebaseRepository = firebaseRepository,
+            appCoroutineScope = appCoroutineScope
         )
     }
 }

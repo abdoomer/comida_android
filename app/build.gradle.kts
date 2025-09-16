@@ -111,6 +111,7 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.ui.auth)
     implementation(libs.firebase.firestore.ktx)
+    implementation(libs.firebase.database)
 
     // Hilt
     implementation(libs.hilt.android)

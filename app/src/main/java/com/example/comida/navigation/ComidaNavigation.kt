@@ -1,5 +1,7 @@
 package com.example.comida.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -35,14 +37,12 @@ import com.example.comida.viewmodels.auth.SignInViewModel
 import com.example.comida.viewmodels.auth.SignUpViewModel
 
 
+@RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 @Composable
 fun ComidaNavigation(
     modifier: Modifier = Modifier,
     startDestination: String
 ){
-    val otpViewmodel: OTPViewModel = viewModel()
-    val signInViewmodel: SignInViewModel = viewModel()
-    val comidaViewmodel: ComidaViewmodel = viewModel()
     val navController = rememberNavController()
 
     NavHost(
@@ -59,7 +59,6 @@ fun ComidaNavigation(
                 },
                 onUpdateAppFirstTimeRun = {
                     navController.navigate(Screens.SignInScreen.route)
-                    signInViewmodel.updateAppFirstTimeRun()
                 }
             )
         }
@@ -104,7 +103,6 @@ fun ComidaNavigation(
             route = Screens.OTPVerificationScreen.route
         ){
             OTPVerificationScreen(
-                viewModel = otpViewmodel,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
@@ -180,7 +178,6 @@ fun ComidaNavigation(
         ){
             ComidaAppScreen(
                 navController = navController,
-                viewmodel = comidaViewmodel
             )
         }
 
