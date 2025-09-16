@@ -57,6 +57,7 @@ import com.example.comida.viewmodels.home.RestaurantViewModel
 @Composable
 fun RestaurantScreen(
     modifier: Modifier = Modifier,
+    restaurantID: String,
     onBackButtonClicked: () -> Unit,
     onToggleFavouritesClicked: (Restaurant) -> Unit,
     onViewAllFoodsTapped: (List<FoodItem>) -> Unit,
@@ -343,6 +344,7 @@ private fun RestaurantAvailableFood(
 private fun RestaurantScreenPreview(){
     ComidaTheme {
         RestaurantScreen(
+            restaurantID = "",
             onBackButtonClicked = {},
             onToggleFavouritesClicked = {},
             onViewAllFoodsTapped = {},

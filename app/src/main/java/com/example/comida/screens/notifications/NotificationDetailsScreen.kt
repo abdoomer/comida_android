@@ -37,6 +37,7 @@ import com.example.comida.viewmodels.notifications.NotificationDetailsViewModel
 @Composable
 fun NotificationDetailsScreen(
     modifier: Modifier = Modifier,
+    notificationID: String,
     onBackButtonClicked: () -> Unit,
     onMarkAsReadClicked: (AppNotification) -> Unit
 ){
@@ -128,6 +129,7 @@ fun NotificationDetailsScreen(
 private fun NotificationDetailsScreenPreview(){
     ComidaTheme {
         NotificationDetailsScreen(
+            notificationID = "",
             onBackButtonClicked = {},
             onMarkAsReadClicked = {}
         )

@@ -61,6 +61,7 @@ import com.example.comida.viewmodels.home.FoodDetailsViewModel
 
 @Composable
 fun FoodDetailsScreen(
+    foodID: String,
     modifier: Modifier = Modifier,
     onBackButtonClicked: () -> Unit
 ){
@@ -455,6 +456,7 @@ private fun AddOnCell(
 private fun FoodDetailsScreenPreview(){
     ComidaTheme {
         FoodDetailsScreen(
+            foodID = "",
             onBackButtonClicked = {}
         )
     }

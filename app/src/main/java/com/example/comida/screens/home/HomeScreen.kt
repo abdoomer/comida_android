@@ -251,7 +251,7 @@ private fun FoodCategoriesSelectionMenu(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
-                    painter = painterResource(category.image),
+                    painter = painterResource(category.getFoodCategoryImage()),
                     contentDescription = category.title,
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier

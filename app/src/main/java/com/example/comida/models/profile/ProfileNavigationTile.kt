@@ -2,12 +2,15 @@ package com.example.comida.models.profile
 
 import androidx.annotation.DrawableRes
 import com.example.comida.R
-import com.example.comida.navigation.Screens
+import com.example.comida.navigation.MyAccountScreenRoute
+import com.example.comida.navigation.PrivacyPolicyScreenRoute
+import com.example.comida.navigation.SettingsScreenRoute
+import com.example.comida.navigation.TermsOfServiceScreenRoute
 
 
 data class ProfileNavigationTile(
     val title: String = "",
-    val destinationRoute: String = "",
+    val destinationRoute: Any,
     @DrawableRes val icon: Int = 0
 )
 
@@ -15,22 +18,22 @@ data class ProfileNavigationTile(
 val profileNavigationTiles = listOf<ProfileNavigationTile>(
     ProfileNavigationTile(
         title = "My Account",
-        destinationRoute = Screens.MyAccount.route,
+        destinationRoute = MyAccountScreenRoute,
         icon = R.drawable.ic_user_account
     ),
     ProfileNavigationTile(
         title = "Settings",
-        destinationRoute = Screens.SettingsScreen.route,
+        destinationRoute = SettingsScreenRoute,
         icon = R.drawable.ic_settings
     ),
     ProfileNavigationTile(
         title = "Terms Of Service",
-        destinationRoute = Screens.TermsOfServiceScreen.route,
+        destinationRoute = TermsOfServiceScreenRoute,
         icon = R.drawable.ic_terms_of_service
     ),
     ProfileNavigationTile(
         title = "Privacy Policy",
-        destinationRoute = Screens.PrivacyPolicyScreen.route,
+        destinationRoute = PrivacyPolicyScreenRoute,
         icon = R.drawable.ic_privacy_policy
     ),
     ProfileNavigationTile(

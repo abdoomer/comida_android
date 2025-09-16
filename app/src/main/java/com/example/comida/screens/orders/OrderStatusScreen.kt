@@ -15,6 +15,7 @@ import com.example.comida.ui.theme.ComidaTheme
 
 @Composable
 fun OrderStatusScreen(
+    orderID: String,
     modifier: Modifier = Modifier,
 ){
     Scaffold(
@@ -43,6 +44,7 @@ fun OrderStatusScreen(
 private fun OrderStatusScreenPreview(){
     ComidaTheme {
         OrderStatusScreen(
+            orderID = ""
         )
     }
 }

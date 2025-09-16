@@ -1,5 +1,6 @@
 package com.example.comida.screens.home
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -44,15 +45,18 @@ import com.example.comida.viewmodels.home.FoodCategoryViewModel
 @Composable
 fun FoodCategoryScreen(
     modifier: Modifier = Modifier,
+    categoryID: String,
     onBackButtonClicked: () -> Unit,
     onFoodItemClicked: () -> Unit,
 ){
 
     val viewModel: FoodCategoryViewModel = hiltViewModel()
     val category = viewModel.category.collectAsStateWithLifecycle()
+//    val categoryFoodItems = viewModel.categoryFoodItems.collectAsStateWithLifecycle()
     val searchText = viewModel.searchText.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = true) {
+        Log.d("Category", categoryID)
         viewModel.fetchSelectedFoodCategory()
     }
 
@@ -93,7 +97,7 @@ fun FoodCategoryScreen(
                 modifier = Modifier,
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                items(category.value.foodItems){ item ->
+                items(category.value.getFoodCategoryItems()){ item ->
                     FoodCategoryItemCard(
                         item = item,
                         onItemClicked = {
@@ -211,6 +215,7 @@ private fun CategoryFilter(
 private fun FoodCategoryScreenPreview(){
     ComidaTheme {
         FoodCategoryScreen(
+            categoryID = "",
             onBackButtonClicked = {},
             onFoodItemClicked = {}
         )

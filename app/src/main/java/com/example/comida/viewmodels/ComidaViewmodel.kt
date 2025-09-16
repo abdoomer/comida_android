@@ -2,7 +2,8 @@ package com.example.comida.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.comida.navigation.Screens
+import com.example.comida.navigation.OnboardingScreenRoute
+import com.example.comida.navigation.SignInScreenRoute
 import com.example.comida.services.ComidaSharedPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,8 +16,8 @@ class ComidaViewmodel @Inject constructor(
     private val sharedPreferences: ComidaSharedPreferences
 ) : ViewModel() {
 
-    private val _startDestination: MutableStateFlow<String> = MutableStateFlow("")
-    val startDestination: StateFlow<String> = _startDestination
+    private val _startDestination: MutableStateFlow<Any?> = MutableStateFlow(null)
+    val startDestination: StateFlow<Any?> = _startDestination
 
     private val _startDestinationFetched: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val startDestinationFetched: StateFlow<Boolean> = _startDestinationFetched
@@ -32,14 +33,12 @@ class ComidaViewmodel @Inject constructor(
 
     private fun getAppStartDestination(){
         viewModelScope.launch {
-
             val firstTimeAppRun = sharedPreferences.getAppFirstTimeRun()
             if (firstTimeAppRun) {
-                _startDestination.emit(Screens.OnboardingScreen.route)
+                _startDestination.emit(OnboardingScreenRoute)
             } else {
-                _startDestination.emit(Screens.SignInScreen.route)
+                _startDestination.emit(SignInScreenRoute)
             }
-
             _startDestinationFetched.emit(true)
         }
     }

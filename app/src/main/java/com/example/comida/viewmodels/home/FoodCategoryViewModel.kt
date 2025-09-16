@@ -7,6 +7,7 @@ import com.example.comida.models.home.FoodCategory
 import com.example.comida.models.FoodItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -22,12 +23,15 @@ class FoodCategoryViewModel @Inject constructor(
     private val _category: MutableStateFlow<FoodCategory> = MutableStateFlow(FoodCategory())
     val category: StateFlow<FoodCategory> = _category
 
+    private val _categoryFoodItems: MutableStateFlow<List<FoodItem>> = MutableStateFlow(emptyList())
+    val categoryFoodItems: Flow<List<FoodItem>> = _categoryFoodItems
 
     fun fetchSelectedFoodCategory(){
         viewModelScope.launch {
             val currentCategory = foodRepository.getSelectedCategory()
 
             _category.emit(currentCategory)
+            _categoryFoodItems.emit(currentCategory.getFoodCategoryItems())
         }
     }
 

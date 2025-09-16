@@ -1,6 +1,7 @@
 package com.example.comida.domain.repository
 
 import android.content.Context
+import android.util.Log
 import androidx.credentials.ClearCredentialStateRequest
 import androidx.credentials.CredentialManager
 import com.example.comida.di.AppCoroutineScope
@@ -33,8 +34,12 @@ import com.facebook.login.LoginResult
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
+import com.google.firebase.database.getValue
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
@@ -217,16 +222,20 @@ class FirebaseRepository @Inject constructor(
 
     override suspend fun getRealtimeDatabaseRestaurants(): Flow<FBDatabaseResponse<List<Restaurant>>> = callbackFlow {
         _realtimeDatabase.getReference("restaurants")
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful){
-//                    trySend(FBDatabaseResponse.Success())
-                } else {
-                    trySend(FBDatabaseResponse.Error(message = task.exception?.message ?: ""))
-                }
-            }
+            .addValueEventListener(
+                object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        snapshot.getValue<List<Restaurant>>()?.let {
+                            trySend(FBDatabaseResponse.Success(it))
+                        }
+                    }
 
-        awaitClose()
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.d("FirebaseRepository", "" + error.message)
+                    }
+
+                }
+            )
     }
 
     override suspend fun setRealtimeDatabaseRestaurants(restaurants: List<Restaurant>): Flow<FBDatabaseResponse<List<Restaurant>>> = callbackFlow {
@@ -245,16 +254,20 @@ class FirebaseRepository @Inject constructor(
 
     override suspend fun getRealtimeDatabaseSpecialOffers(): Flow<FBDatabaseResponse<List<SpecialOffer>>> = callbackFlow {
         _realtimeDatabase.getReference("special_offers")
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful){
-//                    trySend(FBDatabaseResponse.Success())
-                } else {
-                    trySend(FBDatabaseResponse.Error(message = task.exception?.message ?: ""))
-                }
-            }
+            .addValueEventListener(
+                object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        snapshot.getValue<List<SpecialOffer>>()?.let {
+                            trySend(FBDatabaseResponse.Success(it))
+                        }
+                    }
 
-        awaitClose()
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.d("FirebaseRepository", "" + error.message)
+                    }
+
+                }
+            )
     }
 
     override suspend fun setRealtimeDatabaseSpecialOffers(specialOffers: List<SpecialOffer>): Flow<FBDatabaseResponse<List<SpecialOffer>>> = callbackFlow {
@@ -273,21 +286,26 @@ class FirebaseRepository @Inject constructor(
 
     override suspend fun getRealtimeDatabasePrivacyPolicy(): Flow<FBDatabaseResponse<PrivacyPolicy>> = callbackFlow {
         _realtimeDatabase.getReference("privacy_policy")
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful){
-//                    trySend(FBDatabaseResponse.Success())
-                } else {
-                    trySend(FBDatabaseResponse.Error(message = task.exception?.message ?: ""))
-                }
-            }
+            .addValueEventListener(
+                object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        snapshot.getValue<PrivacyPolicy>()?.let {
+                            trySend(FBDatabaseResponse.Success(it))
+                        }
+                    }
 
-        awaitClose()
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.d("FirebaseRepository", "" + error.message)
+                    }
+
+                }
+            )
     }
 
     override suspend fun setRealtimeDatabasePrivacyPolicy(privacyPolicy: PrivacyPolicy): Flow<FBDatabaseResponse<PrivacyPolicy>> = callbackFlow {
         _realtimeDatabase.getReference("privacy_policy")
-            .get()
+            .child("")
+            .setValue("")
             .addOnCompleteListener { task ->
                 if (task.isSuccessful){
 //                    trySend(FBDatabaseResponse.Success())
@@ -301,16 +319,20 @@ class FirebaseRepository @Inject constructor(
 
     override suspend fun getRealtimeDatabaseTermsOfService(): Flow<FBDatabaseResponse<TermsOfService>> = callbackFlow {
         _realtimeDatabase.getReference("terms_of_service")
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful){
-//                    trySend(FBDatabaseResponse.Success())
-                } else {
-                    trySend(FBDatabaseResponse.Error(message = task.exception?.message ?: ""))
-                }
-            }
+            .addValueEventListener(
+                object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        snapshot.getValue<TermsOfService>()?.let {
+                            trySend(FBDatabaseResponse.Success(it))
+                        }
+                    }
 
-        awaitClose()
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.d("FirebaseRepository", "" + error.message)
+                    }
+
+                }
+            )
     }
 
     override suspend fun setRealtimeDatabaseTermsOfService(termsOfService: TermsOfService): Flow<FBDatabaseResponse<TermsOfService>> = callbackFlow {
@@ -329,16 +351,20 @@ class FirebaseRepository @Inject constructor(
 
     override suspend fun getRealtimeDatabaseFoodCategories(): Flow<FBDatabaseResponse<List<FoodCategory>>> = callbackFlow {
         _realtimeDatabase.getReference("food_categories")
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful){
-//                    trySend(FBDatabaseResponse.Success())
-                } else {
-                    trySend(FBDatabaseResponse.Error(message = task.exception?.message ?: ""))
-                }
-            }
+            .addValueEventListener(
+                object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        snapshot.getValue<List<FoodCategory>>()?.let {
+                            trySend(FBDatabaseResponse.Success(it))
+                        }
+                    }
 
-        awaitClose()
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.d("FirebaseRepository", "" + error.message)
+                    }
+
+                }
+            )
     }
 
     override suspend fun setRealtimeDatabaseFoodCategories(foodCategories: List<FoodCategory>): Flow<FBDatabaseResponse<List<FoodCategory>>> = callbackFlow {
@@ -357,16 +383,20 @@ class FirebaseRepository @Inject constructor(
 
     override suspend fun getRealtimeDatabaseBurgerFoodAddOns(): Flow<FBDatabaseResponse<List<FoodAddOn>>> = callbackFlow {
         _realtimeDatabase.getReference("burger_food_add_ons")
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful){
-//                    trySend(FBDatabaseResponse.Success())
-                } else {
-                    trySend(FBDatabaseResponse.Error(message = task.exception?.message ?: ""))
-                }
-            }
+            .addValueEventListener(
+                object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        snapshot.getValue<List<FoodAddOn>>()?.let {
+                            trySend(FBDatabaseResponse.Success(it))
+                        }
+                    }
 
-        awaitClose()
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.d("FirebaseRepository", "" + error.message)
+                    }
+
+                }
+            )
     }
 
     override suspend fun setRealtimeDatabaseBurgerFoodAddOns(foodAddOns: List<FoodAddOn>): Flow<FBDatabaseResponse<List<FoodAddOn>>> = callbackFlow {
@@ -385,16 +415,20 @@ class FirebaseRepository @Inject constructor(
 
     override suspend fun getRealtimeDatabaseDonutsFoodAddOns(): Flow<FBDatabaseResponse<List<FoodAddOn>>> = callbackFlow {
         _realtimeDatabase.getReference("donuts_food_add_ons")
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful){
-//                    trySend(FBDatabaseResponse.Success())
-                } else {
-                    trySend(FBDatabaseResponse.Error(message = task.exception?.message ?: ""))
-                }
-            }
+            .addValueEventListener(
+                object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        snapshot.getValue<List<FoodAddOn>>()?.let {
+                            trySend(FBDatabaseResponse.Success(it))
+                        }
+                    }
 
-        awaitClose()
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.d("FirebaseRepository", "" + error.message)
+                    }
+
+                }
+            )
     }
 
     override suspend fun setRealtimeDatabaseDonutsFoodAddOns(foodAddOns: List<FoodAddOn>): Flow<FBDatabaseResponse<List<FoodAddOn>>> = callbackFlow {
@@ -413,16 +447,20 @@ class FirebaseRepository @Inject constructor(
 
     override suspend fun getRealtimeDatabaseHotDogFoodAddOns(): Flow<FBDatabaseResponse<List<FoodAddOn>>> = callbackFlow {
         _realtimeDatabase.getReference("hotdog_food_add_ons")
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful){
-//                    trySend(FBDatabaseResponse.Success())
-                } else {
-                    trySend(FBDatabaseResponse.Error(message = task.exception?.message ?: ""))
-                }
-            }
+            .addValueEventListener(
+                object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        snapshot.getValue<List<FoodAddOn>>()?.let {
+                            trySend(FBDatabaseResponse.Success(it))
+                        }
+                    }
 
-        awaitClose()
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.d("FirebaseRepository", "" + error.message)
+                    }
+
+                }
+            )
     }
 
     override suspend fun setRealtimeDatabaseHotDogFoodAddOns(foodAddOns: List<FoodAddOn>): Flow<FBDatabaseResponse<List<FoodAddOn>>> = callbackFlow {
@@ -441,16 +479,20 @@ class FirebaseRepository @Inject constructor(
 
     override suspend fun getRealtimeDatabasePastaFoodAddOns(): Flow<FBDatabaseResponse<List<FoodAddOn>>> = callbackFlow {
         _realtimeDatabase.getReference("pasta_food_add_ons")
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful){
-//                    trySend(FBDatabaseResponse.Success())
-                } else {
-                    trySend(FBDatabaseResponse.Error(message = task.exception?.message ?: ""))
-                }
-            }
+            .addValueEventListener(
+                object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        snapshot.getValue<List<FoodAddOn>>()?.let {
+                            trySend(FBDatabaseResponse.Success(it))
+                        }
+                    }
 
-        awaitClose()
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.d("FirebaseRepository", "" + error.message)
+                    }
+
+                }
+            )
     }
 
     override suspend fun setRealtimeDatabasePastaFoodAddOns(foodAddOns: List<FoodAddOn>): Flow<FBDatabaseResponse<List<FoodAddOn>>> = callbackFlow {
@@ -469,16 +511,20 @@ class FirebaseRepository @Inject constructor(
 
     override suspend fun getRealtimeDatabasePizzaFoodAddOns(): Flow<FBDatabaseResponse<List<FoodAddOn>>> = callbackFlow {
         _realtimeDatabase.getReference("pizza_food_add_ons")
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful){
-//                    trySend(FBDatabaseResponse.Success())
-                } else {
-                    trySend(FBDatabaseResponse.Error(message = task.exception?.message ?: ""))
-                }
-            }
+            .addValueEventListener(
+                object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        snapshot.getValue<List<FoodAddOn>>()?.let {
+                            trySend(FBDatabaseResponse.Success(it))
+                        }
+                    }
 
-        awaitClose()
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.d("FirebaseRepository", "" + error.message)
+                    }
+
+                }
+            )
     }
 
     override suspend fun setRealtimeDatabasePizzaFoodAddOns(foodAddOns: List<FoodAddOn>): Flow<FBDatabaseResponse<List<FoodAddOn>>> = callbackFlow {
@@ -486,7 +532,9 @@ class FirebaseRepository @Inject constructor(
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful){
-//                    trySend(FBDatabaseResponse.Success())
+                    task.result.getValue<List<FoodAddOn>>()?.let {
+                        trySend(FBDatabaseResponse.Success(it))
+                    }
                 } else {
                     trySend(FBDatabaseResponse.Error(message = task.exception?.message ?: ""))
                 }

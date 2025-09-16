@@ -20,6 +20,7 @@ import com.example.comida.viewmodels.orders.OrderDetailsViewModel
 @Composable
 fun OrderDetailsScreen(
     modifier: Modifier = Modifier,
+    orderID: String,
     onBackButtonClicked: () -> Unit
 ){
 
@@ -57,6 +58,7 @@ fun OrderDetailsScreen(
 fun OrderDetailsScreenPreview(){
     ComidaTheme {
         OrderDetailsScreen(
+            orderID = "",
             onBackButtonClicked = {}
         )
     }

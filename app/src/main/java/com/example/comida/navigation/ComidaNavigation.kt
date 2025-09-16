@@ -4,16 +4,14 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import com.example.comida.screens.navigation.ComidaAppScreen
 import com.example.comida.screens.home.FoodCategoryScreen
 import com.example.comida.screens.home.FoodDetailsScreen
 import com.example.comida.screens.auth.ForgetPasswordScreen
-import com.example.comida.screens.profile.MyAccount
 import com.example.comida.screens.notifications.NotificationDetailsScreen
 import com.example.comida.screens.auth.OTPVerificationScreen
 import com.example.comida.screens.home.OfferScreen
@@ -29,59 +27,49 @@ import com.example.comida.screens.profile.SettingsScreen
 import com.example.comida.screens.auth.SignInScreen
 import com.example.comida.screens.auth.SignUpScreen
 import com.example.comida.screens.home.SpecialOffersScreen
+import com.example.comida.screens.profile.MyAccountScreen
 import com.example.comida.screens.profile.TermsOfServiceScreen
-import com.example.comida.viewmodels.ComidaViewmodel
-import com.example.comida.viewmodels.auth.ForgetPasswordViewModel
-import com.example.comida.viewmodels.auth.OTPViewModel
-import com.example.comida.viewmodels.auth.SignInViewModel
-import com.example.comida.viewmodels.auth.SignUpViewModel
 
 
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 @Composable
 fun ComidaNavigation(
     modifier: Modifier = Modifier,
-    startDestination: String
+//    startDestination: String
 ){
     val navController = rememberNavController()
 
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = startDestination
+        startDestination = OnboardingScreenRoute
     ) {
-        composable(
-            route = Screens.OnboardingScreen.route
-        ){
+        composable<OnboardingScreenRoute>{
             OnboardingScreen(
                 onNavigationButtonClicked = {
                     navController.navigate(it)
                 },
                 onUpdateAppFirstTimeRun = {
-                    navController.navigate(Screens.SignInScreen.route)
+                    navController.navigate(SignInScreenRoute)
                 }
             )
         }
 
-        composable(
-            route = Screens.SignInScreen.route
-        ){
+        composable<SignInScreenRoute>{
             SignInScreen(
                 onSignInClicked = {
-                    navController.navigate(Screens.ComidaAppScreen.route)
+                    navController.navigate(ComidaAppScreenRoute)
                 },
                 onGoToSignUpClicked = {
-                    navController.navigate(Screens.SignUpScreen.route)
+                    navController.navigate(SignUpScreenRoute)
                 },
                 onForgetPasswordClicked = {
-                    navController.navigate(Screens.ForgetPasswordScreen.route)
+                    navController.navigate(ForgetPasswordScreenRoute)
                 }
             )
         }
 
-        composable(
-            route = Screens.SignUpScreen.route
-        ){
+        composable<SignUpScreenRoute>{
             SignUpScreen(
                 onBackButtonClicked = {
                     navController.popBackStack()
@@ -89,9 +77,7 @@ fun ComidaNavigation(
             )
         }
 
-        composable(
-            route = Screens.ForgetPasswordScreen.route
-        ){
+        composable<ForgetPasswordScreenRoute>{
             ForgetPasswordScreen(
                 onBackButtonClicked = {
                     navController.popBackStack()
@@ -99,9 +85,7 @@ fun ComidaNavigation(
             )
         }
 
-        composable(
-            route = Screens.OTPVerificationScreen.route
-        ){
+        composable<OTPVerificationScreenRoute>{
             OTPVerificationScreen(
                 onBackButtonClicked = {
                     navController.popBackStack()
@@ -109,26 +93,22 @@ fun ComidaNavigation(
             )
         }
 
-        composable(
-            route = Screens.FoodDetailsScreen.route
-        ){
+        composable<FoodDetailsScreenRoute>{
+            val args = it.toRoute<FoodDetailsScreenRoute>()
             FoodDetailsScreen(
+                foodID = args.id,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
             )
         }
 
-        composable(
-            route = Screens.PaymentScreen.route
-        ){
+        composable<PaymentScreenRoute>{
             PaymentScreen(
             )
         }
 
-        composable(
-            route = Screens.PrivacyPolicyScreen.route
-        ){
+        composable<PrivacyPolicyScreenRoute>{
             PrivacyPolicyScreen(
                 onBackButtonClicked = {
                     navController.popBackStack()
@@ -136,9 +116,7 @@ fun ComidaNavigation(
             )
         }
 
-        composable(
-            route = Screens.TermsOfServiceScreen.route
-        ){
+        composable<TermsOfServiceScreenRoute>{
             TermsOfServiceScreen(
                 onBackButtonClicked = {
                     navController.popBackStack()
@@ -146,9 +124,7 @@ fun ComidaNavigation(
             )
         }
 
-        composable(
-            route = Screens.SettingsScreen.route
-        ){
+        composable<SettingsScreenRoute>{
             SettingsScreen(
                 onBackButtonClicked = {
                     navController.popBackStack()
@@ -156,35 +132,31 @@ fun ComidaNavigation(
             )
         }
 
-        composable(
-            route = Screens.OrderStatusScreen.route
-        ){
+        composable<OrderStatusScreenRoute>{
+            val args = it.toRoute<OrderStatusScreenRoute>()
             OrderStatusScreen(
+                orderID = args.id
             )
         }
 
-        composable(
-            route = Screens.MyAccount.route
-        ){
-            MyAccount(
+        composable<MyAccountScreenRoute>{
+            MyAccountScreen(
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
             )
         }
 
-        composable(
-            route = Screens.ComidaAppScreen.route
-        ){
+        composable<ComidaAppScreenRoute>{
             ComidaAppScreen(
                 navController = navController,
             )
         }
 
-        composable(
-            route = Screens.NotificationDetailsScreen.route
-        ){
+        composable<NotificationDetailsScreenRoute>{
+            val args = it.toRoute<NotificationDetailsScreenRoute>()
             NotificationDetailsScreen(
+                notificationID = args.id,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 },
@@ -192,91 +164,87 @@ fun ComidaNavigation(
             )
         }
 
-        composable(
-            route = Screens.RestaurantsScreen.route
-        ){
+        composable<RestaurantsScreenRoute>{
             RestaurantsScreen(
                 onBackButtonClicked = {
                     navController.popBackStack()
                 },
                 onRestaurantTapped = {
-                    navController.navigate(Screens.RestaurantScreen.route)
+                    navController.navigate(RestaurantScreenRoute)
                 },
                 onToggleIsFavoriteTapped = {}
             )
         }
 
-        composable(
-            route = Screens.SpecialOffersScreen.route
-        ){
+        composable<SpecialOffersScreenRoute>{
             SpecialOffersScreen(
                 onBackButtonClicked = {
                     navController.popBackStack()
                 },
                 onSpecialOfferTapped = {
-                    navController.navigate(Screens.OfferScreen.route)
+                    navController.navigate(OfferScreenRoute)
                 },
                 onBuyNowClicked = {}
             )
         }
 
-        composable(
-            route = Screens.FoodCategoryScreen.route
-        ){
+        composable<FoodCategoryScreenRoute>{
+            val args = it.toRoute<FoodCategoryScreenRoute>()
             FoodCategoryScreen(
+                categoryID = args.id,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 },
                 onFoodItemClicked = {
-                    navController.navigate(Screens.FoodDetailsScreen.route)
+                    navController.navigate(FoodDetailsScreenRoute)
                 }
             )
         }
 
-        composable(
-            route = Screens.RestaurantScreen.route
-        ){
+        composable<RestaurantScreenRoute>{
+            val args = it.toRoute<RestaurantScreenRoute>()
             RestaurantScreen(
+                restaurantID = args.id,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 },
                 onToggleFavouritesClicked = {},
                 onViewAllFoodsTapped = {
-                    navController.navigate(Screens.RestaurantAvailableFoodsScreen.route)
+                    navController.navigate(RestaurantAvailableFoodsScreenRoute)
                 },
                 onFoodItemClicked = {},
                 onFoodItemAddToCartClicked = {}
             )
         }
 
-        composable(
-            route = Screens.OfferScreen.route
-        ){
+        composable<OfferScreenRoute>{
+            val args = it.toRoute<OfferScreenRoute>()
             OfferScreen(
+                offerID = args.id,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
             )
         }
 
-        composable(
-            route = Screens.RestaurantAvailableFoodsScreen.route
-        ){
+        composable<RestaurantAvailableFoodsScreenRoute>{
+            val args = it.toRoute<RestaurantAvailableFoodsScreenRoute>()
             RestaurantAvailableFoodsScreen(
+                restaurantID = args.id,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 },
                 onFoodItemClicked = {
-                    navController.navigate(Screens.FoodDetailsScreen.route)
+                    navController.navigate(FoodDetailsScreenRoute)
                 },
                 onFoodItemAddToCartClicked = {}
             )
         }
 
-        composable(
-            route = Screens.OrderDetailsScreen.route
-        ){
+        composable<OrderDetailsScreenRoute>{
+            val args = it.toRoute<OrderDetailsScreenRoute>()
             OrderDetailsScreen(
+                orderID = args.id,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }

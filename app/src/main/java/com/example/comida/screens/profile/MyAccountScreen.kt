@@ -14,7 +14,7 @@ import com.example.comida.ui.theme.ComidaTheme
 
 
 @Composable
-fun MyAccount(
+fun MyAccountScreen(
     modifier: Modifier = Modifier,
     onBackButtonClicked: () -> Unit
 ){
@@ -43,7 +43,7 @@ fun MyAccount(
 @Preview(showBackground = true, showSystemUi = true)
 private fun MyAccountPreview(){
     ComidaTheme {
-        MyAccount(
+        MyAccountScreen(
             onBackButtonClicked = {}
         )
     }

@@ -167,7 +167,7 @@ private fun UserInformation(
 @Composable
 private fun NavigationTiles(
     modifier: Modifier = Modifier,
-    onTileClicked: (String) -> Unit
+    onTileClicked: (Any) -> Unit
 ){
     LazyColumn(
         modifier = modifier

@@ -49,6 +49,7 @@ import com.example.comida.viewmodels.home.OfferViewModel
 @Composable
 fun OfferScreen(
     modifier: Modifier = Modifier,
+    offerID: String,
     onBackButtonClicked: () -> Unit
 ){
 
@@ -244,6 +245,7 @@ private fun OfferInformation(
 private fun OfferScreenPreview(){
     ComidaTheme {
         OfferScreen(
+            offerID = "",
             onBackButtonClicked = {}
         )
     }

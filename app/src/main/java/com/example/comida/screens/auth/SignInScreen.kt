@@ -47,7 +47,7 @@ fun SignInScreen(
     modifier: Modifier = Modifier,
     onGoToSignUpClicked: () -> Unit,
     onForgetPasswordClicked: () -> Unit,
-    onSignInClicked: (Boolean) -> Unit,
+    onSignInClicked: () -> Unit,
 ){
 
     val viewmodel: SignInViewModel = hiltViewModel()
@@ -151,6 +151,7 @@ fun SignInScreen(
                     title = "Login",
                     onClicked = {
                         viewmodel.validateLoginInformation()
+                        onSignInClicked()
                     }
                 )
 

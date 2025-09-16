@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 
     id("com.google.gms.google-services")
     id("com.google.devtools.ksp")
@@ -142,4 +143,8 @@ dependencies {
     // Facebook Firebase Login SDK
     implementation(libs.facebook.login)
     implementation(libs.facebook.android.sdk)
+
+    // Type Safe Navigation
+    implementation(libs.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
 }

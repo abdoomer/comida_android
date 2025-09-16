@@ -44,7 +44,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun OnboardingScreen(
     modifier: Modifier = Modifier,
-    onNavigationButtonClicked: (String) -> Unit,
+    onNavigationButtonClicked: (Any) -> Unit,
     onUpdateAppFirstTimeRun: () -> Unit
 ){
 
