@@ -1,9 +1,11 @@
 package com.example.comida.models
 
 import androidx.compose.ui.graphics.Color
+import java.util.UUID
 
 
 data class SpecialOffer(
+    val id: String = UUID.randomUUID().toString(),
     val title: String = "",
     val restaurantName: String = "",
     val restaurant: Restaurant = Restaurant(),

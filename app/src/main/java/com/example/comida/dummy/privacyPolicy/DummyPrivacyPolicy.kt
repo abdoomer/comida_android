@@ -5,7 +5,7 @@ import com.example.comida.models.profile.PrivacyPolicy
 
 
 val dummyPrivacyPolicy = PrivacyPolicy(
-    title = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque malesuada diam dolor, laoreet ornare risus aliquet eu. Quisque maximus suscipit placerat. In eget vestibulum enim, sed dignissim enim. Integer magna nisl, porta id nisi nec, iaculis posuere neque. Integer tortor augue, venenatis non nulla vitae, tempus finibus nisl. Suspendisse purus lorem, aliquet eu risus vitae, rhoncus viverra turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porta varius lectus, eget pharetra lectus convallis nec. Nulla quis porta risus. Vestibulum maximus mattis dui id facilisis. Aenean finibus ipsum nec nulla aliquet, sed ullamcorper erat imperdiet.",
+    title = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque malesuada diam dolor, laoreet ornare risus aliquet eu. ",
     policies = listOf<PolicyItem>(
         PolicyItem(
             term = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."

@@ -5,6 +5,7 @@ import com.example.comida.R
 import com.example.comida.navigation.MyAccountScreenRoute
 import com.example.comida.navigation.PrivacyPolicyScreenRoute
 import com.example.comida.navigation.SettingsScreenRoute
+import com.example.comida.navigation.TechnicalSupportRoute
 import com.example.comida.navigation.TermsOfServiceScreenRoute
 
 
@@ -35,6 +36,11 @@ val profileNavigationTiles = listOf<ProfileNavigationTile>(
         title = "Privacy Policy",
         destinationRoute = PrivacyPolicyScreenRoute,
         icon = R.drawable.ic_privacy_policy
+    ),
+    ProfileNavigationTile(
+        title = "Technical Support",
+        destinationRoute = TechnicalSupportRoute,
+        icon = R.drawable.ic_support_email
     ),
     ProfileNavigationTile(
         title = "Share The App",

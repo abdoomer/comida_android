@@ -65,3 +65,6 @@ data class RestaurantAvailableFoodsScreenRoute(val id: String)
 
 @Serializable
 data class OrderDetailsScreenRoute(val id: String)
+
+@Serializable
+object TechnicalSupportRoute

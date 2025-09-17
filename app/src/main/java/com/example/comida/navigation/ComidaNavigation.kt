@@ -28,6 +28,7 @@ import com.example.comida.screens.auth.SignInScreen
 import com.example.comida.screens.auth.SignUpScreen
 import com.example.comida.screens.home.SpecialOffersScreen
 import com.example.comida.screens.profile.MyAccountScreen
+import com.example.comida.screens.profile.TechnicalSupportScreen
 import com.example.comida.screens.profile.TermsOfServiceScreen
 
 
@@ -182,7 +183,7 @@ fun ComidaNavigation(
                     navController.popBackStack()
                 },
                 onSpecialOfferTapped = {
-                    navController.navigate(OfferScreenRoute)
+                    navController.navigate(OfferScreenRoute(id = it.id))
                 },
                 onBuyNowClicked = {}
             )
@@ -196,7 +197,7 @@ fun ComidaNavigation(
                     navController.popBackStack()
                 },
                 onFoodItemClicked = {
-                    navController.navigate(FoodDetailsScreenRoute)
+                    navController.navigate(FoodDetailsScreenRoute(id = args.id))
                 }
             )
         }
@@ -210,7 +211,7 @@ fun ComidaNavigation(
                 },
                 onToggleFavouritesClicked = {},
                 onViewAllFoodsTapped = {
-                    navController.navigate(RestaurantAvailableFoodsScreenRoute)
+                    navController.navigate(RestaurantAvailableFoodsScreenRoute(id = it.id))
                 },
                 onFoodItemClicked = {},
                 onFoodItemAddToCartClicked = {}
@@ -245,6 +246,14 @@ fun ComidaNavigation(
             val args = it.toRoute<OrderDetailsScreenRoute>()
             OrderDetailsScreen(
                 orderID = args.id,
+                onBackButtonClicked = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable<TechnicalSupportRoute>{
+            TechnicalSupportScreen(
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }

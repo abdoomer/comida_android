@@ -2,9 +2,11 @@ package com.example.comida.models.notifications
 
 import androidx.annotation.DrawableRes
 import com.example.comida.R
+import java.util.UUID
 
 
 data class AppNotification(
+    val id: String = UUID.randomUUID().toString(),
     val title: String = "",
     val description: String = "",
     val date: String = "",

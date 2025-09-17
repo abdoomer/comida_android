@@ -62,10 +62,10 @@ fun ComidaAppScreen(
                     },
                     onBuyNowClicked = {},
                     onSpecialOfferTapped = {
-                        navController.navigate(OfferScreenRoute)
+                        navController.navigate(OfferScreenRoute(id = it.id))
                     },
                     onRestaurantTapped = {
-                        navController.navigate(RestaurantScreenRoute)
+                        navController.navigate(RestaurantScreenRoute(id = it.id))
                     },
                     onToggleIsFavoriteTapped = {},
                     onViewAllOfferTapped = {
@@ -85,7 +85,7 @@ fun ComidaAppScreen(
                 OrdersHistoryScreen(
                     paddingValues = innerPadding,
                     onOrderClicked = {
-                        navController.navigate(OrderDetailsScreenRoute)
+                        navController.navigate(OrderDetailsScreenRoute(id = it.id))
                     }
                 )
             }
@@ -99,7 +99,7 @@ fun ComidaAppScreen(
                 NotificationsScreen(
                     paddingValues = innerPadding,
                     onNotificationClicked = {
-                        navController.navigate(NotificationDetailsScreenRoute)
+                        navController.navigate(NotificationDetailsScreenRoute(id = it.id))
                     },
                     onBackButtonClicked = {
                         navController.popBackStack()

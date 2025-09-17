@@ -19,6 +19,10 @@ class TermsOfServiceRepository @Inject constructor(
 
     private val _termsOfService: MutableStateFlow<TermsOfService> = MutableStateFlow(TermsOfService())
 
+    init {
+        fetchTermsOfService()
+    }
+
     override fun fetchTermsOfService() {
         appCoroutineScope.launch {
             termsOfServiceUseCase().collect { result ->
@@ -31,5 +35,9 @@ class TermsOfServiceRepository @Inject constructor(
                 }
             }
         }
+    }
+
+    override fun getTermsOfService(): TermsOfService {
+        return _termsOfService.value
     }
 }

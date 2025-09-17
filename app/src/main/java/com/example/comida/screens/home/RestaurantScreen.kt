@@ -60,7 +60,7 @@ fun RestaurantScreen(
     restaurantID: String,
     onBackButtonClicked: () -> Unit,
     onToggleFavouritesClicked: (Restaurant) -> Unit,
-    onViewAllFoodsTapped: (List<FoodItem>) -> Unit,
+    onViewAllFoodsTapped: (Restaurant) -> Unit,
     onFoodItemClicked: (FoodItem) -> Unit,
     onFoodItemAddToCartClicked: (FoodItem) -> Unit,
 ){
@@ -101,7 +101,7 @@ fun RestaurantScreen(
                 availableFoods = restaurant.value.availableFoods,
                 onViewAllFoodsTapped = {
                     viewModel.updateCurrentRestaurantFoodList(restaurant.value.availableFoods)
-                    onViewAllFoodsTapped(restaurant.value.availableFoods)
+                    onViewAllFoodsTapped(restaurant.value)
                 },
                 onFoodItemClicked = onFoodItemClicked,
                 onFoodItemAddToCartClicked = onFoodItemAddToCartClicked

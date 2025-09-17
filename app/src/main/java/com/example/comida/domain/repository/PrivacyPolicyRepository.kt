@@ -19,6 +19,10 @@ class PrivacyPolicyRepository @Inject constructor(
 
     private val _privacyPolicy: MutableStateFlow<PrivacyPolicy> = MutableStateFlow(PrivacyPolicy())
 
+    init {
+        fetchPrivacyPolicy()
+    }
+
     override fun fetchPrivacyPolicy() {
         appCoroutineScope.launch {
             privacyPolicyUseCase().collect { result ->
@@ -31,5 +35,10 @@ class PrivacyPolicyRepository @Inject constructor(
                 }
             }
         }
+    }
+
+
+    override fun getPrivacyPolicy(): PrivacyPolicy {
+        return _privacyPolicy.value
     }
 }
