@@ -7,7 +7,6 @@ import com.example.comida.models.cart.CartItem
 val availableCartItems = listOf<CartItem>(
     CartItem(
         name = "Pizza margarita European ",
-        itemID = "",
         totalPrice = 50.0,
         quantity = 2,
         discountPercentage = 15.5,
@@ -15,7 +14,6 @@ val availableCartItems = listOf<CartItem>(
     ),
     CartItem(
         name = "Spaghetti with shrimp and basil",
-        itemID = "",
         totalPrice = 50.0,
         quantity = 1,
         discountPercentage = 15.5,
@@ -23,7 +21,6 @@ val availableCartItems = listOf<CartItem>(
     ),
     CartItem(
         name = "Burger King",
-        itemID = "",
         totalPrice = 50.0,
         quantity = 3,
         discountPercentage = 15.5,

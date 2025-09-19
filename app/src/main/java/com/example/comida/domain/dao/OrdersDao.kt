@@ -9,7 +9,5 @@ interface OrdersDao {
 
     fun getAllOrders(): List<OrderItem>
 
-    fun setSelectedOrder(newOrder: OrderItem)
-
-    fun getSelectedOrder(): OrderItem
+    fun getOrder(id: String): OrderItem
 }

@@ -19,9 +19,9 @@ class NotificationDetailsViewModel @Inject constructor(
     private val _notification: MutableStateFlow<AppNotification> = MutableStateFlow(AppNotification())
     val notification: StateFlow<AppNotification> = _notification
 
-    fun fetNotification(){
+    fun fetNotification(id: String){
         viewModelScope.launch {
-            val currentNotification = appNotificationRepository.getSelectedNotification()
+            val currentNotification = appNotificationRepository.getNotification(id = id)
 
             _notification.emit(currentNotification)
         }

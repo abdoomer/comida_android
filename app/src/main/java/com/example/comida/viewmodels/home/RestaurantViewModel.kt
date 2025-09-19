@@ -20,17 +20,11 @@ class RestaurantViewModel @Inject constructor(
     private val _restaurant: MutableStateFlow<Restaurant> = MutableStateFlow(Restaurant())
     val restaurant: StateFlow<Restaurant> = _restaurant
 
-    fun fetchRestaurant(){
+    fun fetchRestaurant(restaurantID: String){
         viewModelScope.launch {
-            val currentRestaurant = restaurantsRepository.getSelectedRestaurant()
+            val currentRestaurant = restaurantsRepository.getRestaurant(id = restaurantID)
 
             _restaurant.emit(currentRestaurant)
-        }
-    }
-
-    fun updateCurrentRestaurantFoodList(foodList: List<FoodItem>){
-        viewModelScope.launch {
-            restaurantsRepository.setRestaurantFoodList(foodList)
         }
     }
 }

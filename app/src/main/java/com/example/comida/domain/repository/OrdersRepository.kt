@@ -45,13 +45,7 @@ class OrdersRepository @Inject constructor(
         return _orders.value
     }
 
-    override fun setSelectedOrder(newOrder: OrderItem) {
-        appCoroutineScope.launch {
-            _currentSelectedOrder.emit(newOrder)
-        }
-    }
-
-    override fun getSelectedOrder(): OrderItem {
-        return _currentSelectedOrder.value
+    override fun getOrder(id: String): OrderItem {
+        return _orders.value.first() { it.id == id}
     }
 }

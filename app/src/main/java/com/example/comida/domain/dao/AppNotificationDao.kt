@@ -9,7 +9,5 @@ interface AppNotificationDao {
 
     fun fetchAppNotifications() : List<AppNotification>
 
-    fun setSelectedNotification(newNotification: AppNotification)
-
-    fun getSelectedNotification(): AppNotification
+    fun getNotification(id: String): AppNotification
 }

@@ -36,6 +36,7 @@ import com.example.comida.R
 import com.example.comida.components.CustomSearchTextField
 import com.example.comida.components.CustomTopAppTitleBar
 import com.example.comida.components.FoodCategoryItemCard
+import com.example.comida.models.FoodItem
 import com.example.comida.ui.theme.ComidaTheme
 import com.example.comida.ui.theme.PrimaryTextColor
 import com.example.comida.ui.theme.poppinsFamily
@@ -47,17 +48,16 @@ fun FoodCategoryScreen(
     modifier: Modifier = Modifier,
     categoryID: String,
     onBackButtonClicked: () -> Unit,
-    onFoodItemClicked: () -> Unit,
+    onFoodItemClicked: (FoodItem) -> Unit,
 ){
 
     val viewModel: FoodCategoryViewModel = hiltViewModel()
     val category = viewModel.category.collectAsStateWithLifecycle()
-//    val categoryFoodItems = viewModel.categoryFoodItems.collectAsStateWithLifecycle()
     val searchText = viewModel.searchText.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = true) {
         Log.d("Category", categoryID)
-        viewModel.fetchSelectedFoodCategory()
+        viewModel.fetchSelectedFoodCategory(id = categoryID)
     }
 
     Scaffold(
@@ -68,7 +68,8 @@ fun FoodCategoryScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color.White)
-                .padding(innerPadding)
+                .padding(innerPadding),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             CustomTopAppTitleBar(
                 title = category.value.title,
@@ -101,8 +102,7 @@ fun FoodCategoryScreen(
                     FoodCategoryItemCard(
                         item = item,
                         onItemClicked = {
-                            viewModel.updateCurrentSelectedFood(item)
-                            onFoodItemClicked()
+                            onFoodItemClicked(item)
                         },
                         onAddToCartClicked = {}
                     )

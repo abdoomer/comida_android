@@ -13,6 +13,11 @@ data class FoodCategory(
     val id: String = UUID.randomUUID().toString(),
     val title: String = "",
 ) {
+
+    fun getCategoryID(): String {
+        return id
+    }
+
     fun convertToJSON(): Map<String, Any?> =
         mapOf(
             "id" to id,

@@ -1,6 +1,5 @@
 package com.example.comida.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -14,8 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -55,7 +52,7 @@ fun RestaurantCard(
     modifier: Modifier = Modifier,
     restaurant: Restaurant,
     onRestaurantTapped: (Restaurant) -> Unit,
-    onToggleIsFavoriteTapped: (Boolean) -> Unit
+    onToggleIsFavoriteTapped: () -> Unit
 ){
 
     val context = LocalContext.current
@@ -99,7 +96,7 @@ fun RestaurantCard(
                         .align(Alignment.TopEnd)
                         .padding(8.dp), // Add some padding from edge
                     onClick = {
-                        onToggleIsFavoriteTapped(restaurant.isFavorites)
+                        onToggleIsFavoriteTapped()
                     },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color.Transparent
@@ -108,7 +105,7 @@ fun RestaurantCard(
                     Icon(
                         painter = painterResource(R.drawable.heart_icon),
                         contentDescription = "Toggle Favorites Icon Button",
-                        tint = Color.White,
+                        tint = if (restaurant.isFavorites) PrimaryButtonColor else Color.White,
                         modifier = Modifier
                             .clip(CircleShape)
                             .background(Color.White.copy(alpha = 0.3f))

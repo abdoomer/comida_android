@@ -57,7 +57,7 @@ fun OfferScreen(
     val offer = viewModel.offer.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = true) {
-        viewModel.fetchOffer()
+        viewModel.fetchOffer(offerId = offerID)
     }
 
     Scaffold(

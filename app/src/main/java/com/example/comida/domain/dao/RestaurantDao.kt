@@ -10,11 +10,7 @@ interface RestaurantsDao {
 
     fun getAllRestaurants(): List<Restaurant>
 
-    fun setSelectedRestaurant(selectedRestaurant: Restaurant)
+    fun getRestaurant(id: String): Restaurant
 
-    fun getSelectedRestaurant(): Restaurant
-
-    fun setRestaurantFoodList(newList: List<FoodItem>)
-
-    fun getRestaurantFoodList(): List<FoodItem>
+    fun getRestaurantFoodList(restaurantID: String): List<FoodItem>
 }

@@ -30,7 +30,6 @@ fun RestaurantsScreen(
     modifier: Modifier = Modifier,
     onBackButtonClicked: () -> Unit,
     onRestaurantTapped: (Restaurant) -> Unit,
-    onToggleIsFavoriteTapped: (Boolean) -> Unit,
 ){
 
     val viewModel: RestaurantsViewModel = hiltViewModel()
@@ -49,7 +48,8 @@ fun RestaurantsScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color.White)
-                .padding(innerPadding)
+                .padding(innerPadding),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             CustomTopAppTitleBar(
                 title = "Restaurants",
@@ -79,7 +79,9 @@ fun RestaurantsScreen(
                     RestaurantCard(
                         restaurant = restaurant,
                         onRestaurantTapped = onRestaurantTapped,
-                        onToggleIsFavoriteTapped = onToggleIsFavoriteTapped
+                        onToggleIsFavoriteTapped = {
+                            viewModel.onToggleRestaurantIsFavorites(restaurant.id)
+                        }
                     )
                 }
             }
@@ -96,7 +98,6 @@ private fun RestaurantsScreenPreview(){
         RestaurantsScreen(
             onBackButtonClicked = {},
             onRestaurantTapped = {},
-            onToggleIsFavoriteTapped = {}
         )
     }
 }

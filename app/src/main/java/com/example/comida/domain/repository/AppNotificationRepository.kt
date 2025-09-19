@@ -18,7 +18,6 @@ class AppNotificationRepository @Inject constructor(
 ): AppNotificationDao {
 
     private val _appNotifications: MutableStateFlow<List<AppNotification>> = MutableStateFlow(emptyList())
-    private val _currentSelectedNotification: MutableStateFlow<AppNotification> = MutableStateFlow(AppNotification())
 
     init {
         fetchDummyNotifications()
@@ -44,13 +43,7 @@ class AppNotificationRepository @Inject constructor(
     }
 
 
-    override fun setSelectedNotification(newNotification: AppNotification){
-        appCoroutineScope.launch {
-            _currentSelectedNotification.emit(newNotification)
-        }
-    }
-
-    override fun getSelectedNotification(): AppNotification {
-        return _currentSelectedNotification.value
+    override fun getNotification(id: String): AppNotification {
+        return _appNotifications.value.first() { it.id == id}
     }
 }

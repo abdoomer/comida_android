@@ -25,4 +25,40 @@ class CartViewModel @Inject constructor(
             _cartItems.emit(cartList)
         }
     }
+
+    fun removeItemFromCart(id: String){
+        viewModelScope.launch {
+            val updatedCartItemsList = _cartItems.value.filter { it.id != id }
+
+            _cartItems.emit(updatedCartItemsList)
+        }
+    }
+
+    fun increaseItemQuantity(id: String){
+        viewModelScope.launch {
+            val updatedCartItemsList = _cartItems.value.map { item ->
+                if (item.id == id){
+                    item.copy(quantity = item.quantity + 1)
+                } else {
+                    item
+                }
+            }
+
+            _cartItems.emit(updatedCartItemsList)
+        }
+    }
+
+    fun decreaseItemQuantity(id: String){
+        viewModelScope.launch {
+            val updatedCartItemsList = _cartItems.value.map { item ->
+                if (item.id == id){
+                    item.copy(quantity = item.quantity - 1)
+                } else {
+                    item
+                }
+            }
+
+            _cartItems.emit(updatedCartItemsList)
+        }
+    }
 }

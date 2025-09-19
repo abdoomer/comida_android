@@ -19,9 +19,9 @@ class OrderDetailsViewModel @Inject constructor(
     val order: StateFlow<OrderItem> = _order
 
 
-    fun fetchOrder(){
+    fun fetchOrder(orderID: String){
         viewModelScope.launch {
-            val currentOrder = ordersRepository.getSelectedOrder()
+            val currentOrder = ordersRepository.getOrder(id = orderID)
 
             _order.emit(currentOrder)
         }

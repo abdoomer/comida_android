@@ -26,10 +26,4 @@ class OrdersHistoryViewModel @Inject constructor(
             _orders.emit(ordersList)
         }
     }
-
-    fun updateCurrentSelectedOrder(currentOrder: OrderItem){
-        viewModelScope.launch {
-            ordersRepository.setSelectedOrder(currentOrder)
-        }
-    }
 }

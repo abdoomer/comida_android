@@ -225,6 +225,67 @@ private fun NavigationTiles(
                 }
             }
         }
+
+        item {
+            ShareAppButton(
+                onShareButtonClicked = {}
+            )
+        }
+    }
+}
+
+
+@Composable
+private fun ShareAppButton(
+    modifier: Modifier = Modifier,
+    onShareButtonClicked: () -> Unit,
+){
+    Card(
+        modifier = modifier
+            .clickable{
+                onShareButtonClicked()
+            },
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        ),
+        elevation = CardDefaults.cardElevation(4.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_share),
+                    contentDescription = "Share the app icon",
+                    tint = PrimaryButtonColor,
+                    modifier = Modifier
+                        .size(20.dp)
+                )
+
+                Text(
+                    text = "Share The App",
+                    fontWeight = FontWeight.SemiBold,
+                    fontFamily = poppinsFamily,
+                    fontSize = 18.sp,
+                    color = SmallLabelColor
+                )
+            }
+
+            Icon(
+                painter = painterResource(R.drawable.right_arrow_icon),
+                contentDescription = "",
+                tint = SmallLabelColor,
+                modifier = Modifier
+                    .size(20.dp)
+            )
+        }
     }
 }
 

@@ -63,21 +63,17 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun updateSelectedFoodCategory(newCategory: FoodCategory){
+    fun onToggleRestaurantIsFavorites(id: String){
         viewModelScope.launch {
-            foodRepository.setSelectedCategory(newCategory)
-        }
-    }
+            val updatedRestaurantsList = _restaurants.value.map { restaurant ->
+                if (restaurant.id == id){
+                    restaurant.copy(isFavorites = !restaurant.isFavorites)
+                } else {
+                    restaurant
+                }
+            }
 
-    fun updateCurrentSelectedSpecialOffer(newOffer: SpecialOffer){
-        viewModelScope.launch {
-            specialOfferRepository.setCurrentSpecialOffer(newOffer)
-        }
-    }
-
-    fun updateCurrentSelectedRestaurant(newRestaurant: Restaurant){
-        viewModelScope.launch {
-            restaurantsRepository.setSelectedRestaurant(newRestaurant)
+            _restaurants.emit(updatedRestaurantsList)
         }
     }
 }

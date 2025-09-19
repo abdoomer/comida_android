@@ -18,11 +18,7 @@ class RestaurantsRepository @Inject constructor(
     private val appCoroutineScope: AppCoroutineScope
 ): RestaurantsDao {
 
-    private val _restaurant: MutableStateFlow<List<Restaurant>> = MutableStateFlow(emptyList())
-
-    private val _currentSelectedRestaurant: MutableStateFlow<Restaurant> = MutableStateFlow(Restaurant())
-
-    private val _currentRestaurantFoodList: MutableStateFlow<List<FoodItem>> = MutableStateFlow(emptyList())
+    private val _restaurants: MutableStateFlow<List<Restaurant>> = MutableStateFlow(emptyList())
 
     init {
         fetchDummyRestaurants()
@@ -34,7 +30,7 @@ class RestaurantsRepository @Inject constructor(
                 when(result){
                     is ResourceResult.Loading -> {}
                     is ResourceResult.Success -> {
-                        _restaurant.emit(result.data)
+                        _restaurants.emit(result.data)
                     }
                     is ResourceResult.Error -> {}
                     else -> Unit
@@ -44,26 +40,15 @@ class RestaurantsRepository @Inject constructor(
     }
 
     override fun getAllRestaurants(): List<Restaurant> {
-        return _restaurant.value
+        return _restaurants.value
     }
 
-    override fun setSelectedRestaurant(selectedRestaurant: Restaurant) {
-        appCoroutineScope.launch {
-            _currentSelectedRestaurant.emit(selectedRestaurant)
-        }
+    override fun getRestaurant(id: String): Restaurant {
+        return _restaurants.value.first() {it.id == id}
     }
 
-    override fun getSelectedRestaurant(): Restaurant {
-        return _currentSelectedRestaurant.value
-    }
-
-    override fun setRestaurantFoodList(newList: List<FoodItem>){
-        appCoroutineScope.launch {
-            _currentRestaurantFoodList.emit(newList)
-        }
-    }
-
-    override fun getRestaurantFoodList(): List<FoodItem> {
-        return _currentRestaurantFoodList.value
+    override fun getRestaurantFoodList(restaurantID: String): List<FoodItem> {
+        val restaurant = _restaurants.value.first() { it.id == restaurantID}
+        return restaurant.availableFoods
     }
 }

@@ -97,7 +97,8 @@ fun ComidaNavigation(
         composable<FoodDetailsScreenRoute>{
             val args = it.toRoute<FoodDetailsScreenRoute>()
             FoodDetailsScreen(
-                foodID = args.id,
+                categoryID = args.categoryID,
+                foodID = args.foodItemID,
                 onBackButtonClicked = {
                     navController.popBackStack()
                 }
@@ -171,9 +172,8 @@ fun ComidaNavigation(
                     navController.popBackStack()
                 },
                 onRestaurantTapped = {
-                    navController.navigate(RestaurantScreenRoute)
+                    navController.navigate(RestaurantScreenRoute(id = it.id))
                 },
-                onToggleIsFavoriteTapped = {}
             )
         }
 
@@ -197,7 +197,7 @@ fun ComidaNavigation(
                     navController.popBackStack()
                 },
                 onFoodItemClicked = {
-                    navController.navigate(FoodDetailsScreenRoute(id = args.id))
+                    navController.navigate(FoodDetailsScreenRoute(categoryID = args.id, foodItemID = it.id))
                 }
             )
         }
@@ -213,7 +213,9 @@ fun ComidaNavigation(
                 onViewAllFoodsTapped = {
                     navController.navigate(RestaurantAvailableFoodsScreenRoute(id = it.id))
                 },
-                onFoodItemClicked = {},
+                onFoodItemClicked = {
+                    navController.navigate(FoodDetailsScreenRoute(categoryID = args.id, foodItemID = it.id))
+                },
                 onFoodItemAddToCartClicked = {}
             )
         }

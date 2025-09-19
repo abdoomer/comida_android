@@ -18,9 +18,9 @@ class OfferViewModel @Inject constructor(
     private val _offer: MutableStateFlow<SpecialOffer> = MutableStateFlow(SpecialOffer())
     val offer: StateFlow<SpecialOffer> = _offer
 
-    fun fetchOffer(){
+    fun fetchOffer(offerId: String){
         viewModelScope.launch {
-            val currentOffer = specialOfferRepository.getCurrentSpecialOffer()
+            val currentOffer = specialOfferRepository.getSpacialOffer(id = offerId)
 
             _offer.emit(currentOffer)
         }

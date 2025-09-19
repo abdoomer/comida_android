@@ -7,4 +7,6 @@ interface CartDao {
     fun fetchDummyCartItem()
 
     fun getCartItems(): List<CartItem>
+
+    fun getCartItem(id: String): CartItem
 }

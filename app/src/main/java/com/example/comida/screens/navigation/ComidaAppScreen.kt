@@ -67,7 +67,6 @@ fun ComidaAppScreen(
                     onRestaurantTapped = {
                         navController.navigate(RestaurantScreenRoute(id = it.id))
                     },
-                    onToggleIsFavoriteTapped = {},
                     onViewAllOfferTapped = {
                         navController.navigate(SpecialOffersScreenRoute)
                     },
@@ -79,6 +78,8 @@ fun ComidaAppScreen(
             1 -> {
                 CartScreen(
                     paddingValues = innerPadding,
+                    onCartItemClicked = {
+                    }
                 )
             }
             2 -> {

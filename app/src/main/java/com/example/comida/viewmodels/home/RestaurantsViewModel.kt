@@ -36,5 +36,19 @@ class RestaurantsViewModel @Inject constructor(
         }
     }
 
+    fun onToggleRestaurantIsFavorites(id: String){
+        viewModelScope.launch {
+            val updatedRestaurantsList = _restaurants.value.map { restaurant ->
+                if (restaurant.id == id){
+                    restaurant.copy(isFavorites = !restaurant.isFavorites)
+                } else {
+                    restaurant
+                }
+            }
+
+            _restaurants.emit(updatedRestaurantsList)
+        }
+    }
+
     fun onSearchTextButtonClicked(){}
 }

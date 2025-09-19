@@ -42,11 +42,6 @@ val profileNavigationTiles = listOf<ProfileNavigationTile>(
         destinationRoute = TechnicalSupportRoute,
         icon = R.drawable.ic_support_email
     ),
-    ProfileNavigationTile(
-        title = "Share The App",
-        destinationRoute = "",
-        icon = R.drawable.ic_share
-    ),
 )
 
 

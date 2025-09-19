@@ -17,7 +17,7 @@ data class FoodItem(
     val isFreeDelivery: Boolean = false,
     val deliveryTime: Double = 0.0,
     val deliveryFees: Double = 0.0,
-    val isFavorites: Boolean = false,
+    var isFavorites: Boolean = false,
     val restaurant: Restaurant? = null,
     var addOns: List<FoodAddOn> = emptyList<FoodAddOn>()
 )

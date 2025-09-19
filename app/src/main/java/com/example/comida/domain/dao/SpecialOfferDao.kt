@@ -9,7 +9,5 @@ interface SpecialOfferDao {
 
     fun fetchAllSpecialOffers(): List<SpecialOffer>
 
-    fun setCurrentSpecialOffer(selectedOffer: SpecialOffer)
-
-    fun getCurrentSpecialOffer(): SpecialOffer
+    fun getSpacialOffer(id: String): SpecialOffer
 }

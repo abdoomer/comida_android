@@ -69,7 +69,7 @@ fun RestaurantScreen(
     val restaurant = viewModel.restaurant.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = true) {
-        viewModel.fetchRestaurant()
+        viewModel.fetchRestaurant(restaurantID = restaurantID)
     }
 
     Scaffold(
@@ -100,7 +100,6 @@ fun RestaurantScreen(
             RestaurantAvailableFood(
                 availableFoods = restaurant.value.availableFoods,
                 onViewAllFoodsTapped = {
-                    viewModel.updateCurrentRestaurantFoodList(restaurant.value.availableFoods)
                     onViewAllFoodsTapped(restaurant.value)
                 },
                 onFoodItemClicked = onFoodItemClicked,

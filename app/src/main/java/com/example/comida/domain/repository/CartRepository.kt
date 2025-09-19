@@ -41,4 +41,8 @@ class CartRepository @Inject constructor(
     override fun getCartItems(): List<CartItem> {
         return _cartItems.value
     }
+
+    override fun getCartItem(id: String): CartItem {
+        return _cartItems.value.first() { it.id == id}
+    }
 }

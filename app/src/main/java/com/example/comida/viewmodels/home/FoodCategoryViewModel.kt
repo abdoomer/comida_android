@@ -26,18 +26,12 @@ class FoodCategoryViewModel @Inject constructor(
     private val _categoryFoodItems: MutableStateFlow<List<FoodItem>> = MutableStateFlow(emptyList())
     val categoryFoodItems: Flow<List<FoodItem>> = _categoryFoodItems
 
-    fun fetchSelectedFoodCategory(){
+    fun fetchSelectedFoodCategory(id: String){
         viewModelScope.launch {
-            val currentCategory = foodRepository.getSelectedCategory()
+            val currentCategory = foodRepository.getFoodCategory(id)
 
             _category.emit(currentCategory)
             _categoryFoodItems.emit(currentCategory.getFoodCategoryItems())
-        }
-    }
-
-    fun updateCurrentSelectedFood(item: FoodItem){
-        viewModelScope.launch {
-            foodRepository.setSelectedFood(item)
         }
     }
 

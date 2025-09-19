@@ -48,7 +48,8 @@ fun SpecialOffersScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color.White)
-                .padding(innerPadding)
+                .padding(innerPadding),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             CustomTopAppTitleBar(
                 title = "Special Offers",

@@ -38,7 +38,7 @@ fun RestaurantAvailableFoodsScreen(
     val availableFoods = viewModel.availableFoods.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = true) {
-        viewModel.fetchAvailableFoods()
+        viewModel.fetchAvailableFoods(restaurantID = restaurantID)
     }
 
     Scaffold(

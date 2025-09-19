@@ -74,7 +74,6 @@ fun OrdersHistoryScreen(
         OrderItemsList(
             orders = orders.value,
             onOrderItemClicked = {
-                viewModel.updateCurrentSelectedOrder(it)
                 onOrderClicked(it)
             }
         )

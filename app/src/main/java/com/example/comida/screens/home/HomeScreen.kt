@@ -66,7 +66,6 @@ fun HomeScreen(
     onBuyNowClicked: (SpecialOffer) -> Unit,
     onRestaurantTapped: (Restaurant) -> Unit,
     onViewAllRestaurantsTapped: () -> Unit,
-    onToggleIsFavoriteTapped: (Restaurant) -> Unit,
 ){
 
     val viewModel: HomeViewModel = hiltViewModel<HomeViewModel>()
@@ -108,7 +107,6 @@ fun HomeScreen(
         FoodCategoriesSelectionMenu(
             foodCategories = foodCategories.value,
             onNewCategorySelected = {
-                viewModel.updateSelectedFoodCategory(it)
                 onCategorySelected(it)
             }
         )
@@ -116,7 +114,6 @@ fun HomeScreen(
         AvailableSpecialOffers(
             specialOffers = specialOffers.value,
             onSpecialOfferTapped = {
-                viewModel.updateCurrentSelectedSpecialOffer(it)
                 onSpecialOfferTapped(it)
             },
             onViewAllOfferTapped = onViewAllOfferTapped,
@@ -126,11 +123,12 @@ fun HomeScreen(
         AvailableRestaurants(
             restaurants = restaurants.value,
             onRestaurantTapped = {
-                viewModel.updateCurrentSelectedRestaurant(it)
                 onRestaurantTapped(it)
             },
             onViewAllRestaurantsTapped = onViewAllRestaurantsTapped,
-            onToggleIsFavoriteTapped = onToggleIsFavoriteTapped
+            onToggleIsFavoriteTapped = {
+                viewModel.onToggleRestaurantIsFavorites(it.id)
+            }
         )
     }
 }

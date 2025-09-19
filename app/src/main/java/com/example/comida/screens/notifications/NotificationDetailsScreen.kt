@@ -46,7 +46,7 @@ fun NotificationDetailsScreen(
     val notification = viewModel.notification.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = true) {
-        viewModel.fetNotification()
+        viewModel.fetNotification(id = notificationID)
     }
 
     Scaffold(

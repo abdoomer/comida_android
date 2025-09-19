@@ -28,7 +28,7 @@ fun OrderDetailsScreen(
     val order = viewModel.order.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = true) {
-        viewModel.fetchOrder()
+        viewModel.fetchOrder(orderID = orderID)
     }
 
     Scaffold(
@@ -46,11 +46,25 @@ fun OrderDetailsScreen(
                 haveBackButton = true,
                 onBackButtonPressed = onBackButtonClicked
             )
+
+            OrderItemsCard()
+
+            ShippingAddressCard()
         }
     }
 }
 
 
+@Composable
+private fun OrderItemsCard(
+    modifier: Modifier = Modifier
+){}
+
+
+@Composable
+private fun ShippingAddressCard(
+    modifier: Modifier = Modifier
+){}
 
 
 @Composable

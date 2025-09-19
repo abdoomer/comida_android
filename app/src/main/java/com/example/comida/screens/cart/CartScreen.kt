@@ -2,6 +2,7 @@ package com.example.comida.screens.cart
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -67,6 +68,7 @@ import com.example.comida.viewmodels.cart.CartViewModel
 fun CartScreen(
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues,
+    onCartItemClicked: (CartItem) -> Unit,
 ){
 
     val viewModel: CartViewModel = hiltViewModel()
@@ -100,8 +102,24 @@ fun CartScreen(
             ) {
                 items(cartItems.value){ item ->
                     CartFoodItem(
+                        modifier = Modifier
+                            .clickable{
+                                onCartItemClicked(item)
+                            },
                         item = item,
-                        onRemoveItemClicked = {}
+                        onRemoveItemClicked = {
+                            viewModel.removeItemFromCart(item.id)
+                        },
+                        onIncreaseItemQuantityClicked = {
+                            viewModel.increaseItemQuantity(item.id)
+                        },
+                        onDecreaseItemQuantityClicked = {
+                            if (item.quantity > 1) {
+                                viewModel.decreaseItemQuantity(item.id)
+                            } else {
+                                viewModel.removeItemFromCart(item.id)
+                            }
+                        }
                     )
                 }
             }
@@ -132,7 +150,9 @@ fun CartScreen(
 private fun CartFoodItem(
     modifier: Modifier = Modifier,
     item: CartItem,
-    onRemoveItemClicked: () -> Unit
+    onRemoveItemClicked: () -> Unit,
+    onIncreaseItemQuantityClicked: () -> Unit,
+    onDecreaseItemQuantityClicked: () -> Unit,
 ){
     Card(
         modifier = modifier
@@ -214,7 +234,7 @@ private fun CartFoodItem(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Button(
-                            onClick = {},
+                            onClick = onDecreaseItemQuantityClicked,
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color.Transparent
                             )
@@ -238,7 +258,7 @@ private fun CartFoodItem(
                         )
 
                         Button(
-                            onClick = {},
+                            onClick = onIncreaseItemQuantityClicked,
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color.Transparent
                             )
@@ -496,6 +516,7 @@ private fun CartScreenPreview(){
     ComidaTheme {
         CartScreen(
             paddingValues = PaddingValues(0.dp),
+            onCartItemClicked = {}
         )
     }
 }

@@ -23,10 +23,6 @@ class FoodRepository @Inject constructor(
 
     private val _foodCategories: MutableStateFlow<List<FoodCategory>> = MutableStateFlow<List<FoodCategory>>(emptyList())
 
-    private val _selectedCategory: MutableStateFlow<FoodCategory> = MutableStateFlow<FoodCategory>(foodCategories[0])
-
-    private val _currentSelectedFood: MutableStateFlow<FoodItem> = MutableStateFlow(burgersCategory[0])
-
     init {
         fetchDummyFoodCategories()
     }
@@ -50,25 +46,13 @@ class FoodRepository @Inject constructor(
         return _foodCategories.value
     }
 
-    override fun setSelectedCategory(newCategory: FoodCategory){
-        appCoroutineScope.launch {
-            _selectedCategory.emit(newCategory)
-        }
+    override fun getFoodCategory(categoryID: String): FoodCategory {
+        return _foodCategories.value.first { it.id == categoryID }
     }
 
-    override fun getSelectedCategory(): FoodCategory {
-        return _selectedCategory.value
-    }
+    override fun getFoodItem(categoryID: String, foodItemID: String): FoodItem {
+        val category = _foodCategories.value.first { it.id == categoryID }
 
-    override fun setSelectedFood(newFood: FoodItem) {
-        appCoroutineScope.launch {
-            Log.d("FoodRepository", "setting selected food")
-            _currentSelectedFood.emit(newFood)
-        }
-    }
-
-    override fun getSelectedFood(): FoodItem {
-        Log.d("FoodRepository", "getting selected food")
-        return _currentSelectedFood.value
+        return category.getFoodCategoryItems().first() {it.id == foodItemID}
     }
 }

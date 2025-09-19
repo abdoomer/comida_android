@@ -61,6 +61,7 @@ import com.example.comida.viewmodels.home.FoodDetailsViewModel
 
 @Composable
 fun FoodDetailsScreen(
+    categoryID: String,
     foodID: String,
     modifier: Modifier = Modifier,
     onBackButtonClicked: () -> Unit
@@ -68,9 +69,10 @@ fun FoodDetailsScreen(
     
     val viewModel: FoodDetailsViewModel = hiltViewModel()
     val item = viewModel.item.collectAsStateWithLifecycle()
+    val quantity = viewModel.quantity.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = true) {
-        viewModel.fetchFoodItem()
+        viewModel.fetchFoodItem(categoryID = categoryID, foodItemID = foodID)
     }
 
     Scaffold(
@@ -88,7 +90,9 @@ fun FoodDetailsScreen(
                     .align(Alignment.TopCenter),
                 item = item.value,
                 onBackButtonClicked = onBackButtonClicked,
-                onToggleFavouritesClicked = {}
+                onToggleFavouritesClicked = {
+                    viewModel.onToggleIsFavorites()
+                }
             )
 
 
@@ -96,10 +100,21 @@ fun FoodDetailsScreen(
                 modifier = Modifier
                     .align(Alignment.BottomCenter),
                 addOns = item.value.addOns,
-                onAddOnClicked = {},
+                quantity = quantity.value,
+                onAddOnClicked = {
+                    viewModel.onAddOnClicked(it.id)
+                },
                 onAddItemToCartClicked = {},
-                onIncreaseAddOnQuantityClicked = {},
-                onDecreaseAddOnQuantityClicked = {}
+                onIncreaseAddOnQuantityClicked = {
+                    val newValue = quantity.value + 1
+                    viewModel.onItemQuantityUpdated(newValue)
+                },
+                onDecreaseAddOnQuantityClicked = {
+                    if (quantity.value > 1){
+                        val newValue = quantity.value - 1
+                        viewModel.onItemQuantityUpdated(newValue)
+                    }
+                }
             )
         }
     }
@@ -161,7 +176,7 @@ private fun FoodDetails(
                 Icon(
                     painter = painterResource(R.drawable.heart_icon),
                     contentDescription = "",
-                    tint = PrimaryButtonColor,
+                    tint = if (item.isFavorites) PrimaryButtonColor else Color.Gray,
                     modifier = Modifier
                         .clip(CircleShape)
                         .background(Color.White)
@@ -297,6 +312,7 @@ private fun FoodDetails(
 @Composable
 private fun FoodAddOnItems(
     modifier: Modifier = Modifier,
+    quantity: Int,
     addOns: List<FoodAddOn>,
     onAddOnClicked: (FoodAddOn) -> Unit,
     onAddItemToCartClicked: () -> Unit,
@@ -359,7 +375,7 @@ private fun FoodAddOnItems(
                             }
 
                             Text(
-                                text = "${if (addOns.isNotEmpty()) addOns[0].quantity else 0}",
+                                text = "$quantity",
                                 color = Color.White
                             )
 
@@ -456,6 +472,7 @@ private fun AddOnCell(
 private fun FoodDetailsScreenPreview(){
     ComidaTheme {
         FoodDetailsScreen(
+            categoryID = "",
             foodID = "",
             onBackButtonClicked = {}
         )

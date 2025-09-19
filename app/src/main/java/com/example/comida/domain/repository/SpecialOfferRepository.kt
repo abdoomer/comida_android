@@ -19,8 +19,6 @@ class SpecialOfferRepository @Inject constructor(
 
     private val _specialOffers: MutableStateFlow<List<SpecialOffer>> = MutableStateFlow(emptyList())
 
-    private val _selectedSpecialOffer: MutableStateFlow<SpecialOffer> = MutableStateFlow<SpecialOffer>(SpecialOffer())
-
     init {
         fetchDummySpecialOffers()
     }
@@ -44,13 +42,7 @@ class SpecialOfferRepository @Inject constructor(
         return _specialOffers.value
     }
 
-    override fun setCurrentSpecialOffer(selectedOffer: SpecialOffer){
-        appCoroutineScope.launch {
-            _selectedSpecialOffer.emit(selectedOffer)
-        }
-    }
-
-    override fun getCurrentSpecialOffer(): SpecialOffer {
-        return _selectedSpecialOffer.value
+    override fun getSpacialOffer(id: String): SpecialOffer {
+        return _specialOffers.value.first() { it.id == id }
     }
 }

@@ -76,7 +76,6 @@ fun NotificationsScreen(
                 AppNotificationCard(
                     notification = notification,
                     onClicked = {
-                        viewModel.updateCurrentNotification(it)
                         onNotificationClicked(it)
                     }
                 )

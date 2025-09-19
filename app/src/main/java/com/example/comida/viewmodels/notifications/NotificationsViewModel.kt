@@ -27,10 +27,4 @@ class NotificationsViewModel @Inject constructor(
             _appNotifications.emit(notifications)
         }
     }
-
-    fun updateCurrentNotification(newNotification: AppNotification){
-        viewModelScope.launch {
-            appNotificationRepository.setSelectedNotification(newNotification)
-        }
-    }
 }

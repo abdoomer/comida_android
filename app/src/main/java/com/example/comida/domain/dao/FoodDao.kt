@@ -9,11 +9,7 @@ interface FoodDao {
 
     fun fetchAllFoodCategories(): List<FoodCategory>
 
-    fun setSelectedCategory(newCategory: FoodCategory)
+    fun getFoodCategory(categoryID: String): FoodCategory
 
-    fun getSelectedCategory(): FoodCategory
-
-    fun setSelectedFood(newFood: FoodItem)
-
-    fun getSelectedFood(): FoodItem
+    fun getFoodItem(categoryID: String, foodItemID: String): FoodItem
 }

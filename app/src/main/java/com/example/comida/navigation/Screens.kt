@@ -19,7 +19,7 @@ object SignInScreenRoute
 object SignUpScreenRoute
 
 @Serializable
-data class FoodDetailsScreenRoute(val id: String)
+data class FoodDetailsScreenRoute(val categoryID: String, val foodItemID: String)
 
 @Serializable
 object PaymentScreenRoute
